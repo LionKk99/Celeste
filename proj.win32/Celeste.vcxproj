@@ -1,0 +1,889 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
+  </PropertyGroup>
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|win32">
+      <Configuration>Debug</Configuration>
+      <Platform>win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|win32">
+      <Configuration>Release</Configuration>
+      <Platform>win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="MinSizeRel|win32">
+      <Configuration>MinSizeRel</Configuration>
+      <Platform>win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="RelWithDebInfo|win32">
+      <Configuration>RelWithDebInfo</Configuration>
+      <Platform>win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{2D084C0C-55E0-303E-B32F-851BAB185D1A}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>10.0.19041.0</WindowsTargetPlatformVersion>
+    <Platform>win32</Platform>
+    <ProjectName>Celeste</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|win32'">D:\Celeste\proj.win32\bin\Celeste\Debug\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|win32'">Celeste.dir\Debug\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|win32'">Celeste</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|win32'">.exe</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|win32'">true</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Debug|win32'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|win32'">D:\Celeste\proj.win32\bin\Celeste\Release\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|win32'">Celeste.dir\Release\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|win32'">Celeste</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|win32'">.exe</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|win32'">false</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Release|win32'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|win32'">D:\Celeste\proj.win32\bin\Celeste\MinSizeRel\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|win32'">Celeste.dir\MinSizeRel\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|win32'">Celeste</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|win32'">.exe</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|win32'">false</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|win32'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|win32'">D:\Celeste\proj.win32\bin\Celeste\RelWithDebInfo\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|win32'">Celeste.dir\RelWithDebInfo\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|win32'">Celeste</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|win32'">.exe</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|win32'">true</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|win32'">true</GenerateManifest>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>D:\Celeste\Classes;D:\Celeste\cocos2d\cocos\audio\include;D:\Celeste\cocos2d;D:\Celeste\cocos2d\cocos;D:\Celeste\cocos2d\extensions;D:\Celeste\cocos2d\cocos\platform;D:\Celeste\cocos2d\cocos\editor-support;D:\Celeste\cocos2d\cocos\base;D:\Celeste\cocos2d\cocos\platform\win32;D:\Celeste\cocos2d\external\recast\..;D:\Celeste\cocos2d\external\tinyxml2\.;D:\Celeste\cocos2d\external\xxhash\.;D:\Celeste\cocos2d\external\xxtea\.;D:\Celeste\cocos2d\external\clipper\.;D:\Celeste\cocos2d\external\edtaa3func\.;D:\Celeste\cocos2d\external\ConvertUTF\.;D:\Celeste\cocos2d\external\poly2tri\..;D:\Celeste\cocos2d\external\md5\..;D:\Celeste\cocos2d\external\unzip\.;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /external:I "D:/Celeste/cocos2d/external/Box2D/include" /external:I "D:/Celeste/cocos2d/external/chipmunk/include" /external:I "D:/Celeste/cocos2d/external/freetype2/include/win32/freetype2" /external:I "D:/Celeste/cocos2d/external/bullet/include" /external:I "D:/Celeste/cocos2d/external/bullet/include/bullet" /external:I "D:/Celeste/cocos2d/external/jpeg/include/win32" /external:I "D:/Celeste/cocos2d/external/openssl/include/win32" /external:I "D:/Celeste/cocos2d/external/uv/include" /external:I "D:/Celeste/cocos2d/external/webp/include/win32" /external:I "D:/Celeste/cocos2d/external/websockets/include/win32" /external:I "D:/Celeste/cocos2d/external/curl/include/win32" /external:I "D:/Celeste/cocos2d/external/png/include/win32" /external:I "D:/Celeste/cocos2d/external/win32-specific/gles/include/OGLES" /external:I "D:/Celeste/cocos2d/external/win32-specific/icon/include" /external:I "D:/Celeste/cocos2d/external/win32-specific/MP3Decoder/include" /external:I "D:/Celeste/cocos2d/external/win32-specific/OggDecoder/include" /external:I "D:/Celeste/cocos2d/external/win32-specific/OpenalSoft/include" /external:I "D:/Celeste/cocos2d/external/glfw3/include/win32" /external:I "D:/Celeste/cocos2d/external/zlib/../win32-specific/zlib/include"</AdditionalOptions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>Disabled</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;COCOS2D_DEBUG=1;_WIN32;UNICODE;_UNICODE;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;CC_STATIC;LWS_WITH_LIBUV;CMAKE_INTDIR="Debug"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_DEBUG;_WINDOWS;COCOS2D_DEBUG=1;_WIN32;UNICODE;_UNICODE;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;CC_STATIC;LWS_WITH_LIBUV;CMAKE_INTDIR=\"Debug\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>D:\Celeste\Classes;D:\Celeste\cocos2d\cocos\audio\include;D:\Celeste\cocos2d;D:\Celeste\cocos2d\cocos;D:\Celeste\cocos2d\extensions;D:\Celeste\cocos2d\cocos\platform;D:\Celeste\cocos2d\cocos\editor-support;D:\Celeste\cocos2d\cocos\base;D:\Celeste\cocos2d\cocos\platform\win32;D:\Celeste\cocos2d\external\recast\..;D:\Celeste\cocos2d\external\tinyxml2\.;D:\Celeste\cocos2d\external\xxhash\.;D:\Celeste\cocos2d\external\xxtea\.;D:\Celeste\cocos2d\external\clipper\.;D:\Celeste\cocos2d\external\edtaa3func\.;D:\Celeste\cocos2d\external\ConvertUTF\.;D:\Celeste\cocos2d\external\poly2tri\..;D:\Celeste\cocos2d\external\md5\..;D:\Celeste\cocos2d\external\unzip\.;D:\Celeste\cocos2d\external\Box2D\include;D:\Celeste\cocos2d\external\chipmunk\include;D:\Celeste\cocos2d\external\freetype2\include\win32\freetype2;D:\Celeste\cocos2d\external\bullet\include;D:\Celeste\cocos2d\external\bullet\include\bullet;D:\Celeste\cocos2d\external\jpeg\include\win32;D:\Celeste\cocos2d\external\openssl\include\win32;D:\Celeste\cocos2d\external\uv\include;D:\Celeste\cocos2d\external\webp\include\win32;D:\Celeste\cocos2d\external\websockets\include\win32;D:\Celeste\cocos2d\external\curl\include\win32;D:\Celeste\cocos2d\external\png\include\win32;D:\Celeste\cocos2d\external\win32-specific\gles\include\OGLES;D:\Celeste\cocos2d\external\win32-specific\icon\include;D:\Celeste\cocos2d\external\win32-specific\MP3Decoder\include;D:\Celeste\cocos2d\external\win32-specific\OggDecoder\include;D:\Celeste\cocos2d\external\win32-specific\OpenalSoft\include;D:\Celeste\cocos2d\external\glfw3\include\win32;D:\Celeste\cocos2d\external\zlib\..\win32-specific\zlib\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>D:\Celeste\Classes;D:\Celeste\cocos2d\cocos\audio\include;D:\Celeste\cocos2d;D:\Celeste\cocos2d\cocos;D:\Celeste\cocos2d\extensions;D:\Celeste\cocos2d\cocos\platform;D:\Celeste\cocos2d\cocos\editor-support;D:\Celeste\cocos2d\cocos\base;D:\Celeste\cocos2d\cocos\platform\win32;D:\Celeste\cocos2d\external\recast\..;D:\Celeste\cocos2d\external\tinyxml2\.;D:\Celeste\cocos2d\external\xxhash\.;D:\Celeste\cocos2d\external\xxtea\.;D:\Celeste\cocos2d\external\clipper\.;D:\Celeste\cocos2d\external\edtaa3func\.;D:\Celeste\cocos2d\external\ConvertUTF\.;D:\Celeste\cocos2d\external\poly2tri\..;D:\Celeste\cocos2d\external\md5\..;D:\Celeste\cocos2d\external\unzip\.;D:\Celeste\cocos2d\external\Box2D\include;D:\Celeste\cocos2d\external\chipmunk\include;D:\Celeste\cocos2d\external\freetype2\include\win32\freetype2;D:\Celeste\cocos2d\external\bullet\include;D:\Celeste\cocos2d\external\bullet\include\bullet;D:\Celeste\cocos2d\external\jpeg\include\win32;D:\Celeste\cocos2d\external\openssl\include\win32;D:\Celeste\cocos2d\external\uv\include;D:\Celeste\cocos2d\external\webp\include\win32;D:\Celeste\cocos2d\external\websockets\include\win32;D:\Celeste\cocos2d\external\curl\include\win32;D:\Celeste\cocos2d\external\png\include\win32;D:\Celeste\cocos2d\external\win32-specific\gles\include\OGLES;D:\Celeste\cocos2d\external\win32-specific\icon\include;D:\Celeste\cocos2d\external\win32-specific\MP3Decoder\include;D:\Celeste\cocos2d\external\win32-specific\OggDecoder\include;D:\Celeste\cocos2d\external\win32-specific\OpenalSoft\include;D:\Celeste\cocos2d\external\glfw3\include\win32;D:\Celeste\cocos2d\external\zlib\..\win32-specific\zlib\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <PostBuildEvent>
+      <Message>												</Message>
+      <Command>setlocal
+"D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E copy_if_different D:/Celeste/cocos2d/external/openssl/prebuilt/win32/libssl-1_1.dll D:/Celeste/proj.win32/bin/Celeste/Debug/libssl-1_1.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E copy_if_different D:/Celeste/cocos2d/external/openssl/prebuilt/win32/libcrypto-1_1.dll D:/Celeste/proj.win32/bin/Celeste/Debug/libcrypto-1_1.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E copy_if_different D:/Celeste/cocos2d/external/uv/prebuilt/win32/uv.dll D:/Celeste/proj.win32/bin/Celeste/Debug/uv.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E copy_if_different D:/Celeste/cocos2d/external/websockets/prebuilt/win32/websockets.dll D:/Celeste/proj.win32/bin/Celeste/Debug/websockets.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E copy_if_different D:/Celeste/cocos2d/external/curl/prebuilt/win32/libcurl.dll D:/Celeste/proj.win32/bin/Celeste/Debug/libcurl.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E copy_if_different D:/Celeste/cocos2d/external/win32-specific/gles/prebuilt/glew32.dll D:/Celeste/proj.win32/bin/Celeste/Debug/glew32.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E copy_if_different D:/Celeste/cocos2d/external/win32-specific/icon/prebuilt/iconv.dll D:/Celeste/proj.win32/bin/Celeste/Debug/iconv.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E copy_if_different D:/Celeste/cocos2d/external/win32-specific/MP3Decoder/prebuilt/libmpg123.dll D:/Celeste/proj.win32/bin/Celeste/Debug/libmpg123.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E copy_if_different D:/Celeste/cocos2d/external/win32-specific/OggDecoder/prebuilt/libogg.dll D:/Celeste/proj.win32/bin/Celeste/Debug/libogg.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E copy_if_different D:/Celeste/cocos2d/external/win32-specific/OggDecoder/prebuilt/libvorbis.dll D:/Celeste/proj.win32/bin/Celeste/Debug/libvorbis.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E copy_if_different D:/Celeste/cocos2d/external/win32-specific/OggDecoder/prebuilt/libvorbisfile.dll D:/Celeste/proj.win32/bin/Celeste/Debug/libvorbisfile.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E copy_if_different D:/Celeste/cocos2d/external/win32-specific/OpenalSoft/prebuilt/OpenAL32.dll D:/Celeste/proj.win32/bin/Celeste/Debug/OpenAL32.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E copy_if_different D:/Celeste/cocos2d/external/zlib/../win32-specific/zlib/prebuilt/zlib1.dll D:/Celeste/proj.win32/bin/Celeste/Debug/zlib1.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+    </PostBuildEvent>
+    <Link>
+      <AdditionalDependencies>lib\Debug\cocos2d.lib;lib\Debug\external.lib;D:\Celeste\cocos2d\external\Box2D\prebuilt\win32\debug\libbox2d.lib;D:\Celeste\cocos2d\external\chipmunk\prebuilt\win32\debug-lib\libchipmunk.lib;D:\Celeste\cocos2d\external\freetype2\prebuilt\win32\freetype.lib;lib\Debug\ext_recast.lib;D:\Celeste\cocos2d\external\bullet\prebuilt\win32\debug\libbullet.lib;D:\Celeste\cocos2d\external\jpeg\prebuilt\win32\libjpeg.lib;D:\Celeste\cocos2d\external\webp\prebuilt\win32\libwebp.lib;D:\Celeste\cocos2d\external\websockets\prebuilt\win32\websockets.lib;D:\Celeste\cocos2d\external\openssl\prebuilt\win32\libssl.lib;D:\Celeste\cocos2d\external\openssl\prebuilt\win32\libcrypto.lib;D:\Celeste\cocos2d\external\uv\prebuilt\win32\uv_a.lib;lib\Debug\ext_tinyxml2.lib;lib\Debug\ext_xxhash.lib;lib\Debug\ext_xxtea.lib;lib\Debug\ext_clipper.lib;lib\Debug\ext_edtaa3func.lib;lib\Debug\ext_convertUTF.lib;lib\Debug\ext_poly2tri.lib;lib\Debug\ext_md5.lib;D:\Celeste\cocos2d\external\curl\prebuilt\win32\libcurl.lib;D:\Celeste\cocos2d\external\png\prebuilt\win32\libpng.lib;D:\Celeste\cocos2d\external\win32-specific\gles\prebuilt\glew32.lib;D:\Celeste\cocos2d\external\win32-specific\icon\prebuilt\libiconv.lib;D:\Celeste\cocos2d\external\win32-specific\MP3Decoder\prebuilt\libmpg123.lib;D:\Celeste\cocos2d\external\win32-specific\OggDecoder\prebuilt\libogg.lib;D:\Celeste\cocos2d\external\win32-specific\OggDecoder\prebuilt\libvorbis.lib;D:\Celeste\cocos2d\external\win32-specific\OggDecoder\prebuilt\libvorbisfile.lib;D:\Celeste\cocos2d\external\win32-specific\OpenalSoft\prebuilt\OpenAL32.lib;D:\Celeste\cocos2d\external\glfw3\prebuilt\win32\glfw3.lib;D:\Celeste\cocos2d\external\zlib\..\win32-specific\zlib\prebuilt\libzlib.lib;lib\Debug\ext_unzip.lib;ws2_32.lib;userenv.lib;psapi.lib;winmm.lib;Version.lib;Iphlpapi.lib;opengl32.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:X86</AdditionalOptions>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>D:/Celeste/proj.win32/Debug/Celeste.lib</ImportLibrary>
+      <ProgramDataBaseFile>D:/Celeste/proj.win32/bin/Celeste/Debug/Celeste.pdb</ProgramDataBaseFile>
+      <SubSystem>Windows</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>D:\Celeste\Classes;D:\Celeste\cocos2d\cocos\audio\include;D:\Celeste\cocos2d;D:\Celeste\cocos2d\cocos;D:\Celeste\cocos2d\extensions;D:\Celeste\cocos2d\cocos\platform;D:\Celeste\cocos2d\cocos\editor-support;D:\Celeste\cocos2d\cocos\base;D:\Celeste\cocos2d\cocos\platform\win32;D:\Celeste\cocos2d\external\recast\..;D:\Celeste\cocos2d\external\tinyxml2\.;D:\Celeste\cocos2d\external\xxhash\.;D:\Celeste\cocos2d\external\xxtea\.;D:\Celeste\cocos2d\external\clipper\.;D:\Celeste\cocos2d\external\edtaa3func\.;D:\Celeste\cocos2d\external\ConvertUTF\.;D:\Celeste\cocos2d\external\poly2tri\..;D:\Celeste\cocos2d\external\md5\..;D:\Celeste\cocos2d\external\unzip\.;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /external:I "D:/Celeste/cocos2d/external/Box2D/include" /external:I "D:/Celeste/cocos2d/external/chipmunk/include" /external:I "D:/Celeste/cocos2d/external/freetype2/include/win32/freetype2" /external:I "D:/Celeste/cocos2d/external/bullet/include" /external:I "D:/Celeste/cocos2d/external/bullet/include/bullet" /external:I "D:/Celeste/cocos2d/external/jpeg/include/win32" /external:I "D:/Celeste/cocos2d/external/openssl/include/win32" /external:I "D:/Celeste/cocos2d/external/uv/include" /external:I "D:/Celeste/cocos2d/external/webp/include/win32" /external:I "D:/Celeste/cocos2d/external/websockets/include/win32" /external:I "D:/Celeste/cocos2d/external/curl/include/win32" /external:I "D:/Celeste/cocos2d/external/png/include/win32" /external:I "D:/Celeste/cocos2d/external/win32-specific/gles/include/OGLES" /external:I "D:/Celeste/cocos2d/external/win32-specific/icon/include" /external:I "D:/Celeste/cocos2d/external/win32-specific/MP3Decoder/include" /external:I "D:/Celeste/cocos2d/external/win32-specific/OggDecoder/include" /external:I "D:/Celeste/cocos2d/external/win32-specific/OpenalSoft/include" /external:I "D:/Celeste/cocos2d/external/glfw3/include/win32" /external:I "D:/Celeste/cocos2d/external/zlib/../win32-specific/zlib/include"</AdditionalOptions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;_WIN32;UNICODE;_UNICODE;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;CC_STATIC;LWS_WITH_LIBUV;CMAKE_INTDIR="Release"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;_WIN32;UNICODE;_UNICODE;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;CC_STATIC;LWS_WITH_LIBUV;CMAKE_INTDIR=\"Release\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>D:\Celeste\Classes;D:\Celeste\cocos2d\cocos\audio\include;D:\Celeste\cocos2d;D:\Celeste\cocos2d\cocos;D:\Celeste\cocos2d\extensions;D:\Celeste\cocos2d\cocos\platform;D:\Celeste\cocos2d\cocos\editor-support;D:\Celeste\cocos2d\cocos\base;D:\Celeste\cocos2d\cocos\platform\win32;D:\Celeste\cocos2d\external\recast\..;D:\Celeste\cocos2d\external\tinyxml2\.;D:\Celeste\cocos2d\external\xxhash\.;D:\Celeste\cocos2d\external\xxtea\.;D:\Celeste\cocos2d\external\clipper\.;D:\Celeste\cocos2d\external\edtaa3func\.;D:\Celeste\cocos2d\external\ConvertUTF\.;D:\Celeste\cocos2d\external\poly2tri\..;D:\Celeste\cocos2d\external\md5\..;D:\Celeste\cocos2d\external\unzip\.;D:\Celeste\cocos2d\external\Box2D\include;D:\Celeste\cocos2d\external\chipmunk\include;D:\Celeste\cocos2d\external\freetype2\include\win32\freetype2;D:\Celeste\cocos2d\external\bullet\include;D:\Celeste\cocos2d\external\bullet\include\bullet;D:\Celeste\cocos2d\external\jpeg\include\win32;D:\Celeste\cocos2d\external\openssl\include\win32;D:\Celeste\cocos2d\external\uv\include;D:\Celeste\cocos2d\external\webp\include\win32;D:\Celeste\cocos2d\external\websockets\include\win32;D:\Celeste\cocos2d\external\curl\include\win32;D:\Celeste\cocos2d\external\png\include\win32;D:\Celeste\cocos2d\external\win32-specific\gles\include\OGLES;D:\Celeste\cocos2d\external\win32-specific\icon\include;D:\Celeste\cocos2d\external\win32-specific\MP3Decoder\include;D:\Celeste\cocos2d\external\win32-specific\OggDecoder\include;D:\Celeste\cocos2d\external\win32-specific\OpenalSoft\include;D:\Celeste\cocos2d\external\glfw3\include\win32;D:\Celeste\cocos2d\external\zlib\..\win32-specific\zlib\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>D:\Celeste\Classes;D:\Celeste\cocos2d\cocos\audio\include;D:\Celeste\cocos2d;D:\Celeste\cocos2d\cocos;D:\Celeste\cocos2d\extensions;D:\Celeste\cocos2d\cocos\platform;D:\Celeste\cocos2d\cocos\editor-support;D:\Celeste\cocos2d\cocos\base;D:\Celeste\cocos2d\cocos\platform\win32;D:\Celeste\cocos2d\external\recast\..;D:\Celeste\cocos2d\external\tinyxml2\.;D:\Celeste\cocos2d\external\xxhash\.;D:\Celeste\cocos2d\external\xxtea\.;D:\Celeste\cocos2d\external\clipper\.;D:\Celeste\cocos2d\external\edtaa3func\.;D:\Celeste\cocos2d\external\ConvertUTF\.;D:\Celeste\cocos2d\external\poly2tri\..;D:\Celeste\cocos2d\external\md5\..;D:\Celeste\cocos2d\external\unzip\.;D:\Celeste\cocos2d\external\Box2D\include;D:\Celeste\cocos2d\external\chipmunk\include;D:\Celeste\cocos2d\external\freetype2\include\win32\freetype2;D:\Celeste\cocos2d\external\bullet\include;D:\Celeste\cocos2d\external\bullet\include\bullet;D:\Celeste\cocos2d\external\jpeg\include\win32;D:\Celeste\cocos2d\external\openssl\include\win32;D:\Celeste\cocos2d\external\uv\include;D:\Celeste\cocos2d\external\webp\include\win32;D:\Celeste\cocos2d\external\websockets\include\win32;D:\Celeste\cocos2d\external\curl\include\win32;D:\Celeste\cocos2d\external\png\include\win32;D:\Celeste\cocos2d\external\win32-specific\gles\include\OGLES;D:\Celeste\cocos2d\external\win32-specific\icon\include;D:\Celeste\cocos2d\external\win32-specific\MP3Decoder\include;D:\Celeste\cocos2d\external\win32-specific\OggDecoder\include;D:\Celeste\cocos2d\external\win32-specific\OpenalSoft\include;D:\Celeste\cocos2d\external\glfw3\include\win32;D:\Celeste\cocos2d\external\zlib\..\win32-specific\zlib\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <PostBuildEvent>
+      <Message>												</Message>
+      <Command>setlocal
+"D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E copy_if_different D:/Celeste/cocos2d/external/openssl/prebuilt/win32/libssl-1_1.dll D:/Celeste/proj.win32/bin/Celeste/Release/libssl-1_1.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E copy_if_different D:/Celeste/cocos2d/external/openssl/prebuilt/win32/libcrypto-1_1.dll D:/Celeste/proj.win32/bin/Celeste/Release/libcrypto-1_1.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E copy_if_different D:/Celeste/cocos2d/external/uv/prebuilt/win32/uv.dll D:/Celeste/proj.win32/bin/Celeste/Release/uv.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E copy_if_different D:/Celeste/cocos2d/external/websockets/prebuilt/win32/websockets.dll D:/Celeste/proj.win32/bin/Celeste/Release/websockets.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E copy_if_different D:/Celeste/cocos2d/external/curl/prebuilt/win32/libcurl.dll D:/Celeste/proj.win32/bin/Celeste/Release/libcurl.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E copy_if_different D:/Celeste/cocos2d/external/win32-specific/gles/prebuilt/glew32.dll D:/Celeste/proj.win32/bin/Celeste/Release/glew32.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E copy_if_different D:/Celeste/cocos2d/external/win32-specific/icon/prebuilt/iconv.dll D:/Celeste/proj.win32/bin/Celeste/Release/iconv.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E copy_if_different D:/Celeste/cocos2d/external/win32-specific/MP3Decoder/prebuilt/libmpg123.dll D:/Celeste/proj.win32/bin/Celeste/Release/libmpg123.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E copy_if_different D:/Celeste/cocos2d/external/win32-specific/OggDecoder/prebuilt/libogg.dll D:/Celeste/proj.win32/bin/Celeste/Release/libogg.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E copy_if_different D:/Celeste/cocos2d/external/win32-specific/OggDecoder/prebuilt/libvorbis.dll D:/Celeste/proj.win32/bin/Celeste/Release/libvorbis.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E copy_if_different D:/Celeste/cocos2d/external/win32-specific/OggDecoder/prebuilt/libvorbisfile.dll D:/Celeste/proj.win32/bin/Celeste/Release/libvorbisfile.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E copy_if_different D:/Celeste/cocos2d/external/win32-specific/OpenalSoft/prebuilt/OpenAL32.dll D:/Celeste/proj.win32/bin/Celeste/Release/OpenAL32.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E copy_if_different D:/Celeste/cocos2d/external/zlib/../win32-specific/zlib/prebuilt/zlib1.dll D:/Celeste/proj.win32/bin/Celeste/Release/zlib1.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+    </PostBuildEvent>
+    <Link>
+      <AdditionalDependencies>lib\Release\cocos2d.lib;lib\Release\external.lib;D:\Celeste\cocos2d\external\Box2D\prebuilt\win32\release\libbox2d.lib;D:\Celeste\cocos2d\external\chipmunk\prebuilt\win32\release-lib\libchipmunk.lib;D:\Celeste\cocos2d\external\freetype2\prebuilt\win32\freetype.lib;lib\Release\ext_recast.lib;D:\Celeste\cocos2d\external\bullet\prebuilt\win32\release\libbullet.lib;D:\Celeste\cocos2d\external\jpeg\prebuilt\win32\libjpeg.lib;D:\Celeste\cocos2d\external\webp\prebuilt\win32\libwebp.lib;D:\Celeste\cocos2d\external\websockets\prebuilt\win32\websockets.lib;D:\Celeste\cocos2d\external\openssl\prebuilt\win32\libssl.lib;D:\Celeste\cocos2d\external\openssl\prebuilt\win32\libcrypto.lib;D:\Celeste\cocos2d\external\uv\prebuilt\win32\uv_a.lib;lib\Release\ext_tinyxml2.lib;lib\Release\ext_xxhash.lib;lib\Release\ext_xxtea.lib;lib\Release\ext_clipper.lib;lib\Release\ext_edtaa3func.lib;lib\Release\ext_convertUTF.lib;lib\Release\ext_poly2tri.lib;lib\Release\ext_md5.lib;D:\Celeste\cocos2d\external\curl\prebuilt\win32\libcurl.lib;D:\Celeste\cocos2d\external\png\prebuilt\win32\libpng.lib;D:\Celeste\cocos2d\external\win32-specific\gles\prebuilt\glew32.lib;D:\Celeste\cocos2d\external\win32-specific\icon\prebuilt\libiconv.lib;D:\Celeste\cocos2d\external\win32-specific\MP3Decoder\prebuilt\libmpg123.lib;D:\Celeste\cocos2d\external\win32-specific\OggDecoder\prebuilt\libogg.lib;D:\Celeste\cocos2d\external\win32-specific\OggDecoder\prebuilt\libvorbis.lib;D:\Celeste\cocos2d\external\win32-specific\OggDecoder\prebuilt\libvorbisfile.lib;D:\Celeste\cocos2d\external\win32-specific\OpenalSoft\prebuilt\OpenAL32.lib;D:\Celeste\cocos2d\external\glfw3\prebuilt\win32\glfw3.lib;D:\Celeste\cocos2d\external\zlib\..\win32-specific\zlib\prebuilt\libzlib.lib;lib\Release\ext_unzip.lib;ws2_32.lib;userenv.lib;psapi.lib;winmm.lib;Version.lib;Iphlpapi.lib;opengl32.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:X86</AdditionalOptions>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>D:/Celeste/proj.win32/Release/Celeste.lib</ImportLibrary>
+      <ProgramDataBaseFile>D:/Celeste/proj.win32/bin/Celeste/Release/Celeste.pdb</ProgramDataBaseFile>
+      <SubSystem>Windows</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>D:\Celeste\Classes;D:\Celeste\cocos2d\cocos\audio\include;D:\Celeste\cocos2d;D:\Celeste\cocos2d\cocos;D:\Celeste\cocos2d\extensions;D:\Celeste\cocos2d\cocos\platform;D:\Celeste\cocos2d\cocos\editor-support;D:\Celeste\cocos2d\cocos\base;D:\Celeste\cocos2d\cocos\platform\win32;D:\Celeste\cocos2d\external\recast\..;D:\Celeste\cocos2d\external\tinyxml2\.;D:\Celeste\cocos2d\external\xxhash\.;D:\Celeste\cocos2d\external\xxtea\.;D:\Celeste\cocos2d\external\clipper\.;D:\Celeste\cocos2d\external\edtaa3func\.;D:\Celeste\cocos2d\external\ConvertUTF\.;D:\Celeste\cocos2d\external\poly2tri\..;D:\Celeste\cocos2d\external\md5\..;D:\Celeste\cocos2d\external\unzip\.;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /external:I "D:/Celeste/cocos2d/external/Box2D/include" /external:I "D:/Celeste/cocos2d/external/chipmunk/include" /external:I "D:/Celeste/cocos2d/external/freetype2/include/win32/freetype2" /external:I "D:/Celeste/cocos2d/external/bullet/include" /external:I "D:/Celeste/cocos2d/external/bullet/include/bullet" /external:I "D:/Celeste/cocos2d/external/jpeg/include/win32" /external:I "D:/Celeste/cocos2d/external/openssl/include/win32" /external:I "D:/Celeste/cocos2d/external/uv/include" /external:I "D:/Celeste/cocos2d/external/webp/include/win32" /external:I "D:/Celeste/cocos2d/external/websockets/include/win32" /external:I "D:/Celeste/cocos2d/external/curl/include/win32" /external:I "D:/Celeste/cocos2d/external/png/include/win32" /external:I "D:/Celeste/cocos2d/external/win32-specific/gles/include/OGLES" /external:I "D:/Celeste/cocos2d/external/win32-specific/icon/include" /external:I "D:/Celeste/cocos2d/external/win32-specific/MP3Decoder/include" /external:I "D:/Celeste/cocos2d/external/win32-specific/OggDecoder/include" /external:I "D:/Celeste/cocos2d/external/win32-specific/OpenalSoft/include" /external:I "D:/Celeste/cocos2d/external/glfw3/include/win32" /external:I "D:/Celeste/cocos2d/external/zlib/../win32-specific/zlib/include"</AdditionalOptions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>MinSpace</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;_WIN32;UNICODE;_UNICODE;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;CC_STATIC;LWS_WITH_LIBUV;CMAKE_INTDIR="MinSizeRel"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;_WIN32;UNICODE;_UNICODE;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;CC_STATIC;LWS_WITH_LIBUV;CMAKE_INTDIR=\"MinSizeRel\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>D:\Celeste\Classes;D:\Celeste\cocos2d\cocos\audio\include;D:\Celeste\cocos2d;D:\Celeste\cocos2d\cocos;D:\Celeste\cocos2d\extensions;D:\Celeste\cocos2d\cocos\platform;D:\Celeste\cocos2d\cocos\editor-support;D:\Celeste\cocos2d\cocos\base;D:\Celeste\cocos2d\cocos\platform\win32;D:\Celeste\cocos2d\external\recast\..;D:\Celeste\cocos2d\external\tinyxml2\.;D:\Celeste\cocos2d\external\xxhash\.;D:\Celeste\cocos2d\external\xxtea\.;D:\Celeste\cocos2d\external\clipper\.;D:\Celeste\cocos2d\external\edtaa3func\.;D:\Celeste\cocos2d\external\ConvertUTF\.;D:\Celeste\cocos2d\external\poly2tri\..;D:\Celeste\cocos2d\external\md5\..;D:\Celeste\cocos2d\external\unzip\.;D:\Celeste\cocos2d\external\Box2D\include;D:\Celeste\cocos2d\external\chipmunk\include;D:\Celeste\cocos2d\external\freetype2\include\win32\freetype2;D:\Celeste\cocos2d\external\bullet\include;D:\Celeste\cocos2d\external\bullet\include\bullet;D:\Celeste\cocos2d\external\jpeg\include\win32;D:\Celeste\cocos2d\external\openssl\include\win32;D:\Celeste\cocos2d\external\uv\include;D:\Celeste\cocos2d\external\webp\include\win32;D:\Celeste\cocos2d\external\websockets\include\win32;D:\Celeste\cocos2d\external\curl\include\win32;D:\Celeste\cocos2d\external\png\include\win32;D:\Celeste\cocos2d\external\win32-specific\gles\include\OGLES;D:\Celeste\cocos2d\external\win32-specific\icon\include;D:\Celeste\cocos2d\external\win32-specific\MP3Decoder\include;D:\Celeste\cocos2d\external\win32-specific\OggDecoder\include;D:\Celeste\cocos2d\external\win32-specific\OpenalSoft\include;D:\Celeste\cocos2d\external\glfw3\include\win32;D:\Celeste\cocos2d\external\zlib\..\win32-specific\zlib\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>D:\Celeste\Classes;D:\Celeste\cocos2d\cocos\audio\include;D:\Celeste\cocos2d;D:\Celeste\cocos2d\cocos;D:\Celeste\cocos2d\extensions;D:\Celeste\cocos2d\cocos\platform;D:\Celeste\cocos2d\cocos\editor-support;D:\Celeste\cocos2d\cocos\base;D:\Celeste\cocos2d\cocos\platform\win32;D:\Celeste\cocos2d\external\recast\..;D:\Celeste\cocos2d\external\tinyxml2\.;D:\Celeste\cocos2d\external\xxhash\.;D:\Celeste\cocos2d\external\xxtea\.;D:\Celeste\cocos2d\external\clipper\.;D:\Celeste\cocos2d\external\edtaa3func\.;D:\Celeste\cocos2d\external\ConvertUTF\.;D:\Celeste\cocos2d\external\poly2tri\..;D:\Celeste\cocos2d\external\md5\..;D:\Celeste\cocos2d\external\unzip\.;D:\Celeste\cocos2d\external\Box2D\include;D:\Celeste\cocos2d\external\chipmunk\include;D:\Celeste\cocos2d\external\freetype2\include\win32\freetype2;D:\Celeste\cocos2d\external\bullet\include;D:\Celeste\cocos2d\external\bullet\include\bullet;D:\Celeste\cocos2d\external\jpeg\include\win32;D:\Celeste\cocos2d\external\openssl\include\win32;D:\Celeste\cocos2d\external\uv\include;D:\Celeste\cocos2d\external\webp\include\win32;D:\Celeste\cocos2d\external\websockets\include\win32;D:\Celeste\cocos2d\external\curl\include\win32;D:\Celeste\cocos2d\external\png\include\win32;D:\Celeste\cocos2d\external\win32-specific\gles\include\OGLES;D:\Celeste\cocos2d\external\win32-specific\icon\include;D:\Celeste\cocos2d\external\win32-specific\MP3Decoder\include;D:\Celeste\cocos2d\external\win32-specific\OggDecoder\include;D:\Celeste\cocos2d\external\win32-specific\OpenalSoft\include;D:\Celeste\cocos2d\external\glfw3\include\win32;D:\Celeste\cocos2d\external\zlib\..\win32-specific\zlib\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <PostBuildEvent>
+      <Message>												</Message>
+      <Command>setlocal
+"D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E copy_if_different D:/Celeste/cocos2d/external/openssl/prebuilt/win32/libssl-1_1.dll D:/Celeste/proj.win32/bin/Celeste/MinSizeRel/libssl-1_1.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E copy_if_different D:/Celeste/cocos2d/external/openssl/prebuilt/win32/libcrypto-1_1.dll D:/Celeste/proj.win32/bin/Celeste/MinSizeRel/libcrypto-1_1.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E copy_if_different D:/Celeste/cocos2d/external/uv/prebuilt/win32/uv.dll D:/Celeste/proj.win32/bin/Celeste/MinSizeRel/uv.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E copy_if_different D:/Celeste/cocos2d/external/websockets/prebuilt/win32/websockets.dll D:/Celeste/proj.win32/bin/Celeste/MinSizeRel/websockets.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E copy_if_different D:/Celeste/cocos2d/external/curl/prebuilt/win32/libcurl.dll D:/Celeste/proj.win32/bin/Celeste/MinSizeRel/libcurl.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E copy_if_different D:/Celeste/cocos2d/external/win32-specific/gles/prebuilt/glew32.dll D:/Celeste/proj.win32/bin/Celeste/MinSizeRel/glew32.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E copy_if_different D:/Celeste/cocos2d/external/win32-specific/icon/prebuilt/iconv.dll D:/Celeste/proj.win32/bin/Celeste/MinSizeRel/iconv.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E copy_if_different D:/Celeste/cocos2d/external/win32-specific/MP3Decoder/prebuilt/libmpg123.dll D:/Celeste/proj.win32/bin/Celeste/MinSizeRel/libmpg123.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E copy_if_different D:/Celeste/cocos2d/external/win32-specific/OggDecoder/prebuilt/libogg.dll D:/Celeste/proj.win32/bin/Celeste/MinSizeRel/libogg.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E copy_if_different D:/Celeste/cocos2d/external/win32-specific/OggDecoder/prebuilt/libvorbis.dll D:/Celeste/proj.win32/bin/Celeste/MinSizeRel/libvorbis.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E copy_if_different D:/Celeste/cocos2d/external/win32-specific/OggDecoder/prebuilt/libvorbisfile.dll D:/Celeste/proj.win32/bin/Celeste/MinSizeRel/libvorbisfile.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E copy_if_different D:/Celeste/cocos2d/external/win32-specific/OpenalSoft/prebuilt/OpenAL32.dll D:/Celeste/proj.win32/bin/Celeste/MinSizeRel/OpenAL32.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E copy_if_different D:/Celeste/cocos2d/external/zlib/../win32-specific/zlib/prebuilt/zlib1.dll D:/Celeste/proj.win32/bin/Celeste/MinSizeRel/zlib1.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+    </PostBuildEvent>
+    <Link>
+      <AdditionalDependencies>lib\MinSizeRel\cocos2d.lib;lib\MinSizeRel\external.lib;D:\Celeste\cocos2d\external\Box2D\prebuilt\win32\release\libbox2d.lib;D:\Celeste\cocos2d\external\chipmunk\prebuilt\win32\release-lib\libchipmunk.lib;D:\Celeste\cocos2d\external\freetype2\prebuilt\win32\freetype.lib;lib\MinSizeRel\ext_recast.lib;D:\Celeste\cocos2d\external\bullet\prebuilt\win32\release\libbullet.lib;D:\Celeste\cocos2d\external\jpeg\prebuilt\win32\libjpeg.lib;D:\Celeste\cocos2d\external\webp\prebuilt\win32\libwebp.lib;D:\Celeste\cocos2d\external\websockets\prebuilt\win32\websockets.lib;D:\Celeste\cocos2d\external\openssl\prebuilt\win32\libssl.lib;D:\Celeste\cocos2d\external\openssl\prebuilt\win32\libcrypto.lib;D:\Celeste\cocos2d\external\uv\prebuilt\win32\uv_a.lib;lib\MinSizeRel\ext_tinyxml2.lib;lib\MinSizeRel\ext_xxhash.lib;lib\MinSizeRel\ext_xxtea.lib;lib\MinSizeRel\ext_clipper.lib;lib\MinSizeRel\ext_edtaa3func.lib;lib\MinSizeRel\ext_convertUTF.lib;lib\MinSizeRel\ext_poly2tri.lib;lib\MinSizeRel\ext_md5.lib;D:\Celeste\cocos2d\external\curl\prebuilt\win32\libcurl.lib;D:\Celeste\cocos2d\external\png\prebuilt\win32\libpng.lib;D:\Celeste\cocos2d\external\win32-specific\gles\prebuilt\glew32.lib;D:\Celeste\cocos2d\external\win32-specific\icon\prebuilt\libiconv.lib;D:\Celeste\cocos2d\external\win32-specific\MP3Decoder\prebuilt\libmpg123.lib;D:\Celeste\cocos2d\external\win32-specific\OggDecoder\prebuilt\libogg.lib;D:\Celeste\cocos2d\external\win32-specific\OggDecoder\prebuilt\libvorbis.lib;D:\Celeste\cocos2d\external\win32-specific\OggDecoder\prebuilt\libvorbisfile.lib;D:\Celeste\cocos2d\external\win32-specific\OpenalSoft\prebuilt\OpenAL32.lib;D:\Celeste\cocos2d\external\glfw3\prebuilt\win32\glfw3.lib;D:\Celeste\cocos2d\external\zlib\..\win32-specific\zlib\prebuilt\libzlib.lib;lib\MinSizeRel\ext_unzip.lib;ws2_32.lib;userenv.lib;psapi.lib;winmm.lib;Version.lib;Iphlpapi.lib;opengl32.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:X86</AdditionalOptions>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>D:/Celeste/proj.win32/MinSizeRel/Celeste.lib</ImportLibrary>
+      <ProgramDataBaseFile>D:/Celeste/proj.win32/bin/Celeste/MinSizeRel/Celeste.pdb</ProgramDataBaseFile>
+      <SubSystem>Windows</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>D:\Celeste\Classes;D:\Celeste\cocos2d\cocos\audio\include;D:\Celeste\cocos2d;D:\Celeste\cocos2d\cocos;D:\Celeste\cocos2d\extensions;D:\Celeste\cocos2d\cocos\platform;D:\Celeste\cocos2d\cocos\editor-support;D:\Celeste\cocos2d\cocos\base;D:\Celeste\cocos2d\cocos\platform\win32;D:\Celeste\cocos2d\external\recast\..;D:\Celeste\cocos2d\external\tinyxml2\.;D:\Celeste\cocos2d\external\xxhash\.;D:\Celeste\cocos2d\external\xxtea\.;D:\Celeste\cocos2d\external\clipper\.;D:\Celeste\cocos2d\external\edtaa3func\.;D:\Celeste\cocos2d\external\ConvertUTF\.;D:\Celeste\cocos2d\external\poly2tri\..;D:\Celeste\cocos2d\external\md5\..;D:\Celeste\cocos2d\external\unzip\.;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /external:I "D:/Celeste/cocos2d/external/Box2D/include" /external:I "D:/Celeste/cocos2d/external/chipmunk/include" /external:I "D:/Celeste/cocos2d/external/freetype2/include/win32/freetype2" /external:I "D:/Celeste/cocos2d/external/bullet/include" /external:I "D:/Celeste/cocos2d/external/bullet/include/bullet" /external:I "D:/Celeste/cocos2d/external/jpeg/include/win32" /external:I "D:/Celeste/cocos2d/external/openssl/include/win32" /external:I "D:/Celeste/cocos2d/external/uv/include" /external:I "D:/Celeste/cocos2d/external/webp/include/win32" /external:I "D:/Celeste/cocos2d/external/websockets/include/win32" /external:I "D:/Celeste/cocos2d/external/curl/include/win32" /external:I "D:/Celeste/cocos2d/external/png/include/win32" /external:I "D:/Celeste/cocos2d/external/win32-specific/gles/include/OGLES" /external:I "D:/Celeste/cocos2d/external/win32-specific/icon/include" /external:I "D:/Celeste/cocos2d/external/win32-specific/MP3Decoder/include" /external:I "D:/Celeste/cocos2d/external/win32-specific/OggDecoder/include" /external:I "D:/Celeste/cocos2d/external/win32-specific/OpenalSoft/include" /external:I "D:/Celeste/cocos2d/external/glfw3/include/win32" /external:I "D:/Celeste/cocos2d/external/zlib/../win32-specific/zlib/include"</AdditionalOptions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;_WIN32;UNICODE;_UNICODE;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;CC_STATIC;LWS_WITH_LIBUV;CMAKE_INTDIR="RelWithDebInfo"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;_WIN32;UNICODE;_UNICODE;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;CC_STATIC;LWS_WITH_LIBUV;CMAKE_INTDIR=\"RelWithDebInfo\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>D:\Celeste\Classes;D:\Celeste\cocos2d\cocos\audio\include;D:\Celeste\cocos2d;D:\Celeste\cocos2d\cocos;D:\Celeste\cocos2d\extensions;D:\Celeste\cocos2d\cocos\platform;D:\Celeste\cocos2d\cocos\editor-support;D:\Celeste\cocos2d\cocos\base;D:\Celeste\cocos2d\cocos\platform\win32;D:\Celeste\cocos2d\external\recast\..;D:\Celeste\cocos2d\external\tinyxml2\.;D:\Celeste\cocos2d\external\xxhash\.;D:\Celeste\cocos2d\external\xxtea\.;D:\Celeste\cocos2d\external\clipper\.;D:\Celeste\cocos2d\external\edtaa3func\.;D:\Celeste\cocos2d\external\ConvertUTF\.;D:\Celeste\cocos2d\external\poly2tri\..;D:\Celeste\cocos2d\external\md5\..;D:\Celeste\cocos2d\external\unzip\.;D:\Celeste\cocos2d\external\Box2D\include;D:\Celeste\cocos2d\external\chipmunk\include;D:\Celeste\cocos2d\external\freetype2\include\win32\freetype2;D:\Celeste\cocos2d\external\bullet\include;D:\Celeste\cocos2d\external\bullet\include\bullet;D:\Celeste\cocos2d\external\jpeg\include\win32;D:\Celeste\cocos2d\external\openssl\include\win32;D:\Celeste\cocos2d\external\uv\include;D:\Celeste\cocos2d\external\webp\include\win32;D:\Celeste\cocos2d\external\websockets\include\win32;D:\Celeste\cocos2d\external\curl\include\win32;D:\Celeste\cocos2d\external\png\include\win32;D:\Celeste\cocos2d\external\win32-specific\gles\include\OGLES;D:\Celeste\cocos2d\external\win32-specific\icon\include;D:\Celeste\cocos2d\external\win32-specific\MP3Decoder\include;D:\Celeste\cocos2d\external\win32-specific\OggDecoder\include;D:\Celeste\cocos2d\external\win32-specific\OpenalSoft\include;D:\Celeste\cocos2d\external\glfw3\include\win32;D:\Celeste\cocos2d\external\zlib\..\win32-specific\zlib\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>D:\Celeste\Classes;D:\Celeste\cocos2d\cocos\audio\include;D:\Celeste\cocos2d;D:\Celeste\cocos2d\cocos;D:\Celeste\cocos2d\extensions;D:\Celeste\cocos2d\cocos\platform;D:\Celeste\cocos2d\cocos\editor-support;D:\Celeste\cocos2d\cocos\base;D:\Celeste\cocos2d\cocos\platform\win32;D:\Celeste\cocos2d\external\recast\..;D:\Celeste\cocos2d\external\tinyxml2\.;D:\Celeste\cocos2d\external\xxhash\.;D:\Celeste\cocos2d\external\xxtea\.;D:\Celeste\cocos2d\external\clipper\.;D:\Celeste\cocos2d\external\edtaa3func\.;D:\Celeste\cocos2d\external\ConvertUTF\.;D:\Celeste\cocos2d\external\poly2tri\..;D:\Celeste\cocos2d\external\md5\..;D:\Celeste\cocos2d\external\unzip\.;D:\Celeste\cocos2d\external\Box2D\include;D:\Celeste\cocos2d\external\chipmunk\include;D:\Celeste\cocos2d\external\freetype2\include\win32\freetype2;D:\Celeste\cocos2d\external\bullet\include;D:\Celeste\cocos2d\external\bullet\include\bullet;D:\Celeste\cocos2d\external\jpeg\include\win32;D:\Celeste\cocos2d\external\openssl\include\win32;D:\Celeste\cocos2d\external\uv\include;D:\Celeste\cocos2d\external\webp\include\win32;D:\Celeste\cocos2d\external\websockets\include\win32;D:\Celeste\cocos2d\external\curl\include\win32;D:\Celeste\cocos2d\external\png\include\win32;D:\Celeste\cocos2d\external\win32-specific\gles\include\OGLES;D:\Celeste\cocos2d\external\win32-specific\icon\include;D:\Celeste\cocos2d\external\win32-specific\MP3Decoder\include;D:\Celeste\cocos2d\external\win32-specific\OggDecoder\include;D:\Celeste\cocos2d\external\win32-specific\OpenalSoft\include;D:\Celeste\cocos2d\external\glfw3\include\win32;D:\Celeste\cocos2d\external\zlib\..\win32-specific\zlib\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <PostBuildEvent>
+      <Message>												</Message>
+      <Command>setlocal
+"D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E copy_if_different D:/Celeste/cocos2d/external/openssl/prebuilt/win32/libssl-1_1.dll D:/Celeste/proj.win32/bin/Celeste/RelWithDebInfo/libssl-1_1.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E copy_if_different D:/Celeste/cocos2d/external/openssl/prebuilt/win32/libcrypto-1_1.dll D:/Celeste/proj.win32/bin/Celeste/RelWithDebInfo/libcrypto-1_1.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E copy_if_different D:/Celeste/cocos2d/external/uv/prebuilt/win32/uv.dll D:/Celeste/proj.win32/bin/Celeste/RelWithDebInfo/uv.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E copy_if_different D:/Celeste/cocos2d/external/websockets/prebuilt/win32/websockets.dll D:/Celeste/proj.win32/bin/Celeste/RelWithDebInfo/websockets.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E copy_if_different D:/Celeste/cocos2d/external/curl/prebuilt/win32/libcurl.dll D:/Celeste/proj.win32/bin/Celeste/RelWithDebInfo/libcurl.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E copy_if_different D:/Celeste/cocos2d/external/win32-specific/gles/prebuilt/glew32.dll D:/Celeste/proj.win32/bin/Celeste/RelWithDebInfo/glew32.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E copy_if_different D:/Celeste/cocos2d/external/win32-specific/icon/prebuilt/iconv.dll D:/Celeste/proj.win32/bin/Celeste/RelWithDebInfo/iconv.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E copy_if_different D:/Celeste/cocos2d/external/win32-specific/MP3Decoder/prebuilt/libmpg123.dll D:/Celeste/proj.win32/bin/Celeste/RelWithDebInfo/libmpg123.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E copy_if_different D:/Celeste/cocos2d/external/win32-specific/OggDecoder/prebuilt/libogg.dll D:/Celeste/proj.win32/bin/Celeste/RelWithDebInfo/libogg.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E copy_if_different D:/Celeste/cocos2d/external/win32-specific/OggDecoder/prebuilt/libvorbis.dll D:/Celeste/proj.win32/bin/Celeste/RelWithDebInfo/libvorbis.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E copy_if_different D:/Celeste/cocos2d/external/win32-specific/OggDecoder/prebuilt/libvorbisfile.dll D:/Celeste/proj.win32/bin/Celeste/RelWithDebInfo/libvorbisfile.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E copy_if_different D:/Celeste/cocos2d/external/win32-specific/OpenalSoft/prebuilt/OpenAL32.dll D:/Celeste/proj.win32/bin/Celeste/RelWithDebInfo/OpenAL32.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E copy_if_different D:/Celeste/cocos2d/external/zlib/../win32-specific/zlib/prebuilt/zlib1.dll D:/Celeste/proj.win32/bin/Celeste/RelWithDebInfo/zlib1.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+    </PostBuildEvent>
+    <Link>
+      <AdditionalDependencies>lib\RelWithDebInfo\cocos2d.lib;lib\RelWithDebInfo\external.lib;D:\Celeste\cocos2d\external\Box2D\prebuilt\win32\release\libbox2d.lib;D:\Celeste\cocos2d\external\chipmunk\prebuilt\win32\release-lib\libchipmunk.lib;D:\Celeste\cocos2d\external\freetype2\prebuilt\win32\freetype.lib;lib\RelWithDebInfo\ext_recast.lib;D:\Celeste\cocos2d\external\bullet\prebuilt\win32\release\libbullet.lib;D:\Celeste\cocos2d\external\jpeg\prebuilt\win32\libjpeg.lib;D:\Celeste\cocos2d\external\webp\prebuilt\win32\libwebp.lib;D:\Celeste\cocos2d\external\websockets\prebuilt\win32\websockets.lib;D:\Celeste\cocos2d\external\openssl\prebuilt\win32\libssl.lib;D:\Celeste\cocos2d\external\openssl\prebuilt\win32\libcrypto.lib;D:\Celeste\cocos2d\external\uv\prebuilt\win32\uv_a.lib;lib\RelWithDebInfo\ext_tinyxml2.lib;lib\RelWithDebInfo\ext_xxhash.lib;lib\RelWithDebInfo\ext_xxtea.lib;lib\RelWithDebInfo\ext_clipper.lib;lib\RelWithDebInfo\ext_edtaa3func.lib;lib\RelWithDebInfo\ext_convertUTF.lib;lib\RelWithDebInfo\ext_poly2tri.lib;lib\RelWithDebInfo\ext_md5.lib;D:\Celeste\cocos2d\external\curl\prebuilt\win32\libcurl.lib;D:\Celeste\cocos2d\external\png\prebuilt\win32\libpng.lib;D:\Celeste\cocos2d\external\win32-specific\gles\prebuilt\glew32.lib;D:\Celeste\cocos2d\external\win32-specific\icon\prebuilt\libiconv.lib;D:\Celeste\cocos2d\external\win32-specific\MP3Decoder\prebuilt\libmpg123.lib;D:\Celeste\cocos2d\external\win32-specific\OggDecoder\prebuilt\libogg.lib;D:\Celeste\cocos2d\external\win32-specific\OggDecoder\prebuilt\libvorbis.lib;D:\Celeste\cocos2d\external\win32-specific\OggDecoder\prebuilt\libvorbisfile.lib;D:\Celeste\cocos2d\external\win32-specific\OpenalSoft\prebuilt\OpenAL32.lib;D:\Celeste\cocos2d\external\glfw3\prebuilt\win32\glfw3.lib;D:\Celeste\cocos2d\external\zlib\..\win32-specific\zlib\prebuilt\libzlib.lib;lib\RelWithDebInfo\ext_unzip.lib;ws2_32.lib;userenv.lib;psapi.lib;winmm.lib;Version.lib;Iphlpapi.lib;opengl32.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:X86</AdditionalOptions>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>D:/Celeste/proj.win32/RelWithDebInfo/Celeste.lib</ImportLibrary>
+      <ProgramDataBaseFile>D:/Celeste/proj.win32/bin/Celeste/RelWithDebInfo/Celeste.pdb</ProgramDataBaseFile>
+      <SubSystem>Windows</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="D:\Celeste\CMakeLists.txt">
+      <UseUtf8Encoding>Always</UseUtf8Encoding>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|win32'">Building Custom Rule D:/Celeste/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|win32'">setlocal
+"D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -SD:/Celeste -BD:/Celeste/proj.win32 --check-stamp-file D:/Celeste/proj.win32/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|win32'">D:\Celeste\cocos2d\cmake\Modules\CocosBuildHelpers.cmake;D:\Celeste\cocos2d\cmake\Modules\CocosBuildSet.cmake;D:\Celeste\cocos2d\cmake\Modules\CocosConfigDefine.cmake;D:\Celeste\cocos2d\cmake\Modules\CocosConfigDepend.cmake;D:\Celeste\proj.win32\CMakeFiles\3.26.0-msvc3\CMakeCCompiler.cmake;D:\Celeste\proj.win32\CMakeFiles\3.26.0-msvc3\CMakeCXXCompiler.cmake;D:\Celeste\proj.win32\CMakeFiles\3.26.0-msvc3\CMakeRCCompiler.cmake;D:\Celeste\proj.win32\CMakeFiles\3.26.0-msvc3\CMakeSystem.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\CMakeCCompiler.cmake.in;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\CMakeCCompilerABI.c;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\CMakeCInformation.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\CMakeCXXCompiler.cmake.in;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\CMakeCXXCompilerABI.cpp;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\CMakeCXXInformation.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\CMakeCommonLanguageInclude.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\CMakeCompilerIdDetection.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\CMakeDetermineCCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\CMakeDetermineCXXCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\CMakeDetermineCompileFeatures.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\CMakeDetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\CMakeDetermineCompilerABI.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\CMakeDetermineCompilerId.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\CMakeDetermineRCCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\CMakeDetermineSystem.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\CMakeFindBinUtils.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\CMakeGenericSystem.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\CMakeInitializeConfigs.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\CMakeLanguageInformation.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\CMakeParseArguments.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\CMakeParseImplicitIncludeInfo.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\CMakeParseImplicitLinkInfo.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\CMakeParseLibraryArchitecture.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\CMakeRCCompiler.cmake.in;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\CMakeRCInformation.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\CMakeSystem.cmake.in;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\CMakeSystemSpecificInformation.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\CMakeSystemSpecificInitialize.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\CMakeTestCCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\CMakeTestCXXCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\CMakeTestCompilerCommon.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\CMakeTestRCCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\ADSP-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\ARMCC-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\ARMClang-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\AppleClang-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\Borland-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\Bruce-C-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\CMakeCommonCompilerMacros.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\Clang-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\Clang-DetermineCompilerInternal.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\Comeau-CXX-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\Compaq-C-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\Compaq-CXX-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\Cray-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\Embarcadero-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\Fujitsu-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\FujitsuClang-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\GHS-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\GNU-C-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\GNU-CXX-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\HP-C-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\HP-CXX-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\IAR-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\IBMCPP-C-DetermineVersionInternal.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\IBMCPP-CXX-DetermineVersionInternal.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\IBMClang-C-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\IBMClang-CXX-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\Intel-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\IntelLLVM-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\LCC-C-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\LCC-CXX-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\MSVC-C.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\MSVC-CXX.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\MSVC-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\MSVC.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\NVHPC-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\NVIDIA-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\OpenWatcom-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\PGI-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\PathScale-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\SCO-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\SDCC-C-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\SunPro-C-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\SunPro-CXX-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\TI-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\Tasking-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\TinyCC-C-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\VisualAge-C-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\VisualAge-CXX-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\Watcom-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\XL-C-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\XL-CXX-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\XLClang-C-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\XLClang-CXX-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\zOS-C-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\zOS-CXX-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\CompilerId\VS-10.vcxproj.in;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Internal\FeatureTesting.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Platform\Windows-Determine-CXX.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Platform\Windows-MSVC-C.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Platform\Windows-MSVC-CXX.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Platform\Windows-MSVC.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Platform\Windows.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Platform\WindowsPaths.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|win32'">D:\Celeste\proj.win32\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|win32'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|win32'">Building Custom Rule D:/Celeste/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|win32'">setlocal
+"D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -SD:/Celeste -BD:/Celeste/proj.win32 --check-stamp-file D:/Celeste/proj.win32/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|win32'">D:\Celeste\cocos2d\cmake\Modules\CocosBuildHelpers.cmake;D:\Celeste\cocos2d\cmake\Modules\CocosBuildSet.cmake;D:\Celeste\cocos2d\cmake\Modules\CocosConfigDefine.cmake;D:\Celeste\cocos2d\cmake\Modules\CocosConfigDepend.cmake;D:\Celeste\proj.win32\CMakeFiles\3.26.0-msvc3\CMakeCCompiler.cmake;D:\Celeste\proj.win32\CMakeFiles\3.26.0-msvc3\CMakeCXXCompiler.cmake;D:\Celeste\proj.win32\CMakeFiles\3.26.0-msvc3\CMakeRCCompiler.cmake;D:\Celeste\proj.win32\CMakeFiles\3.26.0-msvc3\CMakeSystem.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\CMakeCCompiler.cmake.in;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\CMakeCCompilerABI.c;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\CMakeCInformation.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\CMakeCXXCompiler.cmake.in;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\CMakeCXXCompilerABI.cpp;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\CMakeCXXInformation.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\CMakeCommonLanguageInclude.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\CMakeCompilerIdDetection.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\CMakeDetermineCCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\CMakeDetermineCXXCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\CMakeDetermineCompileFeatures.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\CMakeDetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\CMakeDetermineCompilerABI.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\CMakeDetermineCompilerId.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\CMakeDetermineRCCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\CMakeDetermineSystem.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\CMakeFindBinUtils.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\CMakeGenericSystem.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\CMakeInitializeConfigs.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\CMakeLanguageInformation.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\CMakeParseArguments.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\CMakeParseImplicitIncludeInfo.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\CMakeParseImplicitLinkInfo.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\CMakeParseLibraryArchitecture.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\CMakeRCCompiler.cmake.in;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\CMakeRCInformation.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\CMakeSystem.cmake.in;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\CMakeSystemSpecificInformation.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\CMakeSystemSpecificInitialize.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\CMakeTestCCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\CMakeTestCXXCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\CMakeTestCompilerCommon.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\CMakeTestRCCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\ADSP-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\ARMCC-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\ARMClang-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\AppleClang-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\Borland-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\Bruce-C-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\CMakeCommonCompilerMacros.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\Clang-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\Clang-DetermineCompilerInternal.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\Comeau-CXX-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\Compaq-C-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\Compaq-CXX-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\Cray-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\Embarcadero-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\Fujitsu-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\FujitsuClang-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\GHS-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\GNU-C-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\GNU-CXX-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\HP-C-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\HP-CXX-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\IAR-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\IBMCPP-C-DetermineVersionInternal.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\IBMCPP-CXX-DetermineVersionInternal.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\IBMClang-C-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\IBMClang-CXX-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\Intel-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\IntelLLVM-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\LCC-C-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\LCC-CXX-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\MSVC-C.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\MSVC-CXX.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\MSVC-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\MSVC.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\NVHPC-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\NVIDIA-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\OpenWatcom-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\PGI-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\PathScale-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\SCO-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\SDCC-C-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\SunPro-C-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\SunPro-CXX-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\TI-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\Tasking-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\TinyCC-C-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\VisualAge-C-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\VisualAge-CXX-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\Watcom-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\XL-C-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\XL-CXX-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\XLClang-C-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\XLClang-CXX-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\zOS-C-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\zOS-CXX-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\CompilerId\VS-10.vcxproj.in;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Internal\FeatureTesting.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Platform\Windows-Determine-CXX.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Platform\Windows-MSVC-C.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Platform\Windows-MSVC-CXX.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Platform\Windows-MSVC.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Platform\Windows.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Platform\WindowsPaths.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|win32'">D:\Celeste\proj.win32\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|win32'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|win32'">Building Custom Rule D:/Celeste/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|win32'">setlocal
+"D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -SD:/Celeste -BD:/Celeste/proj.win32 --check-stamp-file D:/Celeste/proj.win32/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|win32'">D:\Celeste\cocos2d\cmake\Modules\CocosBuildHelpers.cmake;D:\Celeste\cocos2d\cmake\Modules\CocosBuildSet.cmake;D:\Celeste\cocos2d\cmake\Modules\CocosConfigDefine.cmake;D:\Celeste\cocos2d\cmake\Modules\CocosConfigDepend.cmake;D:\Celeste\proj.win32\CMakeFiles\3.26.0-msvc3\CMakeCCompiler.cmake;D:\Celeste\proj.win32\CMakeFiles\3.26.0-msvc3\CMakeCXXCompiler.cmake;D:\Celeste\proj.win32\CMakeFiles\3.26.0-msvc3\CMakeRCCompiler.cmake;D:\Celeste\proj.win32\CMakeFiles\3.26.0-msvc3\CMakeSystem.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\CMakeCCompiler.cmake.in;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\CMakeCCompilerABI.c;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\CMakeCInformation.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\CMakeCXXCompiler.cmake.in;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\CMakeCXXCompilerABI.cpp;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\CMakeCXXInformation.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\CMakeCommonLanguageInclude.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\CMakeCompilerIdDetection.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\CMakeDetermineCCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\CMakeDetermineCXXCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\CMakeDetermineCompileFeatures.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\CMakeDetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\CMakeDetermineCompilerABI.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\CMakeDetermineCompilerId.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\CMakeDetermineRCCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\CMakeDetermineSystem.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\CMakeFindBinUtils.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\CMakeGenericSystem.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\CMakeInitializeConfigs.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\CMakeLanguageInformation.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\CMakeParseArguments.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\CMakeParseImplicitIncludeInfo.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\CMakeParseImplicitLinkInfo.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\CMakeParseLibraryArchitecture.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\CMakeRCCompiler.cmake.in;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\CMakeRCInformation.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\CMakeSystem.cmake.in;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\CMakeSystemSpecificInformation.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\CMakeSystemSpecificInitialize.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\CMakeTestCCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\CMakeTestCXXCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\CMakeTestCompilerCommon.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\CMakeTestRCCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\ADSP-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\ARMCC-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\ARMClang-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\AppleClang-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\Borland-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\Bruce-C-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\CMakeCommonCompilerMacros.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\Clang-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\Clang-DetermineCompilerInternal.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\Comeau-CXX-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\Compaq-C-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\Compaq-CXX-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\Cray-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\Embarcadero-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\Fujitsu-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\FujitsuClang-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\GHS-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\GNU-C-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\GNU-CXX-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\HP-C-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\HP-CXX-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\IAR-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\IBMCPP-C-DetermineVersionInternal.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\IBMCPP-CXX-DetermineVersionInternal.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\IBMClang-C-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\IBMClang-CXX-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\Intel-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\IntelLLVM-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\LCC-C-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\LCC-CXX-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\MSVC-C.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\MSVC-CXX.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\MSVC-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\MSVC.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\NVHPC-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\NVIDIA-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\OpenWatcom-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\PGI-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\PathScale-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\SCO-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\SDCC-C-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\SunPro-C-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\SunPro-CXX-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\TI-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\Tasking-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\TinyCC-C-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\VisualAge-C-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\VisualAge-CXX-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\Watcom-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\XL-C-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\XL-CXX-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\XLClang-C-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\XLClang-CXX-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\zOS-C-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\zOS-CXX-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\CompilerId\VS-10.vcxproj.in;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Internal\FeatureTesting.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Platform\Windows-Determine-CXX.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Platform\Windows-MSVC-C.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Platform\Windows-MSVC-CXX.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Platform\Windows-MSVC.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Platform\Windows.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Platform\WindowsPaths.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|win32'">D:\Celeste\proj.win32\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|win32'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|win32'">Building Custom Rule D:/Celeste/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|win32'">setlocal
+"D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -SD:/Celeste -BD:/Celeste/proj.win32 --check-stamp-file D:/Celeste/proj.win32/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|win32'">D:\Celeste\cocos2d\cmake\Modules\CocosBuildHelpers.cmake;D:\Celeste\cocos2d\cmake\Modules\CocosBuildSet.cmake;D:\Celeste\cocos2d\cmake\Modules\CocosConfigDefine.cmake;D:\Celeste\cocos2d\cmake\Modules\CocosConfigDepend.cmake;D:\Celeste\proj.win32\CMakeFiles\3.26.0-msvc3\CMakeCCompiler.cmake;D:\Celeste\proj.win32\CMakeFiles\3.26.0-msvc3\CMakeCXXCompiler.cmake;D:\Celeste\proj.win32\CMakeFiles\3.26.0-msvc3\CMakeRCCompiler.cmake;D:\Celeste\proj.win32\CMakeFiles\3.26.0-msvc3\CMakeSystem.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\CMakeCCompiler.cmake.in;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\CMakeCCompilerABI.c;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\CMakeCInformation.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\CMakeCXXCompiler.cmake.in;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\CMakeCXXCompilerABI.cpp;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\CMakeCXXInformation.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\CMakeCommonLanguageInclude.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\CMakeCompilerIdDetection.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\CMakeDetermineCCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\CMakeDetermineCXXCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\CMakeDetermineCompileFeatures.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\CMakeDetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\CMakeDetermineCompilerABI.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\CMakeDetermineCompilerId.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\CMakeDetermineRCCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\CMakeDetermineSystem.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\CMakeFindBinUtils.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\CMakeGenericSystem.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\CMakeInitializeConfigs.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\CMakeLanguageInformation.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\CMakeParseArguments.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\CMakeParseImplicitIncludeInfo.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\CMakeParseImplicitLinkInfo.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\CMakeParseLibraryArchitecture.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\CMakeRCCompiler.cmake.in;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\CMakeRCInformation.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\CMakeSystem.cmake.in;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\CMakeSystemSpecificInformation.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\CMakeSystemSpecificInitialize.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\CMakeTestCCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\CMakeTestCXXCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\CMakeTestCompilerCommon.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\CMakeTestRCCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\ADSP-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\ARMCC-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\ARMClang-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\AppleClang-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\Borland-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\Bruce-C-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\CMakeCommonCompilerMacros.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\Clang-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\Clang-DetermineCompilerInternal.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\Comeau-CXX-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\Compaq-C-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\Compaq-CXX-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\Cray-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\Embarcadero-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\Fujitsu-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\FujitsuClang-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\GHS-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\GNU-C-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\GNU-CXX-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\HP-C-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\HP-CXX-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\IAR-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\IBMCPP-C-DetermineVersionInternal.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\IBMCPP-CXX-DetermineVersionInternal.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\IBMClang-C-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\IBMClang-CXX-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\Intel-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\IntelLLVM-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\LCC-C-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\LCC-CXX-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\MSVC-C.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\MSVC-CXX.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\MSVC-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\MSVC.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\NVHPC-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\NVIDIA-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\OpenWatcom-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\PGI-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\PathScale-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\SCO-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\SDCC-C-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\SunPro-C-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\SunPro-CXX-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\TI-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\Tasking-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\TinyCC-C-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\VisualAge-C-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\VisualAge-CXX-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\Watcom-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\XL-C-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\XL-CXX-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\XLClang-C-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\XLClang-CXX-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\zOS-C-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Compiler\zOS-CXX-DetermineCompiler.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\CompilerId\VS-10.vcxproj.in;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Internal\FeatureTesting.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Platform\Windows-Determine-CXX.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Platform\Windows-MSVC-C.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Platform\Windows-MSVC-CXX.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Platform\Windows-MSVC.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Platform\Windows.cmake;D:\visual studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Modules\Platform\WindowsPaths.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|win32'">D:\Celeste\proj.win32\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|win32'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="D:\Celeste\Classes\AppDelegate.h" />
+    <ClInclude Include="D:\Celeste\Classes\HelloWorldScene.h" />
+    <ClInclude Include="D:\Celeste\proj.win32\main.h" />
+    <ClInclude Include="D:\Celeste\proj.win32\resource.h" />
+    <ClCompile Include="D:\Celeste\Classes\AppDelegate.cpp" />
+    <ClCompile Include="D:\Celeste\Classes\HelloWorldScene.cpp" />
+    <ClCompile Include="D:\Celeste\proj.win32\main.cpp" />
+    <ResourceCompile Include="D:\Celeste\proj.win32\game.rc" />
+    <ClInclude Include="D:\Celeste\Resources\CloseNormal.png" />
+    <ClInclude Include="D:\Celeste\Resources\CloseSelected.png" />
+    <ClInclude Include="D:\Celeste\Resources\HelloWorld.png" />
+    <ClInclude Include="D:\Celeste\Resources\fonts\Marker Felt.ttf" />
+    <ClInclude Include="D:\Celeste\Resources\fonts\arial.ttf" />
+    <ClInclude Include="D:\Celeste\Resources\res\.gitkeep" />
+    <ClCompile Include="D:\Celeste\cocos2d\cocos\precheader.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="D:\Celeste\proj.win32\ZERO_CHECK.vcxproj">
+      <Project>{C0D59464-E4A3-3FBE-A8CF-D4C7FC10D30F}</Project>
+      <Name>ZERO_CHECK</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="D:\Celeste\proj.win32\SYNC_RESOURCE-Celeste.vcxproj">
+      <Project>{E0938878-82BA-3CDF-9890-0982F284BBF2}</Project>
+      <Name>SYNC_RESOURCE-Celeste</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="D:\Celeste\proj.win32\engine\cocos\core\cocos2d.vcxproj">
+      <Project>{C84870B4-39AB-39B7-9874-80C2E4509783}</Project>
+      <Name>cocos2d</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Celeste\proj.win32\engine\external\clipper\ext_clipper.vcxproj">
+      <Project>{0B95A9F1-D03D-3270-B4C9-79EDB5585A72}</Project>
+      <Name>ext_clipper</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Celeste\proj.win32\engine\external\ConvertUTF\ext_convertUTF.vcxproj">
+      <Project>{0CE08EC2-7659-3049-AFF8-36464CE9165B}</Project>
+      <Name>ext_convertUTF</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Celeste\proj.win32\engine\external\edtaa3func\ext_edtaa3func.vcxproj">
+      <Project>{28E3641B-4F9D-310D-A77C-AD4DF2D06D6F}</Project>
+      <Name>ext_edtaa3func</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Celeste\proj.win32\engine\external\md5\ext_md5.vcxproj">
+      <Project>{F1604361-51CB-3DA2-A049-5C25F0CA8AFC}</Project>
+      <Name>ext_md5</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Celeste\proj.win32\engine\external\poly2tri\ext_poly2tri.vcxproj">
+      <Project>{48B0B52E-1DCF-36F6-B89C-E0B661BD0175}</Project>
+      <Name>ext_poly2tri</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Celeste\proj.win32\engine\external\recast\ext_recast.vcxproj">
+      <Project>{5CC907C1-8E5F-3791-834C-E082D2E9CDEB}</Project>
+      <Name>ext_recast</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Celeste\proj.win32\engine\external\tinyxml2\ext_tinyxml2.vcxproj">
+      <Project>{A088AFB5-40D2-38E5-8A8E-F8EFD02BB301}</Project>
+      <Name>ext_tinyxml2</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Celeste\proj.win32\engine\external\unzip\ext_unzip.vcxproj">
+      <Project>{F7C7C664-E4E7-30B8-A060-38DCCF578BC0}</Project>
+      <Name>ext_unzip</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Celeste\proj.win32\engine\external\xxhash\ext_xxhash.vcxproj">
+      <Project>{101403F3-9A1D-398D-934A-7D1659DD3E59}</Project>
+      <Name>ext_xxhash</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Celeste\proj.win32\engine\external\xxtea\ext_xxtea.vcxproj">
+      <Project>{752E95CF-22FD-3CE8-89B0-3D4F0514D27B}</Project>
+      <Name>ext_xxtea</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Celeste\proj.win32\engine\external\external.vcxproj">
+      <Project>{A0304D3C-5C8F-3C0D-AC53-085BB1767094}</Project>
+      <Name>external</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

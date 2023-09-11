@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="D:\Celeste\proj.win32\CMakeFiles\6c7fc0df528ac9143dcaae5a95eccda9\SYNC_RESOURCE-Celeste.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="D:\Celeste\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="D:\Celeste\proj.win32\CMakeFiles\SYNC_RESOURCE-Celeste" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{8F5B74F5-A53C-3ABC-A0DC-C96F64DB58E7}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
