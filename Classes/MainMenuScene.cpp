@@ -1,0 +1,172 @@
+#include "MainMenuScene.h"
+
+USING_NS_CC;
+//获取正确的边界框
+Rect getGlobalBoundingBox(cocos2d::ui::Widget* widget) {
+    Size s = widget->getContentSize() * widget->getScale();
+    return Rect(widget->getWorldPosition().x - s.width * widget->getAnchorPoint().x,
+        widget->getWorldPosition().y - s.height * widget->getAnchorPoint().y,
+        s.width, s.height);
+}
+// 初始化方法
+bool MainMenuScene::init()
+{
+    float scaleFactor = 0.9f; // 这里是缩放因子，可以根据需要调整
+    // 1. 首先，调用父类的初始化方法
+    if (!Scene::init())
+    {
+        return false;
+    }
+
+    // 2. 设置设计分辨率
+    Director::getInstance()->getOpenGLView()->setDesignResolutionSize(1280, 720, ResolutionPolicy::NO_BORDER);     
+        
+
+    // 3. 加载并设置背景图片
+    
+    // 创建一个新的背景层
+    Sprite * bgLayer = Sprite::create("mainMenu/Start_BG.png"); // 这里用你的背景图的路径
+    bgLayer->setScale(scaleFactor); // 使用和其他背景相同的缩放
+    bgLayer->setAnchorPoint(Vec2(0, 0));
+    bgLayer->setPosition(Vec2(0, 0)); // 背景图片通常从屏幕的左下角开始
+    this->addChild(bgLayer); // 先添加这个背景层，这样它就会在其他层的后面
+
+    bg1 = Sprite::create("mainMenu/sky_02.png");
+    bg2 = Sprite::create("mainMenu/sky_02.png");
+
+    bg1->setScale(scaleFactor);
+    bg2->setScale(scaleFactor);
+
+    // 将Y位置下移。例如，下移5%的高度
+    float yOffset = Director::getInstance()->getVisibleSize().height * 0.05;
+
+    bg1->setAnchorPoint(Vec2(0, 0.5));
+    bg1->setPosition(Vec2(0, 360 - yOffset)); // 720的一半是360
+
+    bg2->setAnchorPoint(Vec2(0, 0.5));
+    bg2->setPosition(Vec2(bg1->getContentSize().width * scaleFactor, 360 - yOffset));
+
+    /*
+    bg1->setAnchorPoint(Vec2(0, 0.5));
+    bg1->setPosition(Vec2(0, 540)); 
+
+    bg2->setAnchorPoint(Vec2(0, 0.5));
+    bg2->setPosition(Vec2(bg1->getContentSize().width * bg1->getScaleX(), 540));    //确保图片的连贯*/
+
+    // 创建标题图
+    titleSprite = Sprite::create("mainMenu/title_00.png"); // 这里使用你的标题图的路径
+    // 如果你想对标题图进行缩放，可以使用titleSprite->setScale(scaleFactor); 
+    titleSprite->setAnchorPoint(Vec2(0.5, 1)); // 设置锚点为上中
+    titleSprite->setPosition(Vec2(1280 / 2, 650)); // 将标题放在屏幕的中上方
+    titleSprite->setScale(scaleFactor); // 使用和其他背景相同的缩放
+    this->addChild(titleSprite, 1); // 使用z-order为1确保标题出现在所有背景之上
+
+    
+   
+
+    this->addChild(bg1);
+    this->addChild(bg2);
+
+    // 4. 调用更新方法使背景图片动起来
+    this->schedule(CC_CALLBACK_1(MainMenuScene::updateBackground, this), "bg_update_key");
+
+    
+    // 5. 添加按钮
+    
+    // 初始化表示选中状态的雪山小图标，但不立即添加到场景
+    mountainSprite = Sprite::create("mainMenu/mountain_00.png");
+    mountainSprite->setScale(0.0317);  // 设置缩放因子
+    mountainSprite->setVisible(false);  // 初始时，这个小图标是隐藏的
+    this->addChild(mountainSprite);
+
+    
+    // 设置鼠标监听事件
+    auto mouseListener = EventListenerMouse::create();
+
+    mouseListener->onMouseMove = [=](Event* event) {
+        EventMouse* e = (EventMouse*)event;
+        std::vector<std::pair<cocos2d::ui::Button*, Vec2>> buttons = {//此为雪山图标出现位置
+            {newGame, Vec2(960, 445)},
+            {continueButton, Vec2(965, 375)},
+            {setting, Vec2(945, 345)},
+            {staff, Vec2(925, 300)},
+            {quit, Vec2(925, 255)}
+        };
+
+        bool isOverAnyButton = false;
+
+        for (auto& pair : buttons) {
+            cocos2d::ui::Button* button = pair.first;
+            Vec2 iconPos = pair.second;
+
+            if (getGlobalBoundingBox(button).containsPoint(Vec2(e->getCursorX(), e->getCursorY()))) {
+                mountainSprite->setVisible(true);
+                mountainSprite->setPosition(iconPos);
+                mountainSprite->setLocalZOrder(button->getLocalZOrder() + 1); // 确保小图标出现在相应按钮的前面
+                isOverAnyButton = true;
+                break;  // 如果鼠标在某个按钮上，我们可以跳出循环
+            }
+        }
+
+        if (!isOverAnyButton) {
+            mountainSprite->setVisible(false);
+        }
+    };
+
+    _eventDispatcher->addEventListenerWithSceneGraphPriority(mouseListener, this);
+    // 示例初始化第一个按钮
+    newGame = cocos2d::ui::Button::create("mainMenu/newgame.png");
+    newGame->setScale(1.5);  // 设置缩放因子
+    newGame->setPosition(Vec2(1100, 460));
+    this->addChild(newGame);
+
+    newGame->addTouchEventListener([](Ref* sender, cocos2d::ui::Widget::TouchEventType type) {
+        if (type == cocos2d::ui::Widget::TouchEventType::ENDED) {
+            // TODO: 这里添加按钮点击后的逻辑
+        }
+        });
+
+    // 示例初始化第二个按钮
+    continueButton = cocos2d::ui::Button::create("mainMenu/continue.png");
+    continueButton->setScale(0.97);  // 设置缩放因子
+    continueButton->setPosition(Vec2(1105, 390));
+    this->addChild(continueButton);
+
+    setting = cocos2d::ui::Button::create("mainMenu/setting.png");
+    setting->setScale(1.579);  // 设置缩放因子
+    setting->setPosition(Vec2(1085, 360));
+    this->addChild(setting);
+
+    staff = cocos2d::ui::Button::create("mainMenu/staff.png");
+    staff->setScale(1.5);  // 设置缩放因子
+    staff->setPosition(Vec2(1065, 315));
+    this->addChild(staff);
+
+    quit = cocos2d::ui::Button::create("mainMenu/quit.png");
+    quit->setScale(1.3636);  // 设置缩放因子
+    quit->setPosition(Vec2(1065, 270));
+    this->addChild(quit);
+ 
+    return true;
+}
+
+
+void MainMenuScene::updateBackground(float dt)
+{
+    // 持续地移动两个背景图片
+    bg1->setPositionX(bg1->getPositionX() - 1);
+    bg2->setPositionX(bg2->getPositionX() - 1);
+
+    // 如果bg1移出屏幕左侧，则重置它的位置到bg2的右侧
+    if (bg1->getPositionX() + bg1->getContentSize().width * bg1->getScaleX() < 0)
+    {
+        bg1->setPositionX(bg2->getPositionX() + bg2->getContentSize().width * bg2->getScaleX());
+    }
+
+    // 如果bg2移出屏幕左侧，则重置它的位置到bg1的右侧
+    if (bg2->getPositionX() + bg2->getContentSize().width * bg2->getScaleX() < 0)
+    {
+        bg2->setPositionX(bg1->getPositionX() + bg1->getContentSize().width * bg1->getScaleX());
+    }
+}
+

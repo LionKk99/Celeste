@@ -7,6 +7,9 @@
     <ClCompile Include="D:\Celeste\Classes\HelloWorldScene.cpp">
       <Filter>Source Files\Classes</Filter>
     </ClCompile>
+    <ClCompile Include="D:\Celeste\Classes\MainMenuScene.cpp">
+      <Filter>Source Files\Classes</Filter>
+    </ClCompile>
     <ClCompile Include="D:\Celeste\proj.win32\main.cpp">
       <Filter>Source Files\proj.win32</Filter>
     </ClCompile>
@@ -21,20 +24,26 @@
     <ClInclude Include="D:\Celeste\Classes\HelloWorldScene.h">
       <Filter>Source Files\Classes</Filter>
     </ClInclude>
+    <ClInclude Include="D:\Celeste\Classes\MainMenuScene.h">
+      <Filter>Source Files\Classes</Filter>
+    </ClInclude>
     <ClInclude Include="D:\Celeste\proj.win32\main.h">
       <Filter>Source Files\proj.win32</Filter>
     </ClInclude>
     <ClInclude Include="D:\Celeste\proj.win32\resource.h">
       <Filter>Source Files\proj.win32</Filter>
     </ClInclude>
-    <ClInclude Include="D:\Celeste\Resources\CloseNormal.png">
-      <Filter>Resources</Filter>
+    <ClInclude Include="D:\Celeste\Resources\Dot\BlueDot.bmp">
+      <Filter>Resources\Dot</Filter>
     </ClInclude>
-    <ClInclude Include="D:\Celeste\Resources\CloseSelected.png">
-      <Filter>Resources</Filter>
+    <ClInclude Include="D:\Celeste\Resources\Dot\DarkBlueDot.bmp">
+      <Filter>Resources\Dot</Filter>
     </ClInclude>
-    <ClInclude Include="D:\Celeste\Resources\HelloWorld.png">
-      <Filter>Resources</Filter>
+    <ClInclude Include="D:\Celeste\Resources\Dot\DarkWhiteDot.bmp">
+      <Filter>Resources\Dot</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\Dot\WhiteDot.bmp">
+      <Filter>Resources\Dot</Filter>
     </ClInclude>
     <ClInclude Include="D:\Celeste\Resources\fonts\Marker Felt.ttf">
       <Filter>Resources\fonts</Filter>
@@ -42,8 +51,452 @@
     <ClInclude Include="D:\Celeste\Resources\fonts\arial.ttf">
       <Filter>Resources\fonts</Filter>
     </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\level\YJ2.bmp">
+      <Filter>Resources\level</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\level\YJ3.bmp">
+      <Filter>Resources\level</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\level\endLevel\EndLevel.bmp">
+      <Filter>Resources\level\endLevel</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\level\endLevel\EndLevel_B.bmp">
+      <Filter>Resources\level\endLevel</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\level\endLevel\EndLevel_F.bmp">
+      <Filter>Resources\level\endLevel</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\level\endLevel\EndPic.bmp">
+      <Filter>Resources\level\endLevel</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\level\endLevel\End_BG.bmp">
+      <Filter>Resources\level\endLevel</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\level\endLevel\text.bmp">
+      <Filter>Resources\level\endLevel</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\level\level\L0\level0.bmp">
+      <Filter>Resources\level\level\L0</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\level\level\L0\level0_B.bmp">
+      <Filter>Resources\level\level\L0</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\level\level\L0\level0_F.bmp">
+      <Filter>Resources\level\level\L0</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\level\level\L1\level1.bmp">
+      <Filter>Resources\level\level\L1</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\level\level\L1\level1_B.bmp">
+      <Filter>Resources\level\level\L1</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\level\level\L1\level1_F.bmp">
+      <Filter>Resources\level\level\L1</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\level\level\L2\level2.bmp">
+      <Filter>Resources\level\level\L2</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\level\level\L2\level2_B.bmp">
+      <Filter>Resources\level\level\L2</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\level\level\L2\level2_F.bmp">
+      <Filter>Resources\level\level\L2</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\level\level\L3\level3.bmp">
+      <Filter>Resources\level\level\L3</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\level\level\L3\level3_B.bmp">
+      <Filter>Resources\level\level\L3</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\level\level\L3\level3_F.bmp">
+      <Filter>Resources\level\level\L3</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\level\xumu\L0\xumu0.bmp">
+      <Filter>Resources\level\xumu\L0</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\level\xumu\L0\xumu0_B.bmp">
+      <Filter>Resources\level\xumu\L0</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\level\xumu\L0\xumu0_F.bmp">
+      <Filter>Resources\level\xumu\L0</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\level\xumu\L1\xumu1_LG1.bmp">
+      <Filter>Resources\level\xumu\L1</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\level\xumu\L1\xumu1_LG3.bmp">
+      <Filter>Resources\level\xumu\L1</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\level\xumu\L2\xumu2_LG1.bmp">
+      <Filter>Resources\level\xumu\L2</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\level\xumu\L2\xumu2_LG3.bmp">
+      <Filter>Resources\level\xumu\L2</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\level\xumu\xumu_BG.bmp">
+      <Filter>Resources\level\xumu</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\level\xumu\xumu_QJ1.bmp">
+      <Filter>Resources\level\xumu</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\mainMenu\Start_BG.png">
+      <Filter>Resources\mainMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\mainMenu\bao_00.png">
+      <Filter>Resources\mainMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\mainMenu\continue.png">
+      <Filter>Resources\mainMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\mainMenu\mountain_00.png">
+      <Filter>Resources\mainMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\mainMenu\newgame.png">
+      <Filter>Resources\mainMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\mainMenu\quit.png">
+      <Filter>Resources\mainMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\mainMenu\setting.png">
+      <Filter>Resources\mainMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\mainMenu\sky_02.png">
+      <Filter>Resources\mainMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\mainMenu\staff.png">
+      <Filter>Resources\mainMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\mainMenu\start.png">
+      <Filter>Resources\mainMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\mainMenu\title_00.png">
+      <Filter>Resources\mainMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\movement\crouch\CrouchToIdle_00.bmp">
+      <Filter>Resources\movement\crouch</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\movement\crouch\CrouchToMove_00.bmp">
+      <Filter>Resources\movement\crouch</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\movement\crouch\crouch_00.bmp">
+      <Filter>Resources\movement\crouch</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\movement\crouch\crouchturn_00.bmp">
+      <Filter>Resources\movement\crouch</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\movement\dash\dashdown_00.bmp">
+      <Filter>Resources\movement\dash</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\movement\dash\dashdowneff_00.bmp">
+      <Filter>Resources\movement\dash</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\movement\dash\dashmove_00.bmp">
+      <Filter>Resources\movement\dash</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\movement\dash\dashmovedown_00.bmp">
+      <Filter>Resources\movement\dash</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\movement\dash\dashmovedowneff_00.bmp">
+      <Filter>Resources\movement\dash</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\movement\dash\dashmoveeff_00.bmp">
+      <Filter>Resources\movement\dash</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\movement\dash\dashmoveup_00.bmp">
+      <Filter>Resources\movement\dash</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\movement\dash\dashmoveupeff_00.bmp">
+      <Filter>Resources\movement\dash</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\movement\dash\dashup_00.bmp">
+      <Filter>Resources\movement\dash</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\movement\dash\dashupeff_00.bmp">
+      <Filter>Resources\movement\dash</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\movement\death\Bdeath_00.bmp">
+      <Filter>Resources\movement\death</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\movement\death\Respawn_00.bmp">
+      <Filter>Resources\movement\death</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\movement\death\deathEffect\black_00.bmp">
+      <Filter>Resources\movement\death\deathEffect</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\movement\death\deathEffect\black_01.bmp">
+      <Filter>Resources\movement\death\deathEffect</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\movement\death\deathEffect\black_02.bmp">
+      <Filter>Resources\movement\death\deathEffect</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\movement\death\deathEffect\black_03.bmp">
+      <Filter>Resources\movement\death\deathEffect</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\movement\death\deathEffect\black_04.bmp">
+      <Filter>Resources\movement\death\deathEffect</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\movement\death\deathEffect\black_05.bmp">
+      <Filter>Resources\movement\death\deathEffect</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\movement\death\deathEffect\black_06.bmp">
+      <Filter>Resources\movement\death\deathEffect</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\movement\death\deathEffect\black_07.bmp">
+      <Filter>Resources\movement\death\deathEffect</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\movement\death\deathEffect\black_08.bmp">
+      <Filter>Resources\movement\death\deathEffect</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\movement\death\deathEffect\black_09.bmp">
+      <Filter>Resources\movement\death\deathEffect</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\movement\death\death_00.bmp">
+      <Filter>Resources\movement\death</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\movement\drop\Bdrop_00.bmp">
+      <Filter>Resources\movement\drop</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\movement\drop\Bdrop_01.bmp">
+      <Filter>Resources\movement\drop</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\movement\drop\drop_00.bmp">
+      <Filter>Resources\movement\drop</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\movement\drop\drop_01.bmp">
+      <Filter>Resources\movement\drop</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\movement\holdwall\Bholdwall_00.bmp">
+      <Filter>Resources\movement\holdwall</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\movement\holdwall\Bholdwalldown_00.bmp">
+      <Filter>Resources\movement\holdwall</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\movement\holdwall\Bholdwallturnface_00.bmp">
+      <Filter>Resources\movement\holdwall</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\movement\holdwall\Bholdwallup_00.bmp">
+      <Filter>Resources\movement\holdwall</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\movement\holdwall\holdwall_00.bmp">
+      <Filter>Resources\movement\holdwall</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\movement\holdwall\holdwalldown_00.bmp">
+      <Filter>Resources\movement\holdwall</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\movement\holdwall\holdwallturnface_00.bmp">
+      <Filter>Resources\movement\holdwall</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\movement\holdwall\holdwallup_00.bmp">
+      <Filter>Resources\movement\holdwall</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\movement\idle\Idle_00.bmp">
+      <Filter>Resources\movement\idle</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\movement\idle\Idle_01.bmp">
+      <Filter>Resources\movement\idle</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\movement\jump\Bjumpmove_00.bmp">
+      <Filter>Resources\movement\jump</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\movement\jump\Bjumpup_00.bmp">
+      <Filter>Resources\movement\jump</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\movement\jump\JumpTable_00.bmp">
+      <Filter>Resources\movement\jump</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\movement\jump\floorjumpash_00.bmp">
+      <Filter>Resources\movement\jump</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\movement\jump\floorlandingash_00.bmp">
+      <Filter>Resources\movement\jump</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\movement\jump\jumpmove_00.bmp">
+      <Filter>Resources\movement\jump</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\movement\jump\jumpup_00.bmp">
+      <Filter>Resources\movement\jump</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\movement\jump\walljumpash_00.bmp">
+      <Filter>Resources\movement\jump</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\movement\landing\landing_00.bmp">
+      <Filter>Resources\movement\landing</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\movement\landing\landing_01.bmp">
+      <Filter>Resources\movement\landing</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\movement\landing\landing_02.bmp">
+      <Filter>Resources\movement\landing</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\movement\landing\landing_03.bmp">
+      <Filter>Resources\movement\landing</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\movement\lookup\LookUp_00.bmp">
+      <Filter>Resources\movement\lookup</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\movement\move\Move_00.bmp">
+      <Filter>Resources\movement\move</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\movement\move\movetocrouch_00.bmp">
+      <Filter>Resources\movement\move</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\movement\move\moveturn_00.bmp">
+      <Filter>Resources\movement\move</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\movement\pushwall\pushwall_00.bmp">
+      <Filter>Resources\movement\pushwall</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\movement\shadow_00.bmp">
+      <Filter>Resources\movement</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\movement\slidingwall\Bslidingwall_00.bmp">
+      <Filter>Resources\movement\slidingwall</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\movement\slidingwall\slidingwall_00.bmp">
+      <Filter>Resources\movement\slidingwall</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\movement\slidingwall\slidingwallash_00.bmp">
+      <Filter>Resources\movement\slidingwall</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\movement\slidingwall\slidingwalllanding_00.bmp">
+      <Filter>Resources\movement\slidingwall</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\movement\top\BTop_00.bmp">
+      <Filter>Resources\movement\top</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\movement\top\BTop_01.bmp">
+      <Filter>Resources\movement\top</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\movement\top\Top_00.bmp">
+      <Filter>Resources\movement\top</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\movement\top\Top_01.bmp">
+      <Filter>Resources\movement\top</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\movement\up\Bup_00.bmp">
+      <Filter>Resources\movement\up</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\movement\up\Bup_01.bmp">
+      <Filter>Resources\movement\up</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\movement\up\up_00.bmp">
+      <Filter>Resources\movement\up</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\movement\up\up_01.bmp">
+      <Filter>Resources\movement\up</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\music\NotSafe.wav">
+      <Filter>Resources\music</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\music\dash.wav">
+      <Filter>Resources\music</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\music\death.wav">
+      <Filter>Resources\music</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\music\game_01_fallingblock_ice_impact_03.wav">
+      <Filter>Resources\music</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\music\game_01_fallingblock_ice_shake_01.wav">
+      <Filter>Resources\music</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\music\game_gen_spring.wav">
+      <Filter>Resources\music</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\music\gameplayBGM.mp3">
+      <Filter>Resources\music</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\music\jump.wav">
+      <Filter>Resources\music</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\music\landing.wav">
+      <Filter>Resources\music</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\music\mus_lvl0_intro_loop.wav">
+      <Filter>Resources\music</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\music\mus_menu_levelselect_moon_loop.wav">
+      <Filter>Resources\music</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\music\revive.wav">
+      <Filter>Resources\music</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\music\savesucceed.wav">
+      <Filter>Resources\music</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\music\ui_game_hotspot_note_in.wav">
+      <Filter>Resources\music</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\music\ui_game_hotspot_note_out.wav">
+      <Filter>Resources\music</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\music\ui_main_button_back.wav">
+      <Filter>Resources\music</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\music\ui_main_button_climb.wav">
+      <Filter>Resources\music</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\music\ui_main_roll_down.wav">
+      <Filter>Resources\music</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\music\ui_main_roll_up.wav">
+      <Filter>Resources\music</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\music\ui_main_title_firstinput.wav">
+      <Filter>Resources\music</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\music\walk.wav">
+      <Filter>Resources\music</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\music\wow_so_secret.wav">
+      <Filter>Resources\music</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\pauseMenu\Pause_BG.bmp">
+      <Filter>Resources\pauseMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\pauseMenu\Pause_BG_01.bmp">
+      <Filter>Resources\pauseMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\pauseMenu\Pause_BG_02.bmp">
+      <Filter>Resources\pauseMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\pauseMenu\Pause_BG_03.bmp">
+      <Filter>Resources\pauseMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\pauseMenu\Pause_BG_04.bmp">
+      <Filter>Resources\pauseMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\pauseMenu\quitWindow.bmp">
+      <Filter>Resources\pauseMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\pauseMenu\quitWindow_01.bmp">
+      <Filter>Resources\pauseMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\pauseMenu\quitWindow_02.bmp">
+      <Filter>Resources\pauseMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\pauseMenu\savenotfoundWindow.bmp">
+      <Filter>Resources\pauseMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\pauseMenu\savenotfoundWindow_01.bmp">
+      <Filter>Resources\pauseMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\pauseMenu\savesuccessWindow.bmp">
+      <Filter>Resources\pauseMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\pauseMenu\savesuccessWindow_01.bmp">
+      <Filter>Resources\pauseMenu</Filter>
+    </ClInclude>
     <ClInclude Include="D:\Celeste\Resources\res\.gitkeep">
       <Filter>Resources\res</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\trap\SnowBlock.bmp">
+      <Filter>Resources\trap</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\trap\notsafe_00.bmp">
+      <Filter>Resources\trap</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\trap\notsafe_01.bmp">
+      <Filter>Resources\trap</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -58,11 +511,107 @@
     <Filter Include="Resources">
       <UniqueIdentifier>{E4C77507-4E91-3DC6-AAB3-316BABD0D1F0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Resources\Dot">
+      <UniqueIdentifier>{F7F427EB-81B8-39E0-958B-6FD756CA9EB5}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Resources\fonts">
       <UniqueIdentifier>{1E20489B-CB26-3B22-958E-CD3CCE83BB49}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Resources\level">
+      <UniqueIdentifier>{F6034A64-EE75-3DFB-960B-DC3FA2597A1F}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources\level\endLevel">
+      <UniqueIdentifier>{12B64D6D-F179-3E53-A80A-4A38607BD3F8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources\level\level">
+      <UniqueIdentifier>{619E324B-E8B1-3E77-8419-F68F575325D1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources\level\level\L0">
+      <UniqueIdentifier>{4D49F3D6-6AA4-399C-9A72-62F9814AE991}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources\level\level\L1">
+      <UniqueIdentifier>{F1DB7E87-D581-3926-9BB3-855743B5B4C6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources\level\level\L2">
+      <UniqueIdentifier>{1342EC09-8FC3-31CC-813B-F08B0632E06C}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources\level\level\L3">
+      <UniqueIdentifier>{0A907909-D271-31C9-B3E7-EB152CFF4485}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources\level\xumu">
+      <UniqueIdentifier>{FB058754-E5A8-3C59-B2FD-9934FE8B75A4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources\level\xumu\L0">
+      <UniqueIdentifier>{0D0554CE-8505-33BC-9013-35602412D66C}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources\level\xumu\L1">
+      <UniqueIdentifier>{99767856-4776-33C5-A11C-A86354825803}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources\level\xumu\L2">
+      <UniqueIdentifier>{33EE3D84-48DD-3F5D-8938-70C087CAECBA}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources\mainMenu">
+      <UniqueIdentifier>{26A9031C-A630-317E-92C3-D8DB71AA67AD}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources\movement">
+      <UniqueIdentifier>{E05A5A51-B6F8-3910-940A-1EA86FF487CA}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources\movement\crouch">
+      <UniqueIdentifier>{56E2CD6A-00E6-3DDC-A53B-99382BFE9F34}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources\movement\dash">
+      <UniqueIdentifier>{F36948AF-A46E-3D89-961F-6F250FB443E1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources\movement\death">
+      <UniqueIdentifier>{8F0E7AEF-4A36-38DA-B705-527B67BAE491}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources\movement\death\deathEffect">
+      <UniqueIdentifier>{B37C4439-0A6A-30CB-A91D-030C5C7243A8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources\movement\drop">
+      <UniqueIdentifier>{47CD62AA-AFD1-3133-8CD7-87118277F594}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources\movement\holdwall">
+      <UniqueIdentifier>{44B66F79-11F3-3D9C-8BD3-8D85253304D4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources\movement\idle">
+      <UniqueIdentifier>{127C8AF1-A3D5-3EAB-873B-55DBBA022AD5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources\movement\jump">
+      <UniqueIdentifier>{1121386D-3C93-3ACE-9C75-328C83FABA80}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources\movement\landing">
+      <UniqueIdentifier>{A06917E6-98BC-3FE8-BF75-24327F51A234}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources\movement\lookup">
+      <UniqueIdentifier>{622EC9F6-1B9B-375D-A5F9-2D94CD033EA5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources\movement\move">
+      <UniqueIdentifier>{79DA19A5-DE70-3A0D-B294-A3C3877B3EFE}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources\movement\pushwall">
+      <UniqueIdentifier>{B6C546F1-9402-3F95-831C-5B3A2420C37B}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources\movement\slidingwall">
+      <UniqueIdentifier>{6E9E0293-17FB-3DA9-8872-0C3F52852470}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources\movement\top">
+      <UniqueIdentifier>{6A589BB3-8510-3C44-BA18-8C8B69EE9EE5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources\movement\up">
+      <UniqueIdentifier>{2EC2812C-673A-315C-9535-E6AFDA6927B7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources\music">
+      <UniqueIdentifier>{0F018B74-B46A-33FD-8D7E-3C0FE43BC9D1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources\pauseMenu">
+      <UniqueIdentifier>{E1C423EA-253A-394A-ACF7-38D46D622C48}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Resources\res">
       <UniqueIdentifier>{A9A6D77A-4C86-38BE-80E4-ECF30078BB23}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources\trap">
+      <UniqueIdentifier>{6C492769-954C-34AF-8D2F-E4B66BC42651}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files">
       <UniqueIdentifier>{26290D3B-E08A-3DC0-86B0-43350BA973FE}</UniqueIdentifier>
