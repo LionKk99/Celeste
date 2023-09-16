@@ -132,7 +132,7 @@ bool MainMenuScene::init()
     this->addChild(exitDialog, 2); // 一个较高的z-order确保它在其他内容的顶部   
 
     // 创建一个TTF字体标签
-    auto exitLabel = Label::createWithTTF("MAKE SURE YOUR EXIT", "fonts/gill-sans-mt-condensed/Gill Sans MT Bold.ttf", 54);
+    auto exitLabel = Label::createWithTTF("MAKE  SURE  YOUR  EXIT", "fonts/gill-sans-mt-condensed/Gill Sans MT Bold.ttf", 54);
     // 如果需要，设置标签的位置
     exitLabel->setPosition(Vec2(540, 520));
     // 设置颜色
