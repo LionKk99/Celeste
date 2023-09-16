@@ -17,13 +17,14 @@ private:
     cocos2d::Sprite* mountainSprite;//雪山:表示选中状态
     cocos2d::Sprite* bg1;  // 背景1
     cocos2d::Sprite* bg2;  // 背景2
+    cocos2d::Sprite* exitDialog;  //退出界面
     cocos2d::ui::Button* newGame;//新游戏
     cocos2d::ui::Button* continueButton;//读档继续游戏
     cocos2d::ui::Button* setting;//设置
     cocos2d::ui::Button* staff;//工作人员及致谢
-    cocos2d::ui::Button* quit;//退出游戏   
-    float scaleX = 1280.0f / 1280.0f; // 宽度缩放比例
-    float scaleY = 720.0f / 720.0f;  // 高度缩放比例
+    cocos2d::ui::Button* quit;//退出游戏 
+    cocos2d::ui::Button* exitButton;//退出按钮
+    cocos2d::ui::Button* returnButton;//返回主菜单按钮
 };
 
 #endif // __MAIN_MENU_SCENE_H__

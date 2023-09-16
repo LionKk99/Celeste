@@ -51,6 +51,33 @@
     <ClInclude Include="D:\Celeste\Resources\fonts\arial.ttf">
       <Filter>Resources\fonts</Filter>
     </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\fonts\gill-sans-mt-condensed\Gill Sans MT Bold Italic.TTF">
+      <Filter>Resources\fonts\gill-sans-mt-condensed</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\fonts\gill-sans-mt-condensed\Gill Sans MT Bold.TTF">
+      <Filter>Resources\fonts\gill-sans-mt-condensed</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\fonts\gill-sans-mt-condensed\Gill Sans MT Condensed Bold.ttf">
+      <Filter>Resources\fonts\gill-sans-mt-condensed</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\fonts\gill-sans-mt-condensed\Gill Sans MT Condensed Italic.TTF">
+      <Filter>Resources\fonts\gill-sans-mt-condensed</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\fonts\gill-sans-mt-condensed\Gill Sans MT Condensed.TTF">
+      <Filter>Resources\fonts\gill-sans-mt-condensed</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\fonts\gill-sans-mt-condensed\Gill Sans MT Ext Condensed Bold.TTF">
+      <Filter>Resources\fonts\gill-sans-mt-condensed</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\fonts\gill-sans-mt-condensed\Gill Sans MT Light Italic.ttf">
+      <Filter>Resources\fonts\gill-sans-mt-condensed</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\fonts\gill-sans-mt-condensed\Gill Sans MT Light.ttf">
+      <Filter>Resources\fonts\gill-sans-mt-condensed</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\fonts\gill-sans-mt-condensed\Gill Sans MT.TTF">
+      <Filter>Resources\fonts\gill-sans-mt-condensed</Filter>
+    </ClInclude>
     <ClInclude Include="D:\Celeste\Resources\level\YJ2.bmp">
       <Filter>Resources\level</Filter>
     </ClInclude>
@@ -141,31 +168,19 @@
     <ClInclude Include="D:\Celeste\Resources\mainMenu\Start_BG.png">
       <Filter>Resources\mainMenu</Filter>
     </ClInclude>
-    <ClInclude Include="D:\Celeste\Resources\mainMenu\bao_00.png">
-      <Filter>Resources\mainMenu</Filter>
-    </ClInclude>
-    <ClInclude Include="D:\Celeste\Resources\mainMenu\continue.png">
-      <Filter>Resources\mainMenu</Filter>
-    </ClInclude>
     <ClInclude Include="D:\Celeste\Resources\mainMenu\mountain_00.png">
       <Filter>Resources\mainMenu</Filter>
     </ClInclude>
-    <ClInclude Include="D:\Celeste\Resources\mainMenu\newgame.png">
+    <ClInclude Include="D:\Celeste\Resources\mainMenu\quitWindow_00.png">
       <Filter>Resources\mainMenu</Filter>
     </ClInclude>
-    <ClInclude Include="D:\Celeste\Resources\mainMenu\quit.png">
+    <ClInclude Include="D:\Celeste\Resources\mainMenu\quitWindow_01.png">
       <Filter>Resources\mainMenu</Filter>
     </ClInclude>
-    <ClInclude Include="D:\Celeste\Resources\mainMenu\setting.png">
+    <ClInclude Include="D:\Celeste\Resources\mainMenu\quitWindow_02.png">
       <Filter>Resources\mainMenu</Filter>
     </ClInclude>
     <ClInclude Include="D:\Celeste\Resources\mainMenu\sky_02.png">
-      <Filter>Resources\mainMenu</Filter>
-    </ClInclude>
-    <ClInclude Include="D:\Celeste\Resources\mainMenu\staff.png">
-      <Filter>Resources\mainMenu</Filter>
-    </ClInclude>
-    <ClInclude Include="D:\Celeste\Resources\mainMenu\start.png">
       <Filter>Resources\mainMenu</Filter>
     </ClInclude>
     <ClInclude Include="D:\Celeste\Resources\mainMenu\title_00.png">
@@ -465,15 +480,6 @@
     <ClInclude Include="D:\Celeste\Resources\pauseMenu\Pause_BG_04.bmp">
       <Filter>Resources\pauseMenu</Filter>
     </ClInclude>
-    <ClInclude Include="D:\Celeste\Resources\pauseMenu\quitWindow.bmp">
-      <Filter>Resources\pauseMenu</Filter>
-    </ClInclude>
-    <ClInclude Include="D:\Celeste\Resources\pauseMenu\quitWindow_01.bmp">
-      <Filter>Resources\pauseMenu</Filter>
-    </ClInclude>
-    <ClInclude Include="D:\Celeste\Resources\pauseMenu\quitWindow_02.bmp">
-      <Filter>Resources\pauseMenu</Filter>
-    </ClInclude>
     <ClInclude Include="D:\Celeste\Resources\pauseMenu\savenotfoundWindow.bmp">
       <Filter>Resources\pauseMenu</Filter>
     </ClInclude>
@@ -516,6 +522,9 @@
     </Filter>
     <Filter Include="Resources\fonts">
       <UniqueIdentifier>{1E20489B-CB26-3B22-958E-CD3CCE83BB49}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources\fonts\gill-sans-mt-condensed">
+      <UniqueIdentifier>{D785FC86-1598-3547-922D-8C3764B7D186}</UniqueIdentifier>
     </Filter>
     <Filter Include="Resources\level">
       <UniqueIdentifier>{F6034A64-EE75-3DFB-960B-DC3FA2597A1F}</UniqueIdentifier>

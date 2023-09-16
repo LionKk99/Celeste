@@ -86,11 +86,11 @@ bool MainMenuScene::init()
     mouseListener->onMouseMove = [=](Event* event) {
         EventMouse* e = (EventMouse*)event;
         std::vector<std::pair<cocos2d::ui::Button*, Vec2>> buttons = {//此为雪山图标出现位置
-            {newGame, Vec2(960, 445)},
-            {continueButton, Vec2(965, 375)},
-            {setting, Vec2(945, 345)},
-            {staff, Vec2(925, 300)},
-            {quit, Vec2(925, 255)}
+            {newGame, Vec2(950, 470)},
+            {continueButton, Vec2(950, 400)},
+            {setting, Vec2(950, 330)},
+            {staff, Vec2(950, 260)},
+            {quit, Vec2(950, 190)}
         };
 
         bool isOverAnyButton = false;
@@ -114,10 +114,16 @@ bool MainMenuScene::init()
     };
 
     _eventDispatcher->addEventListenerWithSceneGraphPriority(mouseListener, this);
-    // 示例初始化第一个按钮
-    newGame = cocos2d::ui::Button::create("mainMenu/newgame.png");
-    newGame->setScale(1.5);  // 设置缩放因子
-    newGame->setPosition(Vec2(1100, 460));
+
+    double buttonFontSize = 50;
+
+  // 示例初始化第一个按钮
+    newGame = cocos2d::ui::Button::create();
+    newGame->setTitleText("New Game");
+    newGame->setTitleFontName("fonts/gill-sans-mt-condensed/Gill Sans MT"); // 可以选择你想要的字体
+    newGame->setTitleFontSize(buttonFontSize);
+    newGame->setPosition(Vec2(1000, 470));
+    newGame->setAnchorPoint(Vec2(0, 0.5));
     this->addChild(newGame);
 
     newGame->addTouchEventListener([](Ref* sender, cocos2d::ui::Widget::TouchEventType type) {
@@ -127,25 +133,69 @@ bool MainMenuScene::init()
         });
 
     // 示例初始化第二个按钮
-    continueButton = cocos2d::ui::Button::create("mainMenu/continue.png");
-    continueButton->setScale(0.97);  // 设置缩放因子
-    continueButton->setPosition(Vec2(1105, 390));
+    continueButton = cocos2d::ui::Button::create();
+    continueButton->setTitleText("Continue");
+    continueButton->setTitleFontName("fonts/gill-sans-mt-condensed/Gill Sans MT");
+    continueButton->setTitleFontSize(buttonFontSize);
+    continueButton->setPosition(Vec2(1000, 400)); 
+    continueButton->setAnchorPoint(Vec2(0, 0.5));   
     this->addChild(continueButton);
-
-    setting = cocos2d::ui::Button::create("mainMenu/setting.png");
-    setting->setScale(1.579);  // 设置缩放因子
-    setting->setPosition(Vec2(1085, 360));
+    //
+    setting = cocos2d::ui::Button::create();
+    setting->setTitleText("Setting");
+    setting->setTitleFontName("fonts/gill-sans-mt-condensed/Gill Sans MT");
+    setting->setTitleFontSize(buttonFontSize);
+    setting->setPosition(Vec2(1000, 330));
+    setting->setAnchorPoint(Vec2(0, 0.5));
     this->addChild(setting);
-
-    staff = cocos2d::ui::Button::create("mainMenu/staff.png");
-    staff->setScale(1.5);  // 设置缩放因子
-    staff->setPosition(Vec2(1065, 315));
+    //
+    staff = cocos2d::ui::Button::create();
+    staff->setTitleText("Staff");
+    staff->setTitleFontName("fonts/gill-sans-mt-condensed/Gill Sans MT");
+    staff->setTitleFontSize(buttonFontSize);
+    staff->setPosition(Vec2(1000, 260));
+    staff->setAnchorPoint(Vec2(0, 0.5));
     this->addChild(staff);
-
-    quit = cocos2d::ui::Button::create("mainMenu/quit.png");
-    quit->setScale(1.3636);  // 设置缩放因子
-    quit->setPosition(Vec2(1065, 270));
+    //
+    quit = cocos2d::ui::Button::create();
+    quit->setTitleText("Quit");
+    quit->setTitleFontName("fonts/gill-sans-mt-condensed/Gill Sans MT");
+    quit->setTitleFontSize(buttonFontSize);
+    quit->setPosition(Vec2(1000, 190));
+    quit->setAnchorPoint(Vec2(0, 0.5));
     this->addChild(quit);
+
+    //添加退出时显示的界面
+    exitDialog = Sprite::create("quitWindow_00.png");
+    exitDialog->setPosition(Director::getInstance()->getVisibleSize() / 2);
+    exitDialog->setVisible(false); // 初始时隐藏它
+    this->addChild(exitDialog, 2); // 一个较高的z-order确保它在其他内容的顶部
+
+    auto exitButton = cocos2d::ui::Button::create("", "quitWindow_01.png");
+    exitButton->setPosition(Vec2(exitDialog->getContentSize().width * 0.3, exitDialog->getContentSize().height * 0.5));
+    exitButton->addTouchEventListener([](Ref* sender, cocos2d::ui::Widget::TouchEventType type) {
+        if (type == cocos2d::ui::Widget::TouchEventType::ENDED) {
+            Director::getInstance()->end();
+        }
+        });
+    exitDialog->addChild(exitButton);
+
+    auto returnButton = cocos2d::ui::Button::create("", "quitWindow_02.png");
+    returnButton->setPosition(Vec2(exitDialog->getContentSize().width * 0.7, exitDialog->getContentSize().height * 0.5));
+    returnButton->addTouchEventListener([=](Ref* sender, cocos2d::ui::Widget::TouchEventType type) {
+        if (type == cocos2d::ui::Widget::TouchEventType::ENDED) {
+            exitDialog->setVisible(false);
+        }
+        });
+    exitDialog->addChild(returnButton);
+    //quit按钮触发事件
+
+    quit->addTouchEventListener([=](Ref* sender, cocos2d::ui::Widget::TouchEventType type) {
+        if (type == cocos2d::ui::Widget::TouchEventType::ENDED) {
+            exitDialog->setVisible(true);
+        }
+        });
+
  
     return true;
 }
