@@ -165,6 +165,9 @@
     <ClInclude Include="D:\Celeste\Resources\level\xumu\xumu_QJ1.bmp">
       <Filter>Resources\level\xumu</Filter>
     </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\mainMenu\Memo0.data.png">
+      <Filter>Resources\mainMenu</Filter>
+    </ClInclude>
     <ClInclude Include="D:\Celeste\Resources\mainMenu\Start_BG.png">
       <Filter>Resources\mainMenu</Filter>
     </ClInclude>
@@ -175,9 +178,6 @@
       <Filter>Resources\mainMenu</Filter>
     </ClInclude>
     <ClInclude Include="D:\Celeste\Resources\mainMenu\quitWindow_01.png">
-      <Filter>Resources\mainMenu</Filter>
-    </ClInclude>
-    <ClInclude Include="D:\Celeste\Resources\mainMenu\quitWindow_02.png">
       <Filter>Resources\mainMenu</Filter>
     </ClInclude>
     <ClInclude Include="D:\Celeste\Resources\mainMenu\sky_02.png">

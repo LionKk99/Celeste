@@ -45,13 +45,7 @@ bool MainMenuScene::init()
 
     bg2->setAnchorPoint(Vec2(0, 0.5));
     bg2->setPosition(Vec2(bg1->getContentSize().width * scaleFactor, 360 - yOffset));
-
-    /*
-    bg1->setAnchorPoint(Vec2(0, 0.5));
-    bg1->setPosition(Vec2(0, 540)); 
-
-    bg2->setAnchorPoint(Vec2(0, 0.5));
-    bg2->setPosition(Vec2(bg1->getContentSize().width * bg1->getScaleX(), 540));    //确保图片的连贯*/
+    
 
     // 创建标题图
     titleSprite = Sprite::create("mainMenu/title_00.png"); // 这里使用你的标题图的路径
@@ -59,9 +53,7 @@ bool MainMenuScene::init()
     titleSprite->setAnchorPoint(Vec2(0.5, 1)); // 设置锚点为上中
     titleSprite->setPosition(Vec2(1280 / 2, 650)); // 将标题放在屏幕的中上方
     titleSprite->setScale(scaleFactor); // 使用和其他背景相同的缩放
-    this->addChild(titleSprite, 1); // 使用z-order为1确保标题出现在所有背景之上
-
-    
+    this->addChild(titleSprite, 1); // 使用z-order为1确保标题出现在所有背景之上    
    
 
     this->addChild(bg1);
@@ -77,50 +69,15 @@ bool MainMenuScene::init()
     mountainSprite = Sprite::create("mainMenu/mountain_00.png");
     mountainSprite->setScale(0.0317);  // 设置缩放因子
     mountainSprite->setVisible(false);  // 初始时，这个小图标是隐藏的
-    this->addChild(mountainSprite);
-
-    
-    // 设置鼠标监听事件
-    auto mouseListener = EventListenerMouse::create();
-
-    mouseListener->onMouseMove = [=](Event* event) {
-        EventMouse* e = (EventMouse*)event;
-        std::vector<std::pair<cocos2d::ui::Button*, Vec2>> buttons = {//此为雪山图标出现位置
-            {newGame, Vec2(950, 470)},
-            {continueButton, Vec2(950, 400)},
-            {setting, Vec2(950, 330)},
-            {staff, Vec2(950, 260)},
-            {quit, Vec2(950, 190)}
-        };
-
-        bool isOverAnyButton = false;
-
-        for (auto& pair : buttons) {
-            cocos2d::ui::Button* button = pair.first;
-            Vec2 iconPos = pair.second;
-
-            if (getGlobalBoundingBox(button).containsPoint(Vec2(e->getCursorX(), e->getCursorY()))) {
-                mountainSprite->setVisible(true);
-                mountainSprite->setPosition(iconPos);
-                mountainSprite->setLocalZOrder(button->getLocalZOrder() + 1); // 确保小图标出现在相应按钮的前面
-                isOverAnyButton = true;
-                break;  // 如果鼠标在某个按钮上，我们可以跳出循环
-            }
-        }
-
-        if (!isOverAnyButton) {
-            mountainSprite->setVisible(false);
-        }
-    };
-
-    _eventDispatcher->addEventListenerWithSceneGraphPriority(mouseListener, this);
+    this->addChild(mountainSprite);   
+  
 
     double buttonFontSize = 50;
 
   // 示例初始化第一个按钮
     newGame = cocos2d::ui::Button::create();
     newGame->setTitleText("New Game");
-    newGame->setTitleFontName("fonts/gill-sans-mt-condensed/Gill Sans MT"); // 可以选择你想要的字体
+    newGame->setTitleFontName("fonts/gill-sans-mt-condensed/Gill Sans MT.ttf"); // 可以选择你想要的字体
     newGame->setTitleFontSize(buttonFontSize);
     newGame->setPosition(Vec2(1000, 470));
     newGame->setAnchorPoint(Vec2(0, 0.5));
@@ -135,7 +92,7 @@ bool MainMenuScene::init()
     // 示例初始化第二个按钮
     continueButton = cocos2d::ui::Button::create();
     continueButton->setTitleText("Continue");
-    continueButton->setTitleFontName("fonts/gill-sans-mt-condensed/Gill Sans MT");
+    continueButton->setTitleFontName("fonts/gill-sans-mt-condensed/Gill Sans MT.ttf");
     continueButton->setTitleFontSize(buttonFontSize);
     continueButton->setPosition(Vec2(1000, 400)); 
     continueButton->setAnchorPoint(Vec2(0, 0.5));   
@@ -143,7 +100,7 @@ bool MainMenuScene::init()
     //
     setting = cocos2d::ui::Button::create();
     setting->setTitleText("Setting");
-    setting->setTitleFontName("fonts/gill-sans-mt-condensed/Gill Sans MT");
+    setting->setTitleFontName("fonts/gill-sans-mt-condensed/Gill Sans MT.ttf");
     setting->setTitleFontSize(buttonFontSize);
     setting->setPosition(Vec2(1000, 330));
     setting->setAnchorPoint(Vec2(0, 0.5));
@@ -151,7 +108,7 @@ bool MainMenuScene::init()
     //
     staff = cocos2d::ui::Button::create();
     staff->setTitleText("Staff");
-    staff->setTitleFontName("fonts/gill-sans-mt-condensed/Gill Sans MT");
+    staff->setTitleFontName("fonts/gill-sans-mt-condensed/Gill Sans MT.ttf");
     staff->setTitleFontSize(buttonFontSize);
     staff->setPosition(Vec2(1000, 260));
     staff->setAnchorPoint(Vec2(0, 0.5));
@@ -159,35 +116,56 @@ bool MainMenuScene::init()
     //
     quit = cocos2d::ui::Button::create();
     quit->setTitleText("Quit");
-    quit->setTitleFontName("fonts/gill-sans-mt-condensed/Gill Sans MT");
+    quit->setTitleFontName("fonts/gill-sans-mt-condensed/Gill Sans MT.ttf");
     quit->setTitleFontSize(buttonFontSize);
     quit->setPosition(Vec2(1000, 190));
     quit->setAnchorPoint(Vec2(0, 0.5));
     this->addChild(quit);
 
     //添加退出时显示的界面
-    exitDialog = Sprite::create("quitWindow_00.png");
-    exitDialog->setPosition(Director::getInstance()->getVisibleSize() / 2);
-    exitDialog->setVisible(false); // 初始时隐藏它
-    this->addChild(exitDialog, 2); // 一个较高的z-order确保它在其他内容的顶部
+    auto visibleSize = Director::getInstance()->getVisibleSize();
 
-    auto exitButton = cocos2d::ui::Button::create("", "quitWindow_01.png");
-    exitButton->setPosition(Vec2(exitDialog->getContentSize().width * 0.3, exitDialog->getContentSize().height * 0.5));
+    exitDialog = Sprite::create("mainMenu/quitWindow_00.png");
+    exitDialog->setPosition(Director::getInstance()->getVisibleSize() / 2);
+    exitDialog->setScale(0.7);  // 设置缩放因子
+    exitDialog->setVisible(false); // 初始时隐藏它
+    this->addChild(exitDialog, 2); // 一个较高的z-order确保它在其他内容的顶部   
+
+    // 创建一个TTF字体标签
+    auto exitLabel = Label::createWithTTF("MAKE SURE YOUR EXIT", "fonts/gill-sans-mt-condensed/Gill Sans MT Bold.ttf", 54);
+    // 如果需要，设置标签的位置
+    exitLabel->setPosition(Vec2(540, 520));
+    // 设置颜色
+    exitLabel->setTextColor(Color4B::BLACK);
+    // 将标签添加到场景
+    exitDialog->addChild(exitLabel,3);
+
+    auto exitButton = cocos2d::ui::Button::create();
+    exitButton->setTitleFontName("fonts/gill-sans-mt-condensed/Gill Sans MT Bold.ttf");
+    exitButton->setTitleText("EXIT");
+    exitButton->setTitleColor(Color3B::BLACK);
+    exitButton->setTitleFontSize(50);
+    exitButton->setPosition(Vec2(540, 400));
     exitButton->addTouchEventListener([](Ref* sender, cocos2d::ui::Widget::TouchEventType type) {
         if (type == cocos2d::ui::Widget::TouchEventType::ENDED) {
             Director::getInstance()->end();
         }
         });
-    exitDialog->addChild(exitButton);
+    exitDialog->addChild(exitButton,3);
 
-    auto returnButton = cocos2d::ui::Button::create("", "quitWindow_02.png");
-    returnButton->setPosition(Vec2(exitDialog->getContentSize().width * 0.7, exitDialog->getContentSize().height * 0.5));
+    auto returnButton = cocos2d::ui::Button::create();
+    returnButton->setTitleFontName("fonts/gill-sans-mt-condensed/Gill Sans MT Bold.ttf");
+    returnButton->setTitleText("RETURN");
+    returnButton->setTitleColor(Color3B::BLACK);
+    returnButton->setTitleFontSize(50);
+    returnButton->setPosition(Vec2(540, 300));
     returnButton->addTouchEventListener([=](Ref* sender, cocos2d::ui::Widget::TouchEventType type) {
         if (type == cocos2d::ui::Widget::TouchEventType::ENDED) {
             exitDialog->setVisible(false);
         }
         });
-    exitDialog->addChild(returnButton);
+    exitDialog->addChild(returnButton,3);
+
     //quit按钮触发事件
 
     quit->addTouchEventListener([=](Ref* sender, cocos2d::ui::Widget::TouchEventType type) {
@@ -195,6 +173,43 @@ bool MainMenuScene::init()
             exitDialog->setVisible(true);
         }
         });
+
+    // 设置鼠标监听事件
+    auto mouseListener = EventListenerMouse::create();
+
+    mouseListener->onMouseMove = [=](Event* event) {
+        EventMouse* e = (EventMouse*)event;
+        std::vector<std::pair<cocos2d::ui::Button*, Vec2>> buttons = {//此为雪山图标出现位置
+            {newGame, Vec2(950, 470)},
+            {continueButton, Vec2(950, 400)},
+            {setting, Vec2(950, 330)},
+            {staff, Vec2(950, 260)},
+            {quit, Vec2(950, 190)},
+            {exitButton, Vec2(500, 380)},
+            {returnButton, Vec2(500, 310)}
+        };
+
+        bool isOverAnyButton = false;
+
+        for (auto& pair : buttons) {
+            cocos2d::ui::Button* button = pair.first;
+            Vec2 iconPos = pair.second;
+
+            if (button && getGlobalBoundingBox(button).containsPoint(Vec2(e->getCursorX(), e->getCursorY()))) {
+                mountainSprite->setVisible(true);
+                mountainSprite->setPosition(iconPos);
+                mountainSprite->setLocalZOrder(button->getLocalZOrder() + 1); // 确保小图标出现在相应按钮的前面
+                isOverAnyButton = true;
+                break;  // 如果鼠标在某个按钮上，我们可以跳出循环
+            }
+        }
+
+        if (!isOverAnyButton) {
+            mountainSprite->setVisible(false);
+        }
+        };
+
+    _eventDispatcher->addEventListenerWithSceneGraphPriority(mouseListener, this);
 
  
     return true;

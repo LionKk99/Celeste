@@ -859,11 +859,11 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClInclude Include="D:\Celeste\Resources\level\xumu\L2\xumu2_LG3.bmp" />
     <ClInclude Include="D:\Celeste\Resources\level\xumu\xumu_BG.bmp" />
     <ClInclude Include="D:\Celeste\Resources\level\xumu\xumu_QJ1.bmp" />
+    <ClInclude Include="D:\Celeste\Resources\mainMenu\Memo0.data.png" />
     <ClInclude Include="D:\Celeste\Resources\mainMenu\Start_BG.png" />
     <ClInclude Include="D:\Celeste\Resources\mainMenu\mountain_00.png" />
     <ClInclude Include="D:\Celeste\Resources\mainMenu\quitWindow_00.png" />
     <ClInclude Include="D:\Celeste\Resources\mainMenu\quitWindow_01.png" />
-    <ClInclude Include="D:\Celeste\Resources\mainMenu\quitWindow_02.png" />
     <ClInclude Include="D:\Celeste\Resources\mainMenu\sky_02.png" />
     <ClInclude Include="D:\Celeste\Resources\mainMenu\title_00.png" />
     <ClInclude Include="D:\Celeste\Resources\movement\crouch\CrouchToIdle_00.bmp" />
