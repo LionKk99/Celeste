@@ -25,3 +25,9 @@ trap——陷阱
 #### 完成主界面背景设置，初步完成UI按钮构造（部分对齐不好）
 
 ![image](https://github.com/LionKk99/Celeste/blob/master/README_image/9.15_01.png?raw=true)
+
+## 9.16
+
+#### 完善主界面UI，完成exit功能
+
+![image](https://github.com/LionKk99/Celeste/blob/master/README_image/9.15_01.png?raw=true)
