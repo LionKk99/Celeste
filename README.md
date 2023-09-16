@@ -30,4 +30,4 @@ trap——陷阱
 
 #### 完善主界面UI，完成exit功能
 
-![image](https://github.com/LionKk99/Celeste/blob/master/README_image/9.15_01.png?raw=true)
+![image](https://github.com/LionKk99/Celeste/blob/master/README_image/9.16_02.png?raw=true)
