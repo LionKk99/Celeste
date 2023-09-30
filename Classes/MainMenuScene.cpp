@@ -1,4 +1,5 @@
 #include "MainMenuScene.h"
+#include "/Celeste/Classes/Scene/Level1Scene.h"
 
 USING_NS_CC;
 //获取正确的边界框
@@ -82,12 +83,13 @@ bool MainMenuScene::init()
     newGame->setPosition(Vec2(1000, 470));
     newGame->setAnchorPoint(Vec2(0, 0.5));
     this->addChild(newGame);
-
     newGame->addTouchEventListener([](Ref* sender, cocos2d::ui::Widget::TouchEventType type) {
         if (type == cocos2d::ui::Widget::TouchEventType::ENDED) {
-            // TODO: 这里添加按钮点击后的逻辑
+            // 切换到 Level1Scene
+            auto scene = Level1Scene::createScene(); // 假设你在Level1Scene中有一个静态的 createScene 方法来创建这个场景
+            Director::getInstance()->replaceScene(TransitionFade::create(1.0, scene)); // 使用一个渐隐渐现的过渡动画，持续1秒
         }
-        });
+        });   
 
     // 示例初始化第二个按钮
     continueButton = cocos2d::ui::Button::create();
