@@ -25,3 +25,21 @@ trap——陷阱
 #### 完成主界面背景设置，初步完成UI按钮构造（部分对齐不好）
 
 ![image](https://github.com/LionKk99/Celeste/blob/master/README_image/9.15_01.png?raw=true)
+
+## 9.16
+
+#### 完善主界面UI，完成exit功能
+
+![image](https://github.com/LionKk99/Celeste/blob/master/README_image/9.16_02.png?raw=true)
+
+## 9.28
+
+#### 完成player类基础操作
+
+## 9.29
+
+#### 修复跳跃，下落判定
+
+## 9.30
+
+#### 修复角色穿模问题，增加关卡边界，完成爬墙判定
