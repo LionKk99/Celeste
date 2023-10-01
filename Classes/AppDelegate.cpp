@@ -108,12 +108,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
         director->setContentScaleFactor(MIN(smallResolutionSize.height/designResolutionSize.height, smallResolutionSize.width/designResolutionSize.width));
     }
 
-    register_all_packages();
-
-    
-
-    
-    
+    register_all_packages();        
     
     SpriteFrameCache::getInstance()->addSpriteFramesWithFile("movement/crouch/crouch_00.plist", "movement/crouch/crouch_00.png");//¶××Ë¼ÓÔØ
     SpriteFrameCache::getInstance()->addSpriteFramesWithFile("movement/crouch/CrouchToIdle.plist", "movement/crouch/CrouchToIdle.png");//¶××Ëµ½¾²Ö¹¼ÓÔØ
@@ -172,8 +167,8 @@ bool AppDelegate::applicationDidFinishLaunching() {
     /*
     Vector<SpriteFrame*> idleFrames;
     auto cache = SpriteFrameCache::getInstance();
-    for (int i = 0; i <= 6; i++) {
-        std::string frameName = StringUtils::format("drop_00-%d.png", i);
+    for (int i = 0; i <= 5; i++) {
+        std::string frameName = StringUtils::format("landing_00-%d.png", i);
         auto frame = cache->getSpriteFrameByName(frameName);
         if (frame) {
             idleFrames.pushBack(frame);
@@ -182,8 +177,8 @@ bool AppDelegate::applicationDidFinishLaunching() {
         else {
             CCLOG("Error: Cannot find frame: %s", frameName.c_str());
         }
-    }*/
-
+    }
+*/
       
     
     

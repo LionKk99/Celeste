@@ -1,6 +1,6 @@
 #include "Player.h"
 USING_NS_CC;
-
+const float Player::DASH_DURATION = 1.1f;
 Player::Player()
     : keyStates{
         {PlayerKey::LEFT, false},
@@ -35,7 +35,8 @@ bool Player::init(const std::string& filename) {//初始化角色
     }
     //currentState = PlayerState::IDLE;
     //previousState = PlayerState::IDLE;    
-    
+    isDashing = false;
+    dashTimer = 0.0f;
     //初始化测试射线
     _debugDrawNode = cocos2d::DrawNode::create();
     this->addChild(_debugDrawNode);
@@ -137,6 +138,28 @@ void Player::changeState(PlayerState newState) {
         break;
     case PlayerState::DROP:
         playDropAnimation();
+        break;
+    case PlayerState::PUSHWALL:
+        playPushWallAnimation();        
+        break;
+    case PlayerState::LANDING:
+        playLandingAnimation();     
+        break;
+    case PlayerState::HOLDWALL:
+        playHoldWallAnimation();
+        break;
+    case PlayerState::HOLDWALLUP:
+        playHoldWallUpAnimation();
+        break;
+    case PlayerState::HOLDWALLDOWN:
+        playHoldWallDownAnimation();
+        break;
+    case PlayerState::HOLDWALLJUMP:
+        playHoldWallJumpAnimation();
+        break;
+    case PlayerState::DASH:
+        this->setScaleX(facingDirection);
+        playDashAnimation();
         break;
         // 处理其他状态...
     }
@@ -274,7 +297,7 @@ cocos2d::Vec2 Player::adjustMovePosition(const cocos2d::Vec2& desiredPosition) {
         }
     }
 
-    CCLOG("canClimb: %d", canClimb);
+    //CCLOG("canClimb: %d", canClimb);
     return adjustedPosition;
 }
 
@@ -357,8 +380,31 @@ cocos2d::Vec2 Player::adjustMovePosition(const cocos2d::Vec2& desiredPosition) {
     return adjustedPosition;
 }
 */
+
 void Player::update(float dt) {
+    if (isDashing) {
+        dashTimer += dt;
+        if (dashTimer >= DASH_DURATION) {
+            isDashing = false;
+            dashTimer = 0.0f;
+        }
+        return;  // 如果玩家正在冲刺，跳过所有其他的状态更新
+    }
+
+    if (canClimb == 0 && (currentState == PlayerState::HOLDWALL || currentState == PlayerState::HOLDWALLUP || currentState == PlayerState::HOLDWALLDOWN)&&currentState!= PlayerState::DASH) {
+        this->getPhysicsBody()->setGravityEnable(true);
+        velocity.y = -1;
+        changeState(PlayerState::DROP);
+    }
+    
+    if((previousState==PlayerState::HOLDWALL ||previousState == PlayerState::HOLDWALLUP || previousState == PlayerState::HOLDWALLDOWN)&&(currentState != PlayerState::HOLDWALL && currentState != PlayerState::HOLDWALLUP && currentState != PlayerState::HOLDWALLDOWN) && currentState != PlayerState::DASH)
+    {
+        velocity.y = -1;
+        this->getPhysicsBody()->setGravityEnable(true);
+    }
+   
     float verticalVelocity = this->getPhysicsBody()->getVelocity().y;//物理引擎中的vy
+    float horizontalVelocity = this->getPhysicsBody()->getVelocity().x;//物理引擎中的vx
     //新方法
     Vec2 desiredPosition = this->getPosition() + velocity * dt;
     Vec2 adjustedPosition = adjustMovePosition(desiredPosition);
@@ -371,6 +417,9 @@ void Player::update(float dt) {
     //检查玩家是否在坚实的地面上
     bool onGround = isOnSolidGround();
     setOnGround(onGround);
+    if (onGround) {
+        canDash = 1;
+    }
     
     /* 如果直接设置速度的话要用到下面代码
     // 如果玩家在地面上，设置垂直速度为0
@@ -387,17 +436,80 @@ void Player::update(float dt) {
    
 
     //蹲姿
-    if (keyStates[PlayerKey::DOWN] && isOnGround&&!keyStates[PlayerKey::DASH]) {
+    if (keyStates[PlayerKey::DOWN] && isOnGround&&!keyStates[PlayerKey::DASH] && !keyStates[PlayerKey::CLIMB]&&velocity.x==0){
         changeState(PlayerState::CROUCH);
         CCLOG("Player state changed to CROUCH");
         return;
     }
-    if (keyStates[PlayerKey::UP] && isOnGround && !keyStates[PlayerKey::DASH]&&!keyStates[PlayerKey::DOWN]){
+    //向上看
+    if (keyStates[PlayerKey::UP] && isOnGround && !keyStates[PlayerKey::DASH]&&!keyStates[PlayerKey::DOWN]&&!keyStates[PlayerKey::CLIMB] && velocity.x == 0) {
         changeState(PlayerState::LOOKUP);
         CCLOG("Player state changed to LOOKUP");
         return;
+    }    
+    //冲刺(默认)
+    if (keyStates[PlayerKey::DASH] && canDash&& !keyStates[PlayerKey::LEFT]&& !keyStates[PlayerKey::RIGHT]) {
+        this->getPhysicsBody()->setGravityEnable(false);
+        velocity.x = 0; velocity.y = 0;
+        this->getPhysicsBody()->setVelocity(Vec2(0, 0));
+        changeState(PlayerState::DASH);
+        CCLOG("Player state changed to DASH");
+        return;
+    }
+    //落地
+    if ((previousState == PlayerState::DROP && isOnGround)||currentState== PlayerState::LANDING) {
+        changeState(PlayerState::LANDING);        
+        CCLOG("Player state changed to LANDING");
+        return;
+    }
+    //推墙
+    if (((keyStates[PlayerKey::RIGHT] && velocity.x > 0) || (keyStates[PlayerKey::LEFT] && velocity.x < 0)) && isOnGround && canClimb &&!keyStates[PlayerKey::CLIMB]) {
+        changeState(PlayerState::PUSHWALL);
+        CCLOG("Player state changed to PUSHWALL");
+        return;
+    }
+    //下落
+
+    if (!isOnGround && verticalVelocity < 0) {
+        changeState(PlayerState::DROP);
+        return;
     }
 
+    //爬墙跳跃
+    if ((currentState == PlayerState::HOLDWALL || currentState == PlayerState::HOLDWALLUP || currentState == PlayerState::HOLDWALLDOWN) && keyStates[PlayerKey::JUMP]) {
+        this->getPhysicsBody()->setGravityEnable(true);
+        velocity.y = 0;
+        this->getPhysicsBody()->applyImpulse(Vec2(-10, 30) * facingDirection);//使用冲量
+        changeState(PlayerState::HOLDWALLJUMP);
+        CCLOG("Player state changed to HOLDWALLJUMP");
+        return;
+    }
+
+    //爬墙
+    if (keyStates[PlayerKey::CLIMB] && canClimb &&!keyStates[PlayerKey::UP] && !keyStates[PlayerKey::DOWN])
+    {
+        this->getPhysicsBody()->setGravityEnable(false);
+        changeState(PlayerState::HOLDWALL);
+        CCLOG("Player state changed to HOLDWALL");
+        return;
+    }
+    if (keyStates[PlayerKey::CLIMB] && canClimb && keyStates[PlayerKey::UP] && !keyStates[PlayerKey::DOWN])
+    {
+        this->getPhysicsBody()->setGravityEnable(false);
+        velocity.y = CLINMB_MAXSPEED;
+        changeState(PlayerState::HOLDWALLUP);
+        CCLOG("Player state changed to HOLDWALLUP");
+        return;
+    }
+    if (keyStates[PlayerKey::CLIMB] && canClimb && !keyStates[PlayerKey::UP] && keyStates[PlayerKey::DOWN])
+    {
+        this->getPhysicsBody()->setGravityEnable(false);
+        velocity.y = -CLINMB_MAXSPEED;
+        changeState(PlayerState::HOLDWALL);
+        CCLOG("Player state changed to HOLDWALLDOWN");
+        return;
+    }
+  
     //水平移动
     if (keyStates[PlayerKey::LEFT] && velocity.x > -WALK_MAXSPEED) {
         velocity.x -= accelerationX * dt;
@@ -433,14 +545,7 @@ void Player::update(float dt) {
         return;
     }
 
-    //下落
     
-    if (!isOnGround && verticalVelocity < 0) {
-        changeState(PlayerState::DROP);
-        return;
-    }
-
-
     
 
     //状态转换
@@ -450,23 +555,27 @@ void Player::update(float dt) {
             //CCLOG("Player state changed to IDLE");
             return;
         }
-        else if (velocity.x > 0) {
+        else if (velocity.x > 0) {            
             if (keyStates[PlayerKey::RIGHT]) { 
                 changeState(PlayerState::MOVING_RIGHT); 
+                facingDirection = 1;
                 return;
             }
             else if(keyStates[PlayerKey::LEFT]){ 
-                changeState(PlayerState::MOVING_TURN_RL);
+                changeState(PlayerState::MOVING_TURN_RL);   
+                facingDirection = -1;
                 return;
             }
         }
-        else if (velocity.x < 0) {
+        else if (velocity.x < 0) {            
             if (keyStates[PlayerKey::LEFT]) {
                 changeState(PlayerState::MOVING_LEFT);
+                facingDirection = -1;
                 return;
             }
             else if (keyStates[PlayerKey::RIGHT]) {
-                changeState(PlayerState::MOVING_TURN_LR);
+                changeState(PlayerState::MOVING_TURN_LR);  
+                facingDirection = 1;
                 return;
             }
         }
@@ -561,14 +670,15 @@ void Player::onKeyReleased(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Eve
         keyStates[PlayerKey::JUMP] = false;    
         isJumping = false; // 当按键释放时，允许下一次跳跃
         break;
-    case EventKeyboard::KeyCode::KEY_T:
+    case EventKeyboard::KeyCode::KEY_J:
         keyStates[PlayerKey::TALK] = false;
         break;
-    case EventKeyboard::KeyCode::KEY_D:
+    case EventKeyboard::KeyCode::KEY_SHIFT:
         keyStates[PlayerKey::DASH] = false;
         break;
-    case EventKeyboard::KeyCode::KEY_C:
+    case EventKeyboard::KeyCode::KEY_K:
         keyStates[PlayerKey::CLIMB] = false;
+        CCLOG("KEY_K RELESE");
         break;
     default:
         break;
@@ -818,16 +928,308 @@ void Player::playDropAnimation() {//坠落
     
 }
 
+void Player::playPushWallAnimation() {//推墙    
+    // 停止所有正在运行的动画（确保不会与其他动画冲突）
+    this->stopAllActions();
+    //CCLOG("Starting PushWall animation");
+    Vector<SpriteFrame*> idleFrames;
+    auto cache = SpriteFrameCache::getInstance();
+
+    for (int i = 0; i <= 9; i++) {
+        std::string frameName = StringUtils::format("pushwall_00-%d.png", i);
+        auto frame = cache->getSpriteFrameByName(frameName);
+        if (frame) {
+            idleFrames.pushBack(frame);
+        }
+    }
+
+    auto animation = Animation::createWithSpriteFrames(idleFrames, 0.1f);
+    auto animate = Animate::create(animation);
+    // 使用 RepeatForever 动作使动画无限循环播放
+    auto repeatForever = RepeatForever::create(animate);
+
+    this->runAction(repeatForever); // 使用 repeatForever 运行动画
+    // CCLOG("Finished setting up PushWall animation");
+}
+
+void Player::playLandingAnimation() {//过渡动画 落地
+
+    // 停止所有正在运行的动画（确保不会与其他动画冲突）
+    this->stopAllActions();
+    //限制落地速度
+    if (velocity.x > 30) {
+        velocity.x = 30;
+    }
+    else if (velocity.x < -30) {
+        velocity.x = -30;
+    }
+    CCLOG("Starting Landing animation");
+    Vector<SpriteFrame*> idleFrames;
+    auto cache = SpriteFrameCache::getInstance();
+
+    for (int i = 0; i <= 5; i++) {
+        std::string frameName = StringUtils::format("landing_00-%d.png", i);
+        auto frame = cache->getSpriteFrameByName(frameName);
+        if (frame) {
+            idleFrames.pushBack(frame);
+        }
+    }
+    auto animation = Animation::createWithSpriteFrames(idleFrames, 0.1f);
+    auto animate = Animate::create(animation);
+
+    // 定义lambda作为回调
+    auto callback = [this]() {
+        previousState = PlayerState::LANDING;
+        currentState = PlayerState::IDLE;//更新状态保证不重复播放过渡动画
+        playIdleAnimation_1();//由于状态机机制，手动调用
+        CCLOG("Animation completed!");
+        
+        };
+
+    // 创建回调动作
+    auto callbackAction = CallFunc::create(callback);
+
+    // 使用 Sequence 动作将动画和回调结合起来
+    auto sequence = Sequence::create(animate, callbackAction, nullptr);
+
+    this->runAction(sequence);
+
+    CCLOG("Finished setting up CrouchToIdle animation");
+}
+
+void Player::playHoldWallAnimation(){//爬墙
+    this->stopAllActions();
+    //CCLOG("Starting HoldWall animation");
+    Vector<SpriteFrame*> idleFrames;
+    auto cache = SpriteFrameCache::getInstance();
+
+    for (int i = 0; i <= 7; i++) {
+        std::string frameName = StringUtils::format("holdwall_00-%d.png", i);
+        auto frame = cache->getSpriteFrameByName(frameName);
+        if (frame) {
+            idleFrames.pushBack(frame);
+        }
+    }
+
+    auto animation = Animation::createWithSpriteFrames(idleFrames, 0.1f);
+    auto animate = Animate::create(animation);
+    // 使用 RepeatForever 动作使动画无限循环播放
+    auto repeatForever = RepeatForever::create(animate);
+
+    this->runAction(repeatForever); // 使用 repeatForever 运行动画
+    // CCLOG("Finished setting up HoldWall animation");
+
+    }
+
+void Player::playHoldWallUpAnimation() {
+    this->stopAllActions();
+    //CCLOG("Starting HoldWall animation");
+    Vector<SpriteFrame*> idleFrames;
+    auto cache = SpriteFrameCache::getInstance();
+
+    for (int i = 0; i <= 9; i++) {
+        std::string frameName = StringUtils::format("holdwallup_00-%d.png", i);
+        auto frame = cache->getSpriteFrameByName(frameName);
+        if (frame) {
+            idleFrames.pushBack(frame);
+        }
+    }
+
+    auto animation = Animation::createWithSpriteFrames(idleFrames, 0.1f);
+    auto animate = Animate::create(animation);
+    // 使用 RepeatForever 动作使动画无限循环播放
+    auto repeatForever = RepeatForever::create(animate);
+
+    this->runAction(repeatForever); // 使用 repeatForever 运行动画
+    // CCLOG("Finished setting up HoldWall animation");
+
+
+
+
+}//爬墙向上
+
+void Player::playHoldWallDownAnimation(){
+
+    this->stopAllActions();
+    //CCLOG("Starting HoldWall animation");
+    Vector<SpriteFrame*> idleFrames;
+    auto cache = SpriteFrameCache::getInstance();
+
+    for (int i = 0; i <= 4; i++) {
+        std::string frameName = StringUtils::format("holdwalldown_00-%d.png", i);
+        auto frame = cache->getSpriteFrameByName(frameName);
+        if (frame) {
+            idleFrames.pushBack(frame);
+        }
+    }
+
+    auto animation = Animation::createWithSpriteFrames(idleFrames, 0.1f);
+    auto animate = Animate::create(animation);
+    // 使用 RepeatForever 动作使动画无限循环播放
+    auto repeatForever = RepeatForever::create(animate);
+
+    this->runAction(repeatForever); // 使用 repeatForever 运行动画
+    // CCLOG("Finished setting up HoldWall animation");
 
 
 
 
 
+}//爬墙向下
+
+void Player::playHoldWallJumpAnimation() {//爬墙跳跃
+    // 停止所有正在运行的动画（确保不会与其他动画冲突）
+    CCLOG("Starting HoldWallJump animation");
+    this->stopAllActions();
+    Vector<SpriteFrame*> idleFrames;
+    auto cache = SpriteFrameCache::getInstance();
+
+    for (int i = 0; i <= 3; i++) {
+        std::string frameName = StringUtils::format("jumpmove_00-%d.png", i);
+        auto frame = cache->getSpriteFrameByName(frameName);
+        if (frame) {
+            idleFrames.pushBack(frame);
+        }
+    }
+
+    for (int i = 0; i <= 1; i++) {
+        std::string frameName = StringUtils::format("Top_00-%d.png", i);
+        auto frame = cache->getSpriteFrameByName(frameName);
+        if (frame) {
+            idleFrames.pushBack(frame);
+        }
+    }
+
+    auto animation = Animation::createWithSpriteFrames(idleFrames, 0.1f);
+    auto animate = Animate::create(animation);
+    this->runAction(animate);
+    CCLOG("Finished setting up HoldWallJump animation");
+
+}
+/*
+void Player::playDashAnimation() {//冲刺
+
+    isDashing = true;
+    // 停止所有正在运行的动画（确保不会与其他动画冲突）
+    this->stopAllActions();
+    // 开始冲刺
+    this->startDashing();
 
 
+    Vector<SpriteFrame*> idleFrames;
+    auto cache = SpriteFrameCache::getInstance();
 
+    for (int i = 0; i <= 8; i++) {
+        std::string frameName = StringUtils::format("dashmove_00-%d.png", i);
+        auto frame = cache->getSpriteFrameByName(frameName);
+        if (frame) {
+            idleFrames.pushBack(frame);
+        }
+        if (i == 2 || i == 5) {
+            std::string frameName = StringUtils::format("shadow_00.png");
+            auto frame = cache->getSpriteFrameByName(frameName);
+            if (frame) {
+                idleFrames.pushBack(frame);
+            }
+        }
+    }
 
+    auto animation = Animation::createWithSpriteFrames(idleFrames, 0.05f);
+    auto animate = Animate::create(animation);
 
+    // 创建一个CallFunc动作，当其被执行时，会调用指定的lambda函数
+    auto enableGravity = CallFunc::create([this]() {
+        this->getPhysicsBody()->setGravityEnable(true);
+        this->isDashing = false;  // 如果您希望在动画结束时结束冲刺状态
+        });
 
+    // 使用Sequence动作将动画和CallFunc动作组合起来
+    auto sequence = Sequence::create(animate, enableGravity, nullptr);
 
+    this->runAction(sequence);
+}
+*/
+void Player::playDashAnimation() {
+    isDashing = true;
+    this->stopAllActions();
+    this->startDashing();
 
+    Vector<SpriteFrame*> idleFrames;
+    auto cache = SpriteFrameCache::getInstance();
+
+    for (int i = 0; i <= 8; i++) {
+        std::string frameName = StringUtils::format("dashmove_00-%d.png", i);
+        auto frame = cache->getSpriteFrameByName(frameName);
+        if (frame) {
+            idleFrames.pushBack(frame);
+        }
+    }
+
+    auto animation = Animation::createWithSpriteFrames(idleFrames, 0.05f);
+    auto animate = Animate::create(animation);
+
+    // 创建一个CallFunc动作，在动画达到特定帧时生成shadow效果
+    auto generateShadow = CallFunc::create([this, cache]() {
+        auto shadow = Sprite::createWithSpriteFrameName("shadow_00.png");
+        // 根据facingDirection翻转shadow
+            if (this->facingDirection == -1) {
+                shadow->setFlippedX(true);
+            }
+
+        shadow->setPosition(this->getPosition());
+        this->getParent()->addChild(shadow, this->getLocalZOrder() - 1);
+
+        // 设置shadow的持续时间和消失效果
+        auto fadeOut = FadeOut::create(0.5f);
+        auto remove = CallFunc::create([shadow]() {
+            shadow->removeFromParent();
+            });
+        auto shadowSequence = Sequence::create(fadeOut, remove, nullptr);
+        shadow->runAction(shadowSequence);
+        });
+
+    // 在动画的特定时间调用generateShadow
+    auto delayForFirstShadow = DelayTime::create(0.20f);  // 0.05 * 4
+    auto delayForSecondShadow = DelayTime::create(0.10f);  // 0.05 * 2
+    auto shadowSequence = Sequence::create(delayForFirstShadow, generateShadow->clone(), delayForSecondShadow, generateShadow->clone(), nullptr);
+
+    // 开始冲刺后重启重力
+    auto enableGravity = CallFunc::create([this]() {
+        this->getPhysicsBody()->setGravityEnable(true);
+        this->isDashing = false;
+        });
+    auto sequence = Sequence::create(animate, enableGravity, nullptr);
+
+    // 运行两个动作
+    this->runAction(sequence);
+    this->runAction(shadowSequence);
+}
+
+void Player::startDashing() {
+    int segments = 11;  // 冲刺段数
+    float segmentLength = 20.0f;  // 每段的长度
+
+    // 使用schedule方法进行冲刺
+    this->schedule([this, segments, segmentLength](float dt) mutable {
+        // 计算期望的位置
+        cocos2d::Vec2 desiredPosition = this->getPosition() + cocos2d::Vec2(segmentLength, 0)* facingDirection;
+
+        // 使用adjustMovePosition函数来检查是否有障碍物
+        cocos2d::Vec2 adjustedPosition = this->adjustMovePosition(desiredPosition);
+
+        // 计算移动的差值
+        cocos2d::Vec2 moveByValue = adjustedPosition - this->getPosition();
+
+        // 使用MoveBy来平滑移动玩家
+        auto moveAction = cocos2d::MoveBy::create(0.1f, moveByValue);
+        this->runAction(moveAction);
+
+        // 递减segments
+        --segments;
+
+        // 如果检测到障碍物或冲刺已完成，则停止冲刺
+        if (segments <= 0) {
+            this->unschedule("DashingKey");
+        }
+        }, 0.05f, "DashingKey");  // 0.1秒是每次移动的时间间隔
+}

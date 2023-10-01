@@ -43,6 +43,7 @@ bool Level1Scene::init() {
     auto player = Player::create("movement/idle/Idle_00/Idle_00-0.png"); // 这只是一个示例，您可能需要为其提供一个初始的精灵图片路径
     player->setPosition(Vec2(visibleSize.width / 2 + origin.x, visibleSize.height / 2 + origin.y)); // 设置位置到屏幕中心
     this->addChild(player); // 将玩家添加到场景中
+    player->getPhysicsBody()->getFirstShape()->setFriction(0.5f);
     /*
     //碰撞监听器   
     auto contactListener = cocos2d::EventListenerPhysicsContact::create();
@@ -99,7 +100,7 @@ void Level1Scene::loadLevel() {
     platform->setName("ground");
     platform->setAnchorPoint(Vec2(0.5, 0.5));
     platform->setPosition(Vec2(Director::getInstance()->getVisibleSize().width / 2, platform->getContentSize().height / 2));
-       
+    
 
     // 创建物理体
     auto physicsBody = PhysicsBody::create();
@@ -140,7 +141,8 @@ void Level1Scene::loadLevel() {
     physicsBody->setContactTestBitmask(0xFFFFFFFF);
     // 将物理体设置为静态并添加到平台
     physicsBody->setDynamic(false);    
-    platform->setPhysicsBody(physicsBody);    
+    platform->setPhysicsBody(physicsBody);     
+    platform->getPhysicsBody()->getFirstShape()->setFriction(0.5f);//摩擦系数
     this->addChild(platform);
 
 }

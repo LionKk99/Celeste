@@ -12,10 +12,13 @@ enum class PlayerState {
     CROUCH,           // 下蹲
     LOOKUP,           // 向上看
     JUMPING,          // 跳跃
-    CLIMBING,         // 攀爬
+    LANDING,          // 落地
     DROP,             // 坠落
+    PUSHWALL,         // 推墙       
     HOLDWALL,         // 爬墙
-    WALL_JUMPING,     // 墙壁跳跃
+    HOLDWALLUP,       // 爬墙向上
+    HOLDWALLDOWN,     // 爬墙向下
+    HOLDWALLJUMP,    // 爬墙跳跃  
     DASH,             // 冲刺
     DYING,            // 死亡
     EXHAUSTED         // 疲劳——此状态下会从墙壁上滑落
@@ -47,8 +50,7 @@ public:
     float accelerationX = 200.0f;//水平加速度
 
     // 状态判定
-    bool isOnGround=0;
-    bool isInAir=0;
+    bool isOnGround=0;    
     bool isClimbing=0;
     bool isWallSliding=0;
     bool canDash=1;//也作为角色是否blue的判断
@@ -67,6 +69,9 @@ public:
 
     // 冲刺
     float dashDistance = 200;
+    bool isDashing;
+    float dashTimer;
+    static const float DASH_DURATION;
 
     // 物理属性         
     float CLINMB_MAXSPEED = 100;
@@ -92,16 +97,22 @@ public:
     void playJumpUpAnimation();//跳跃动画
     void playJumpMoveAnimation();//跳跃移动动画
     void playDropAnimation();//坠落动画  
-    
-
+    void playPushWallAnimation();//推墙动画
+    void playHoldWallAnimation();//爬墙
+    void playHoldWallUpAnimation();//爬墙向上
+    void playHoldWallDownAnimation();//爬墙向下
+    void playHoldWallJumpAnimation();//爬墙跳跃
+    void playDashAnimation();//冲刺动画
     //过渡动画
     void playMoveTurnAnimation();//转向动画
-    void Player::playCrouchToIdleAnimation();//蹲姿到静止
-
+    void playCrouchToIdleAnimation();//蹲姿到静止
+    void playLandingAnimation();//落地动画
     //
     int facingDirection=1;//面向方向（向右为1，向左为-1）
 
     bool isAlive=1;
+
+    void startDashing();
 
     std::map<PlayerKey, bool> keyStates;//检测用户输入
     
