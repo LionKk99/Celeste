@@ -1,6 +1,6 @@
 #include "Player.h"
 USING_NS_CC;
-const float Player::DASH_DURATION = 1.1f;
+const float Player::DASH_DURATION = 0.80f;
 Player::Player()
     : keyStates{
         {PlayerKey::LEFT, false},
@@ -74,25 +74,93 @@ bool Player::init(const std::string& filename) {//初始化角色
     return true;
 }
 
+/*
 bool Player::isOnSolidGround() {
     float rayLength = 1.0f; // 射线长度固定为1像素
-    Vec2 startPoint = this->getPosition() - Vec2(0, this->getContentSize().height * 0.5f); // 角色的底部中心点
-    Vec2 endPoint = startPoint - Vec2(0, rayLength); // 从startPoint向下延长1像素
+    Vec2 centerPoint = this->getPosition();
+
+    // 获取角色的大小
+    cocos2d::Size playerSize = this->getContentSize();
+
+    // 定义射线的起始点
+    Vec2 leftStartPoint = centerPoint - Vec2(playerSize.width * 0.5f-42, playerSize.height * 0.5f - 47);
+    Vec2 middleStartPoint = centerPoint - Vec2(0, playerSize.height * 0.5f - 47);
+    Vec2 rightStartPoint = centerPoint + Vec2(playerSize.width * 0.5f-42, -playerSize.height * 0.5f + 47);
+
+    std::vector<cocos2d::Vec2> startPoints = { leftStartPoint, middleStartPoint, rightStartPoint };
+
     bool onSolidGround = false; // 默认情况下假设玩家不在地面上
 
-    auto func = [&onSolidGround](PhysicsWorld& world, const PhysicsRayCastInfo& info, void* data) -> bool {
-        if (info.shape->getBody()->getNode()->getName() == "ground") {
-            onSolidGround = true;
-            return false; // 停止射线检测
-        }
-        return true; // 继续射线检测
-        };
+    // 获取或创建一个 DrawNode
+    auto drawNode = dynamic_cast<cocos2d::DrawNode*>(this->getChildByName("RayDrawNode"));
+    if (!drawNode) {
+        drawNode = cocos2d::DrawNode::create();
+        drawNode->setName("RayDrawNode");
+        this->addChild(drawNode);
+    }
+    drawNode->clear();  // 清除之前的绘制
 
-    Director::getInstance()->getRunningScene()->getPhysicsWorld()->rayCast(func, startPoint, endPoint, nullptr);
+    for (const auto& startPoint : startPoints) {
+        cocos2d::Vec2 endPoint = startPoint - cocos2d::Vec2(0, rayLength); // 从startPoint向下延长1像素
+
+        // 绘制射线
+        drawNode->drawLine(startPoint, endPoint, cocos2d::Color4F::BLUE);
+
+        auto func = [&onSolidGround](PhysicsWorld& world, const PhysicsRayCastInfo& info, void* data) -> bool {
+            if (info.shape->getBody()->getNode()->getName() == "ground") {
+                onSolidGround = true;
+                return false; // 停止射线检测
+            }
+            return true; // 继续射线检测
+            };
+
+        Director::getInstance()->getRunningScene()->getPhysicsWorld()->rayCast(func, startPoint, endPoint, nullptr);
+
+        if (onSolidGround) {
+            break; // 如果检测到玩家在地面上，跳出循环
+        }
+    }
 
     return onSolidGround;
 }
+*/
 
+bool Player::isOnSolidGround() {//优化后判定
+    float rayLength = 1.0f; // 射线长度固定为1像素
+    Vec2 centerPoint = this->getPosition();
+
+    // 获取角色的大小
+    cocos2d::Size playerSize = this->getContentSize();
+
+    // 定义射线的起始点
+    Vec2 leftStartPoint = centerPoint - Vec2(playerSize.width * 0.5f - 42, playerSize.height * 0.5f - 47);
+    Vec2 middleStartPoint = centerPoint - Vec2(0, playerSize.height * 0.5f - 47);
+    Vec2 rightStartPoint = centerPoint + Vec2(playerSize.width * 0.5f - 42, -playerSize.height * 0.5f + 47);
+
+    std::vector<cocos2d::Vec2> startPoints = { leftStartPoint, middleStartPoint, rightStartPoint };
+
+    bool onSolidGround = false; // 默认情况下假设玩家不在地面上
+
+    for (const auto& startPoint : startPoints) {
+        cocos2d::Vec2 endPoint = startPoint - cocos2d::Vec2(0, rayLength); // 从startPoint向下延长1像素
+
+        auto func = [&onSolidGround](PhysicsWorld& world, const PhysicsRayCastInfo& info, void* data) -> bool {
+            if (info.shape->getBody()->getNode()->getName() == "ground") {
+                onSolidGround = true;
+                return false; // 停止射线检测
+            }
+            return true; // 继续射线检测
+            };
+
+        Director::getInstance()->getRunningScene()->getPhysicsWorld()->rayCast(func, startPoint, endPoint, nullptr);
+
+        if (onSolidGround) {
+            break; // 如果检测到玩家在地面上，跳出循环
+        }
+    }
+
+    return onSolidGround;
+}
 
 
 void Player::changeState(PlayerState newState) {
@@ -159,7 +227,15 @@ void Player::changeState(PlayerState newState) {
         break;
     case PlayerState::DASH:
         this->setScaleX(facingDirection);
-        playDashAnimation();
+        if (getDashDirection() == cocos2d::Vec2(0, 1) || getDashDirection() == cocos2d::Vec2(0, -1))
+        {
+            playDashUpAndDownAnimation();
+        }
+        else {
+            playDashAnimation();
+
+        }       
+
         break;
         // 处理其他状态...
     }
@@ -390,7 +466,10 @@ void Player::update(float dt) {
         }
         return;  // 如果玩家正在冲刺，跳过所有其他的状态更新
     }
-
+    CCLOG("canDash:%d",canDash);
+    if ( previousState == PlayerState::DASH) {
+        this->getPhysicsBody()->setGravityEnable(true);
+    }
     if (canClimb == 0 && (currentState == PlayerState::HOLDWALL || currentState == PlayerState::HOLDWALLUP || currentState == PlayerState::HOLDWALLDOWN)&&currentState!= PlayerState::DASH) {
         this->getPhysicsBody()->setGravityEnable(true);
         velocity.y = -1;
@@ -447,19 +526,23 @@ void Player::update(float dt) {
         CCLOG("Player state changed to LOOKUP");
         return;
     }    
+
     //冲刺(默认)
-    if (keyStates[PlayerKey::DASH] && canDash&& !keyStates[PlayerKey::LEFT]&& !keyStates[PlayerKey::RIGHT]) {
+    if (keyStates[PlayerKey::DASH] && canDash  ) {
         this->getPhysicsBody()->setGravityEnable(false);
+        canDash = 0;
         velocity.x = 0; velocity.y = 0;
         this->getPhysicsBody()->setVelocity(Vec2(0, 0));
         changeState(PlayerState::DASH);
         CCLOG("Player state changed to DASH");
         return;
     }
+
+
     //落地
     if ((previousState == PlayerState::DROP && isOnGround)||currentState== PlayerState::LANDING) {
         changeState(PlayerState::LANDING);        
-        CCLOG("Player state changed to LANDING");
+        //CCLOG("Player state changed to LANDING");
         return;
     }
     //推墙
@@ -479,7 +562,7 @@ void Player::update(float dt) {
     if ((currentState == PlayerState::HOLDWALL || currentState == PlayerState::HOLDWALLUP || currentState == PlayerState::HOLDWALLDOWN) && keyStates[PlayerKey::JUMP]) {
         this->getPhysicsBody()->setGravityEnable(true);
         velocity.y = 0;
-        this->getPhysicsBody()->applyImpulse(Vec2(-10, 30) * facingDirection);//使用冲量
+        this->getPhysicsBody()->applyImpulse(Vec2(-30, 90) * facingDirection);//使用冲量
         changeState(PlayerState::HOLDWALLJUMP);
         CCLOG("Player state changed to HOLDWALLJUMP");
         return;
@@ -538,7 +621,7 @@ void Player::update(float dt) {
    
     if (keyStates[PlayerKey::JUMP] && isOnGround ) {
         //velocity.y = JUMP_SPEED;//直接设置速度
-        this->getPhysicsBody()->applyImpulse(Vec2(0, 40));//使用冲量
+        this->getPhysicsBody()->applyImpulse(Vec2(0, 350));//使用冲量
         isOnGround = false;        
 
         changeState(PlayerState::JUMPING);
@@ -552,7 +635,7 @@ void Player::update(float dt) {
     if (isOnGround) {
         if (velocity.x == 0) {
             changeState(PlayerState::IDLE);
-            //CCLOG("Player state changed to IDLE");
+            CCLOG("Player state changed to IDLE");
             return;
         }
         else if (velocity.x > 0) {            
@@ -594,10 +677,10 @@ void Player::setOnGround(bool a) {
     this->isOnGround = a;//设置isOnGround状态
     if (a)
     {
-        CCLOG("on groud");
+        //CCLOG("on groud");
     }
     else {
-        CCLOG("not on groud");
+        //CCLOG("not on groud");
     }
 }
 
@@ -1106,53 +1189,16 @@ void Player::playHoldWallJumpAnimation() {//爬墙跳跃
     CCLOG("Finished setting up HoldWallJump animation");
 
 }
-/*
-void Player::playDashAnimation() {//冲刺
 
-    isDashing = true;
-    // 停止所有正在运行的动画（确保不会与其他动画冲突）
-    this->stopAllActions();
-    // 开始冲刺
-    this->startDashing();
-
-
-    Vector<SpriteFrame*> idleFrames;
-    auto cache = SpriteFrameCache::getInstance();
-
-    for (int i = 0; i <= 8; i++) {
-        std::string frameName = StringUtils::format("dashmove_00-%d.png", i);
-        auto frame = cache->getSpriteFrameByName(frameName);
-        if (frame) {
-            idleFrames.pushBack(frame);
-        }
-        if (i == 2 || i == 5) {
-            std::string frameName = StringUtils::format("shadow_00.png");
-            auto frame = cache->getSpriteFrameByName(frameName);
-            if (frame) {
-                idleFrames.pushBack(frame);
-            }
-        }
-    }
-
-    auto animation = Animation::createWithSpriteFrames(idleFrames, 0.05f);
-    auto animate = Animate::create(animation);
-
-    // 创建一个CallFunc动作，当其被执行时，会调用指定的lambda函数
-    auto enableGravity = CallFunc::create([this]() {
-        this->getPhysicsBody()->setGravityEnable(true);
-        this->isDashing = false;  // 如果您希望在动画结束时结束冲刺状态
-        });
-
-    // 使用Sequence动作将动画和CallFunc动作组合起来
-    auto sequence = Sequence::create(animate, enableGravity, nullptr);
-
-    this->runAction(sequence);
-}
-*/
 void Player::playDashAnimation() {
     isDashing = true;
     this->stopAllActions();
-    this->startDashing();
+
+    // 获取冲刺方向
+    cocos2d::Vec2 dashDirection = getDashDirection();
+
+    // 开始冲刺
+    this->startDashing(dashDirection);  // 传递冲刺方向到 startDashing 函数
 
     Vector<SpriteFrame*> idleFrames;
     auto cache = SpriteFrameCache::getInstance();
@@ -1172,9 +1218,9 @@ void Player::playDashAnimation() {
     auto generateShadow = CallFunc::create([this, cache]() {
         auto shadow = Sprite::createWithSpriteFrameName("shadow_00.png");
         // 根据facingDirection翻转shadow
-            if (this->facingDirection == -1) {
-                shadow->setFlippedX(true);
-            }
+        if (this->facingDirection == -1) {
+            shadow->setFlippedX(true);
+        }
 
         shadow->setPosition(this->getPosition());
         this->getParent()->addChild(shadow, this->getLocalZOrder() - 1);
@@ -1193,7 +1239,7 @@ void Player::playDashAnimation() {
     auto delayForSecondShadow = DelayTime::create(0.10f);  // 0.05 * 2
     auto shadowSequence = Sequence::create(delayForFirstShadow, generateShadow->clone(), delayForSecondShadow, generateShadow->clone(), nullptr);
 
-    // 开始冲刺后重启重力
+    // 结束冲刺后重启重力
     auto enableGravity = CallFunc::create([this]() {
         this->getPhysicsBody()->setGravityEnable(true);
         this->isDashing = false;
@@ -1205,14 +1251,14 @@ void Player::playDashAnimation() {
     this->runAction(shadowSequence);
 }
 
-void Player::startDashing() {
+void Player::startDashing(const cocos2d::Vec2& dashDirection) {
     int segments = 11;  // 冲刺段数
     float segmentLength = 20.0f;  // 每段的长度
 
     // 使用schedule方法进行冲刺
-    this->schedule([this, segments, segmentLength](float dt) mutable {
+    this->schedule([this, segments, segmentLength, dashDirection](float dt) mutable {  // 这里添加了dashDirection
         // 计算期望的位置
-        cocos2d::Vec2 desiredPosition = this->getPosition() + cocos2d::Vec2(segmentLength, 0)* facingDirection;
+        cocos2d::Vec2 desiredPosition = this->getPosition() + dashDirection * segmentLength;  // 使用dashDirection
 
         // 使用adjustMovePosition函数来检查是否有障碍物
         cocos2d::Vec2 adjustedPosition = this->adjustMovePosition(desiredPosition);
@@ -1231,5 +1277,96 @@ void Player::startDashing() {
         if (segments <= 0) {
             this->unschedule("DashingKey");
         }
-        }, 0.05f, "DashingKey");  // 0.1秒是每次移动的时间间隔
+        }, 0.05f, "DashingKey");
+}
+
+cocos2d::Vec2 Player::getDashDirection() {
+    // 使用成员变量来检查按键状态
+    bool isUp = keyStates[PlayerKey::UP];
+    bool isDown = keyStates[PlayerKey::DOWN];
+    bool isLeft = keyStates[PlayerKey::LEFT];
+    bool isRight = keyStates[PlayerKey::RIGHT];
+
+    cocos2d::Vec2 direction(0,0);
+
+    if (isUp) {
+        direction.y = 1;
+    }
+    else if (isDown) {
+        direction.y = -1;
+    }
+
+    if (isLeft) {
+        direction.x = -1;
+    }
+    else if (isRight) {
+        direction.x = 1;
+    }
+    else if (!isUp && !isDown) {
+        // 如果没有按下其他方向键，则使用默认方向
+        direction.x = facingDirection;
+    }
+
+    return direction.getNormalized();  // 返回归一化的方向向量
+}
+
+void Player::playDashUpAndDownAnimation() {
+    isDashing = true;
+    this->stopAllActions();
+
+    // 获取冲刺方向
+    cocos2d::Vec2 dashDirection = getDashDirection();
+
+    // 开始冲刺
+    this->startDashing(dashDirection);  // 传递冲刺方向到 startDashing 函数
+
+    Vector<SpriteFrame*> idleFrames;
+    auto cache = SpriteFrameCache::getInstance();
+
+    for (int i = 0; i <= 8; i++) {
+        std::string frameName = StringUtils::format("dashup_00-%d.png", i);
+        auto frame = cache->getSpriteFrameByName(frameName);
+        if (frame) {
+            idleFrames.pushBack(frame);
+        }
+    }
+
+    auto animation = Animation::createWithSpriteFrames(idleFrames, 0.05f);
+    auto animate = Animate::create(animation);
+
+    // 创建一个CallFunc动作，在动画达到特定帧时生成shadow效果
+    auto generateShadow = CallFunc::create([this, cache]() {
+        auto shadow = Sprite::createWithSpriteFrameName("shadow_00.png");
+        // 根据facingDirection翻转shadow
+        if (this->facingDirection == -1) {
+            shadow->setFlippedX(true);
+        }
+
+        shadow->setPosition(this->getPosition());
+        this->getParent()->addChild(shadow, this->getLocalZOrder() - 1);
+
+        // 设置shadow的持续时间和消失效果
+        auto fadeOut = FadeOut::create(0.5f);
+        auto remove = CallFunc::create([shadow]() {
+            shadow->removeFromParent();
+            });
+        auto shadowSequence = Sequence::create(fadeOut, remove, nullptr);
+        shadow->runAction(shadowSequence);
+        });
+
+    // 在动画的特定时间调用generateShadow
+    auto delayForFirstShadow = DelayTime::create(0.20f);  // 0.05 * 4
+    auto delayForSecondShadow = DelayTime::create(0.10f);  // 0.05 * 2
+    auto shadowSequence = Sequence::create(delayForFirstShadow, generateShadow->clone(), delayForSecondShadow, generateShadow->clone(), nullptr);
+
+    // 结束冲刺后重启重力
+    auto enableGravity = CallFunc::create([this]() {
+        this->getPhysicsBody()->setGravityEnable(true);
+        this->isDashing = false;
+        });
+    auto sequence = Sequence::create(animate, enableGravity, nullptr);
+
+    // 运行两个动作
+    this->runAction(sequence);
+    this->runAction(shadowSequence);
 }

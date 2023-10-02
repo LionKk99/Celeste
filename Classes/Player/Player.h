@@ -53,7 +53,7 @@ public:
     bool isOnGround=0;    
     bool isClimbing=0;
     bool isWallSliding=0;
-    bool canDash=1;//也作为角色是否blue的判断
+    bool canDash=0;//也作为角色是否blue的判断
     bool canClimb=0;//作为角色能否爬墙的判断
     
 
@@ -72,7 +72,7 @@ public:
     bool isDashing;
     float dashTimer;
     static const float DASH_DURATION;
-
+    cocos2d::Vec2 getDashDirection();
     // 物理属性         
     float CLINMB_MAXSPEED = 100;
     
@@ -103,6 +103,7 @@ public:
     void playHoldWallDownAnimation();//爬墙向下
     void playHoldWallJumpAnimation();//爬墙跳跃
     void playDashAnimation();//冲刺动画
+    void playDashUpAndDownAnimation();//冲刺向上向下的特殊动画
     //过渡动画
     void playMoveTurnAnimation();//转向动画
     void playCrouchToIdleAnimation();//蹲姿到静止
@@ -112,7 +113,7 @@ public:
 
     bool isAlive=1;
 
-    void startDashing();
+    void startDashing(const cocos2d::Vec2& dashDirection);
 
     std::map<PlayerKey, bool> keyStates;//检测用户输入
     
