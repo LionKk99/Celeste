@@ -162,13 +162,13 @@ bool AppDelegate::applicationDidFinishLaunching() {
     SpriteFrameCache::getInstance()->addSpriteFramesWithFile("movement/slidingwall/slidingwall.plist", "movement/slidingwall/slidingwall.png");//ª¨¬‰º”‘ÿ
     SpriteFrameCache::getInstance()->addSpriteFramesWithFile("movement/slidingwall/Bslidingwall.plist", "movement/slidingwall/Bslidingwall.png");//ª¨¬‰º”‘ÿ
 
-    
+    SpriteFrameCache::getInstance()->addSpriteFramesWithFile("eff/black.plist", "eff/black.png");//∫⁄ƒªº”‘ÿ
    //≤‚ ‘plist∫Õpngº”‘ÿ
-    /*
+  /*
     Vector<SpriteFrame*> idleFrames;
     auto cache = SpriteFrameCache::getInstance();
-    for (int i = 0; i <= 5; i++) {
-        std::string frameName = StringUtils::format("landing_00-%d.png", i);
+    for (int i = 0; i <= 23; i++) {
+        std::string frameName = StringUtils::format("death_00-%d.png", i);
         auto frame = cache->getSpriteFrameByName(frameName);
         if (frame) {
             idleFrames.pushBack(frame);

@@ -1,6 +1,6 @@
 #include "Player.h"
 USING_NS_CC;
-const float Player::DASH_DURATION = 0.80f;
+const float Player::DASH_DURATION = 0.7f;
 Player::Player()
     : keyStates{
         {PlayerKey::LEFT, false},
@@ -234,8 +234,10 @@ void Player::changeState(PlayerState newState) {
         else {
             playDashAnimation();
 
-        }       
-
+        }      
+        break;
+    case PlayerState::DYING:
+        playDeathAnimation();
         break;
         // 处理其他状态...
     }
@@ -458,6 +460,13 @@ cocos2d::Vec2 Player::adjustMovePosition(const cocos2d::Vec2& desiredPosition) {
 */
 
 void Player::update(float dt) {
+    if (!isAlive) { return; }//角色死亡直接返回
+    float deathThreshold = 120; // 你想要的死亡阈值
+    if (this->getPositionY() < deathThreshold) {//检查角色高度
+        // 进入死亡状态
+        isAlive = 0;
+        changeState(PlayerState::DYING);
+    }
     if (isDashing) {
         dashTimer += dt;
         if (dashTimer >= DASH_DURATION) {
@@ -466,7 +475,7 @@ void Player::update(float dt) {
         }
         return;  // 如果玩家正在冲刺，跳过所有其他的状态更新
     }
-    CCLOG("canDash:%d",canDash);
+   // CCLOG("canDash:%d",canDash);
     if ( previousState == PlayerState::DASH) {
         this->getPhysicsBody()->setGravityEnable(true);
     }
@@ -635,7 +644,7 @@ void Player::update(float dt) {
     if (isOnGround) {
         if (velocity.x == 0) {
             changeState(PlayerState::IDLE);
-            CCLOG("Player state changed to IDLE");
+            //CCLOG("Player state changed to IDLE");
             return;
         }
         else if (velocity.x > 0) {            
@@ -1217,6 +1226,7 @@ void Player::playDashAnimation() {
     // 创建一个CallFunc动作，在动画达到特定帧时生成shadow效果
     auto generateShadow = CallFunc::create([this, cache]() {
         auto shadow = Sprite::createWithSpriteFrameName("shadow_00.png");
+        shadow->setScale(0.80);
         // 根据facingDirection翻转shadow
         if (this->facingDirection == -1) {
             shadow->setFlippedX(true);
@@ -1226,7 +1236,7 @@ void Player::playDashAnimation() {
         this->getParent()->addChild(shadow, this->getLocalZOrder() - 1);
 
         // 设置shadow的持续时间和消失效果
-        auto fadeOut = FadeOut::create(0.5f);
+        auto fadeOut = FadeOut::create(0.7f);
         auto remove = CallFunc::create([shadow]() {
             shadow->removeFromParent();
             });
@@ -1235,14 +1245,14 @@ void Player::playDashAnimation() {
         });
 
     // 在动画的特定时间调用generateShadow
-    auto delayForFirstShadow = DelayTime::create(0.20f);  // 0.05 * 4
-    auto delayForSecondShadow = DelayTime::create(0.10f);  // 0.05 * 2
+    auto delayForFirstShadow = DelayTime::create(0.15f);  // 0.05 * 4
+    auto delayForSecondShadow = DelayTime::create(0.05f);  // 0.05 * 2
     auto shadowSequence = Sequence::create(delayForFirstShadow, generateShadow->clone(), delayForSecondShadow, generateShadow->clone(), nullptr);
 
     // 结束冲刺后重启重力
     auto enableGravity = CallFunc::create([this]() {
         this->getPhysicsBody()->setGravityEnable(true);
-        this->isDashing = false;
+       // this->isDashing = false;
         });
     auto sequence = Sequence::create(animate, enableGravity, nullptr);
 
@@ -1277,7 +1287,7 @@ void Player::startDashing(const cocos2d::Vec2& dashDirection) {
         if (segments <= 0) {
             this->unschedule("DashingKey");
         }
-        }, 0.05f, "DashingKey");
+        }, 0.02f, "DashingKey");
 }
 
 cocos2d::Vec2 Player::getDashDirection() {
@@ -1362,7 +1372,7 @@ void Player::playDashUpAndDownAnimation() {
     // 结束冲刺后重启重力
     auto enableGravity = CallFunc::create([this]() {
         this->getPhysicsBody()->setGravityEnable(true);
-        this->isDashing = false;
+        //this->isDashing = false;
         });
     auto sequence = Sequence::create(animate, enableGravity, nullptr);
 
@@ -1370,3 +1380,124 @@ void Player::playDashUpAndDownAnimation() {
     this->runAction(sequence);
     this->runAction(shadowSequence);
 }
+
+void Player::playRespawnAnimation() {
+    CCLOG("Starting Respawn animation");
+    velocity = Vec2::ZERO;
+    this->getPhysicsBody()->setVelocity(Vec2::ZERO);
+    // 设置角色的位置
+    cocos2d::Vec2 respawnPosition = Vec2(1280/2,720/2); // 重生点位置
+    this->setPosition(respawnPosition);
+
+    // 设置缩放因子为0.80
+    this->setScale(0.80);
+
+    this->stopAllActions();
+    Vector<SpriteFrame*> idleFrames;
+    auto cache = SpriteFrameCache::getInstance();
+
+    for (int i = 0; i <= 17; i++) {
+        std::string frameName = StringUtils::format("Respawn_00-%d.png", i);
+        auto frame = cache->getSpriteFrameByName(frameName);
+        if (frame) {
+            idleFrames.pushBack(frame);
+        }
+    }
+
+    auto animation = Animation::createWithSpriteFrames(idleFrames, 0.07f);
+    auto animate = Animate::create(animation);
+
+    // 创建一个CallFunc动作，在动画结束后设置isAlive为1
+    auto setAliveTrue = CallFunc::create([this]() {
+        this->setScale(0.8); // 或者其他原始缩放值
+        this->isAlive = 1;
+        this->getPhysicsBody()->setGravityEnable(true);//恢复重力
+        CCLOG("isAlive set to true");
+        });
+
+    // 使用Sequence动作将动画和CallFunc动作连接起来
+    auto sequence = Sequence::create(animate, setAliveTrue, nullptr);
+    this->runAction(sequence);
+
+    CCLOG("Finished setting up Respawn animation");
+}
+
+
+void Player::playDeathAnimation() {//死亡
+    CCLOG("Starting Death animation");
+    this->stopAllActions();
+    
+    // Set the player's velocity to zero
+    this->getPhysicsBody()->setVelocity(Vec2::ZERO);
+    velocity = Vec2::ZERO;
+    // Disable gravity for the player
+    this->getPhysicsBody()->setGravityEnable(false);
+    // Set the player's Y position to 100    
+    this->setPositionY(300);//动画看得清
+    //this->setPositionX(500);//动画看得清
+
+    // 设置缩放因子为0.80
+    this->setScale(0.80);
+
+    Vector<SpriteFrame*> idleFrames;
+    auto cache = SpriteFrameCache::getInstance();
+
+    for (int i = 0; i <= 23; i++) {
+        std::string frameName = StringUtils::format("death_00-%d.png", i);
+        auto frame = cache->getSpriteFrameByName(frameName);
+        if (frame) {
+            idleFrames.pushBack(frame);
+        }
+    }
+
+    auto animation = Animation::createWithSpriteFrames(idleFrames, 0.07f);
+    auto animate = Animate::create(animation);
+
+    // 在Death动画结束后调用playBlackAnimation
+    auto callBlackAnimation = CallFunc::create([this]() {
+        this->setScale(0.80);
+        this->playBlackAnimation();
+        });
+
+    auto sequence = Sequence::create(animate, callBlackAnimation, nullptr);
+    this->runAction(sequence);
+    CCLOG("Finished setting up Death animation");
+}
+
+
+void Player::playBlackAnimation() {
+    CCLOG("Starting Black animation");
+    Vector<SpriteFrame*> idleFrames;
+    auto cache = SpriteFrameCache::getInstance();
+
+    for (int i = 0; i <= 9; i++) {
+        std::string frameName = StringUtils::format("black_0%d.png", i);
+        auto frame = cache->getSpriteFrameByName(frameName);
+        if (frame) {
+            idleFrames.pushBack(frame);
+        }
+    }
+
+    auto blackSprite = Sprite::createWithSpriteFrame(idleFrames.front());  // 使用第一帧初始化
+    blackSprite->setPosition(Director::getInstance()->getVisibleSize() / 2);  // 设置为屏幕中心
+
+    auto animation = Animation::createWithSpriteFrames(idleFrames, 0.07f);
+    auto animate = Animate::create(animation);
+    auto reverseAnimate = animate->reverse();
+
+    // 在Black动画结束后调用playRespawnAnimation
+    auto callRespawnAnimation = CallFunc::create([this]() {
+        this->playRespawnAnimation();
+        });
+
+    auto removeBlackSprite = CallFunc::create([blackSprite]() {
+        blackSprite->removeFromParent();
+        });
+
+    auto finalSequence = Sequence::create(reverseAnimate, animate->clone(), callRespawnAnimation, removeBlackSprite, nullptr);
+
+    blackSprite->runAction(finalSequence);
+    this->getParent()->addChild(blackSprite, this->getLocalZOrder() + 1);  // 添加到父场景，确保其位于玩家之上
+    CCLOG("Finished setting up Black animation");
+}
+

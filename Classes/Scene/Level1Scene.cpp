@@ -26,6 +26,22 @@ bool Level1Scene::init() {
     Size visibleSize = Director::getInstance()->getVisibleSize();
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
 
+    //创建左右边界
+    auto leftEdge = PhysicsBody::createEdgeSegment(Vec2(origin.x, origin.y), Vec2(origin.x, origin.y + visibleSize.height), PHYSICSBODY_MATERIAL_DEFAULT, 1);
+    leftEdge->setName("edge");
+    leftEdge->setDynamic(false);
+    auto leftEdgeNode = Node::create();
+    leftEdgeNode->setPhysicsBody(leftEdge);
+    this->addChild(leftEdgeNode);
+
+    auto rightEdge = PhysicsBody::createEdgeSegment(Vec2(origin.x + visibleSize.width, origin.y), Vec2(origin.x + visibleSize.width, origin.y + visibleSize.height), PHYSICSBODY_MATERIAL_DEFAULT, 1);
+    rightEdge->setName("edge");
+    rightEdge->setDynamic(false);
+    auto rightEdgeNode = Node::create();
+    rightEdgeNode->setPhysicsBody(rightEdge);
+    this->addChild(rightEdgeNode);
+
+    /*
     // 创建一个物理边界包围盒（边界）
     auto edgeBody = PhysicsBody::createEdgeBox(visibleSize, PHYSICSBODY_MATERIAL_DEFAULT, 1, Vec2(visibleSize.width / 2 + origin.x, visibleSize.height / 2 + origin.y));
     edgeBody->setDynamic(false); // 确保边界不会移动
@@ -37,7 +53,7 @@ bool Level1Scene::init() {
 
     // 添加节点到场景
     this->addChild(edgeNode);
-
+*/
     
     // 创建Player对象
     auto player = Player::create("movement/idle/Idle_00/Idle_00-0.png"); // 这只是一个示例，您可能需要为其提供一个初始的精灵图片路径
@@ -106,11 +122,19 @@ void Level1Scene::loadLevel() {
     auto physicsBody = PhysicsBody::create();
 
     // 第一个矩形（下方）
+    /*正常位置
     Vec2 rectangle1[] = {
         Vec2(-540 * 1.25, -100 * 1.25),
         Vec2(540 * 1.25, -100 * 1.25),
         Vec2(540 * 1.25, 90 * 1.25),
         Vec2(-540 * 1.25, 90 * 1.25)
+    };*/
+    //测试位置
+    Vec2 rectangle1[] = {
+        Vec2(-200 * 1.25, -100 * 1.25),
+        Vec2(540 * 1.25, -100 * 1.25),
+        Vec2(540 * 1.25, 90 * 1.25),
+        Vec2(-200 * 1.25, 90 * 1.25)
     };
     auto shape1 = PhysicsShapePolygon::create(rectangle1, 4);
     shape1->setRestitution(0.0f);  // 设置反弹系数为0

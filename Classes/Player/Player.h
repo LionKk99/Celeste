@@ -47,7 +47,7 @@ public:
     // 基础属性
     cocos2d::Vec2 position;//位置    
     cocos2d::Vec2 velocity;//速度  
-    float accelerationX = 200.0f;//水平加速度
+    float accelerationX = 500.0f;//水平加速度
 
     // 状态判定
     bool isOnGround=0;    
@@ -68,7 +68,7 @@ public:
     bool isJumping = false; // 用于跟踪玩家是否正在跳跃
 
     // 冲刺
-    float dashDistance = 200;
+    float dashDistance = 220;
     bool isDashing;
     float dashTimer;
     static const float DASH_DURATION;
@@ -104,10 +104,14 @@ public:
     void playHoldWallJumpAnimation();//爬墙跳跃
     void playDashAnimation();//冲刺动画
     void playDashUpAndDownAnimation();//冲刺向上向下的特殊动画
+    void playDeathAnimation();//死亡
+    void playRespawnAnimation();//重生
     //过渡动画
     void playMoveTurnAnimation();//转向动画
     void playCrouchToIdleAnimation();//蹲姿到静止
     void playLandingAnimation();//落地动画
+    //转场动画
+    void playBlackAnimation();//黑幕过渡
     //
     int facingDirection=1;//面向方向（向右为1，向左为-1）
 
