@@ -18,6 +18,7 @@ cocos2d::Scene* Level1Scene::createScene() {
 
 
 bool Level1Scene::init() {
+    CCLOG("Starting Level1Scene::init");  // 添加这一行
     if (!Layer::init()) {
         return false;
     }    
@@ -99,11 +100,12 @@ bool Level1Scene::init() {
 
     // 加载这一关的特定内容，例如背景、障碍物等
     loadLevel();
-
+    CCLOG("Finished Level1Scene::init");  // 添加这一行
     return true;
 }
 
 void Level1Scene::loadLevel() {
+    CCLOG("Starting Level1Scene::loadLevel");  // 添加这一行
     // 添加背景
     auto background = Sprite::create("level/xumu/L0/xumu0_B.png");
     background->setAnchorPoint(Vec2(0.5, 0.5));
@@ -168,6 +170,6 @@ void Level1Scene::loadLevel() {
     platform->setPhysicsBody(physicsBody);     
     platform->getPhysicsBody()->getFirstShape()->setFriction(0.5f);//摩擦系数
     this->addChild(platform);
-
+    CCLOG("Finished Level1Scene::loadLevel");  // 添加这一行
 }
 

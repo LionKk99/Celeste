@@ -85,9 +85,10 @@ bool MainMenuScene::init()
     this->addChild(newGame);
     newGame->addTouchEventListener([](Ref* sender, cocos2d::ui::Widget::TouchEventType type) {
         if (type == cocos2d::ui::Widget::TouchEventType::ENDED) {
-            // 切换到 Level1Scene
-            auto scene = Level1Scene::createScene(); // 假设你在Level1Scene中有一个静态的 createScene 方法来创建这个场景
-            Director::getInstance()->replaceScene(TransitionFade::create(1.0, scene)); // 使用一个渐隐渐现的过渡动画，持续1秒
+            // 切换到 Level1Scene，不使用渐变过渡
+            auto scene = Level1Scene::createScene();
+            Director::getInstance()->replaceScene(scene);
+            //Director::getInstance()->replaceScene(TransitionFade::create(1.0, scene)); // 使用一个渐隐渐现的过渡动画，持续1秒(未知错误)
         }
         });   
 

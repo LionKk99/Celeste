@@ -87,7 +87,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
     director->setDisplayStats(true);
 
     // set FPS. the default value is 1.0/60 if you don't call this
-    director->setAnimationInterval(1.0f / 60);
+    director->setAnimationInterval(1.0f / 60);    
 
     // Set the design resolution
     glview->setDesignResolutionSize(designResolutionSize.width, designResolutionSize.height, ResolutionPolicy::NO_BORDER);
@@ -186,12 +186,12 @@ bool AppDelegate::applicationDidFinishLaunching() {
     
 
     // create a scene. it's an autorelease object//生成主界面场景
-    //auto scene = MainMenuScene::create();
-    //director->runWithScene(scene);
+    auto scene = MainMenuScene::create();
+    director->runWithScene(scene);
 
     //测试第一关
-    auto scene = Level1Scene::createScene();
-    Director::getInstance()->replaceScene(scene);
+   //auto scene = Level1Scene::createScene();
+   //Director::getInstance()->replaceScene(scene);
 
     
 

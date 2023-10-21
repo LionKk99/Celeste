@@ -1,6 +1,6 @@
 #include "Player.h"
 USING_NS_CC;
-const float Player::DASH_DURATION = 0.7f;
+const float Player::DASH_DURATION = 0.5f;//冲刺总时间，包括后摇
 Player::Player()
     : keyStates{
         {PlayerKey::LEFT, false},
@@ -1245,8 +1245,8 @@ void Player::playDashAnimation() {
         });
 
     // 在动画的特定时间调用generateShadow
-    auto delayForFirstShadow = DelayTime::create(0.15f);  // 0.05 * 4
-    auto delayForSecondShadow = DelayTime::create(0.05f);  // 0.05 * 2
+    auto delayForFirstShadow = DelayTime::create(0.2f);  // 0.05 * 4
+    auto delayForSecondShadow = DelayTime::create(0.1f);  // 0.05 * 2
     auto shadowSequence = Sequence::create(delayForFirstShadow, generateShadow->clone(), delayForSecondShadow, generateShadow->clone(), nullptr);
 
     // 结束冲刺后重启重力
@@ -1260,7 +1260,48 @@ void Player::playDashAnimation() {
     this->runAction(sequence);
     this->runAction(shadowSequence);
 }
+//新方法，去除多段检测，先一次性计算出合适的移动距离
+void Player::startDashing(const cocos2d::Vec2& dashDirection) {
+    float rayLength = 220.0f;  // 冲刺的射线长度
 
+    // 中心点
+    cocos2d::Vec2 centerPoint = this->getPosition();
+    cocos2d::Vec2 endPoint = centerPoint + dashDirection.getNormalized() * rayLength;
+
+    bool collisionDetected = false;
+    cocos2d::Vec2 collisionPoint;
+
+    auto rayCallback = [&collisionDetected, &collisionPoint](PhysicsWorld& world, const PhysicsRayCastInfo& info, void* data) -> bool {
+        if (info.shape->getBody()->getNode()->getName() != "player") {
+            collisionDetected = true;
+            collisionPoint = info.contact;
+            return false;
+        }
+        return true;
+        };
+
+    Director::getInstance()->getRunningScene()->getPhysicsWorld()->rayCast(rayCallback, centerPoint, endPoint, nullptr);
+
+    if (collisionDetected) {
+        // 计算玩家与碰撞点之间的距离
+        float distance = centerPoint.distance(collisionPoint) - 40; // 减少40像素以防止碰撞
+        endPoint = centerPoint + dashDirection.getNormalized() * distance;
+    }
+
+    // 计算所需的时间
+    float time = rayLength / 500.0f;  // 500像素每秒
+    auto moveAction = cocos2d::MoveTo::create(time, endPoint);
+   
+    // 确保总的冲刺时间为0.4秒
+    float remainingTime = 0.4f - time;
+    auto delayAction = cocos2d::DelayTime::create(remainingTime > 0 ? remainingTime : 0);
+
+    // 创建一个动作序列
+    auto sequence = cocos2d::Sequence::create(moveAction, delayAction, nullptr);
+    this->runAction(sequence);
+}
+
+/*
 void Player::startDashing(const cocos2d::Vec2& dashDirection) {
     int segments = 11;  // 冲刺段数
     float segmentLength = 20.0f;  // 每段的长度
@@ -1287,8 +1328,9 @@ void Player::startDashing(const cocos2d::Vec2& dashDirection) {
         if (segments <= 0) {
             this->unschedule("DashingKey");
         }
-        }, 0.02f, "DashingKey");
+        }, 0.04f, "DashingKey");
 }
+*/
 
 cocos2d::Vec2 Player::getDashDirection() {
     // 使用成员变量来检查按键状态
@@ -1381,12 +1423,12 @@ void Player::playDashUpAndDownAnimation() {
     this->runAction(shadowSequence);
 }
 
-void Player::playRespawnAnimation() {
+void Player::playRespawnAnimation() {//复活动画
     CCLOG("Starting Respawn animation");
     velocity = Vec2::ZERO;
     this->getPhysicsBody()->setVelocity(Vec2::ZERO);
     // 设置角色的位置
-    cocos2d::Vec2 respawnPosition = Vec2(1280/2,720/2); // 重生点位置
+    cocos2d::Vec2 respawnPosition = Vec2(1280/2,720/2); // 重生点位置 这里需改为关卡的重生点
     this->setPosition(respawnPosition);
 
     // 设置缩放因子为0.80
@@ -1404,7 +1446,7 @@ void Player::playRespawnAnimation() {
         }
     }
 
-    auto animation = Animation::createWithSpriteFrames(idleFrames, 0.07f);
+    auto animation = Animation::createWithSpriteFrames(idleFrames, 0.05f);
     auto animate = Animate::create(animation);
 
     // 创建一个CallFunc动作，在动画结束后设置isAlive为1
@@ -1450,7 +1492,7 @@ void Player::playDeathAnimation() {//死亡
         }
     }
 
-    auto animation = Animation::createWithSpriteFrames(idleFrames, 0.07f);
+    auto animation = Animation::createWithSpriteFrames(idleFrames, 0.05f);
     auto animate = Animate::create(animation);
 
     // 在Death动画结束后调用playBlackAnimation
@@ -1481,7 +1523,7 @@ void Player::playBlackAnimation() {
     auto blackSprite = Sprite::createWithSpriteFrame(idleFrames.front());  // 使用第一帧初始化
     blackSprite->setPosition(Director::getInstance()->getVisibleSize() / 2);  // 设置为屏幕中心
 
-    auto animation = Animation::createWithSpriteFrames(idleFrames, 0.07f);
+    auto animation = Animation::createWithSpriteFrames(idleFrames, 0.05f);
     auto animate = Animate::create(animation);
     auto reverseAnimate = animate->reverse();
 
