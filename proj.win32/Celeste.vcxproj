@@ -821,6 +821,8 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClInclude Include="D:\Celeste\Resources\Dot\DarkBlueDot.bmp" />
     <ClInclude Include="D:\Celeste\Resources\Dot\DarkWhiteDot.bmp" />
     <ClInclude Include="D:\Celeste\Resources\Dot\WhiteDot.bmp" />
+    <ClInclude Include="D:\Celeste\Resources\eff\black.plist" />
+    <ClInclude Include="D:\Celeste\Resources\eff\black.png" />
     <ClInclude Include="D:\Celeste\Resources\eff\dashdowneff_00.plist" />
     <ClInclude Include="D:\Celeste\Resources\eff\dashdowneff_00.png" />
     <ClInclude Include="D:\Celeste\Resources\eff\dashmovedowneff_00.plist" />
@@ -997,8 +999,8 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClInclude Include="D:\Celeste\Resources\music\gameplayBGM.mp3" />
     <ClInclude Include="D:\Celeste\Resources\music\jump.wav" />
     <ClInclude Include="D:\Celeste\Resources\music\landing.wav" />
+    <ClInclude Include="D:\Celeste\Resources\music\mainmenu_background_loop.wav" />
     <ClInclude Include="D:\Celeste\Resources\music\mus_lvl0_intro_loop.wav" />
-    <ClInclude Include="D:\Celeste\Resources\music\mus_menu_levelselect_moon_loop.wav" />
     <ClInclude Include="D:\Celeste\Resources\music\revive.wav" />
     <ClInclude Include="D:\Celeste\Resources\music\savesucceed.wav" />
     <ClInclude Include="D:\Celeste\Resources\music\ui_game_hotspot_note_in.wav" />

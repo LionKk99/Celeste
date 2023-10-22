@@ -106,6 +106,15 @@ public:
     void playDashUpAndDownAnimation();//冲刺向上向下的特殊动画
     void playDeathAnimation();//死亡
     void playRespawnAnimation();//重生
+      //B动作
+    void playBDeathAnimation();//重生
+    void playBDropAnimation();//坠落动画 
+    void playBHoldWallAnimation();//爬墙
+    void playBHoldWallUpAnimation();//爬墙向上
+    void playBHoldWallDownAnimation();//爬墙向下
+    void playBHoldWallJumpAnimation();//爬墙跳跃
+    void playBJumpUpAnimation();//跳跃动画
+    void playBJumpMoveAnimation();//跳跃移动动画
     //过渡动画
     void playMoveTurnAnimation();//转向动画
     void playCrouchToIdleAnimation();//蹲姿到静止

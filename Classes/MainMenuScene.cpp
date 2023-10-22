@@ -238,3 +238,26 @@ void MainMenuScene::updateBackground(float dt)
     }
 }
 
+Scene* MainMenuScene::createScene() {
+    return MainMenuScene::create();
+}
+
+void MainMenuScene::onEnter() {
+    cocos2d::Scene::onEnter();  // 确保调用基类的onEnter
+
+    // 检查音乐的状态
+    _backgroundMusicState = cocos2d::AudioEngine::getState(_backgroundMusicId);
+
+    // 如果音乐没有播放或者播放已经完成，那么开始播放音乐(mp3格式)
+    if (_backgroundMusicState != cocos2d::AudioEngine::AudioState::PLAYING) {
+        _backgroundMusicId = cocos2d::AudioEngine::play2d("music/mainmenu_background_loop.wav", true);
+    }
+}
+
+void MainMenuScene::onExit() {
+
+    cocos2d::Scene::onExit();  // 确保调用基类的onExit
+
+    // 停止背景音乐
+    AudioEngine::stop(_backgroundMusicId);  // 注意这里的更改
+}

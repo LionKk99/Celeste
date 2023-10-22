@@ -202,10 +202,20 @@ void Player::changeState(PlayerState newState) {
         this->setScaleX(1.0f);  // 正常动画表示从右向左走
         break;                    
     case PlayerState::JUMPING:
-        playJumpUpAnimation();
+        if (canDash) {
+            playJumpUpAnimation();
+        }
+        else {
+            playBJumpUpAnimation();
+        }        
         break;
     case PlayerState::DROP:
-        playDropAnimation();
+        if (canDash) {
+            playDropAnimation();
+        }
+        else {
+            playBDropAnimation();
+        }        
         break;
     case PlayerState::PUSHWALL:
         playPushWallAnimation();        
@@ -214,16 +224,36 @@ void Player::changeState(PlayerState newState) {
         playLandingAnimation();     
         break;
     case PlayerState::HOLDWALL:
-        playHoldWallAnimation();
+        if (canDash) {
+            playHoldWallAnimation();
+        }
+        else {
+            playBHoldWallAnimation();
+        }        
         break;
     case PlayerState::HOLDWALLUP:
-        playHoldWallUpAnimation();
+        if (canDash) {
+            playHoldWallUpAnimation();
+        }
+        else {
+            playBHoldWallUpAnimation();
+        }        
         break;
     case PlayerState::HOLDWALLDOWN:
-        playHoldWallDownAnimation();
+        if (canDash) {
+            playHoldWallDownAnimation();
+        }
+        else {
+            playBHoldWallDownAnimation();
+        }        
         break;
     case PlayerState::HOLDWALLJUMP:
-        playHoldWallJumpAnimation();
+        if (canDash) {
+            playHoldWallJumpAnimation();
+        }
+        else {
+            playBHoldWallJumpAnimation();
+        }        
         break;
     case PlayerState::DASH:
         this->setScaleX(facingDirection);
@@ -237,7 +267,12 @@ void Player::changeState(PlayerState newState) {
         }      
         break;
     case PlayerState::DYING:
-        playDeathAnimation();
+        if (canDash) {
+            playDeathAnimation();
+        }
+        else {
+            playBDeathAnimation();
+        }        
         break;
         // 处理其他状态...
     }
@@ -475,6 +510,8 @@ void Player::update(float dt) {
         }
         return;  // 如果玩家正在冲刺，跳过所有其他的状态更新
     }
+   
+    
    // CCLOG("canDash:%d",canDash);
     if ( previousState == PlayerState::DASH) {
         this->getPhysicsBody()->setGravityEnable(true);
@@ -490,9 +527,11 @@ void Player::update(float dt) {
         velocity.y = -1;
         this->getPhysicsBody()->setGravityEnable(true);
     }
-   
+
     float verticalVelocity = this->getPhysicsBody()->getVelocity().y;//物理引擎中的vy
     float horizontalVelocity = this->getPhysicsBody()->getVelocity().x;//物理引擎中的vx
+
+    
     //新方法
     Vec2 desiredPosition = this->getPosition() + velocity * dt;
     Vec2 adjustedPosition = adjustMovePosition(desiredPosition);
@@ -1506,7 +1545,6 @@ void Player::playDeathAnimation() {//死亡
     CCLOG("Finished setting up Death animation");
 }
 
-
 void Player::playBlackAnimation() {
     CCLOG("Starting Black animation");
     Vector<SpriteFrame*> idleFrames;
@@ -1542,4 +1580,223 @@ void Player::playBlackAnimation() {
     this->getParent()->addChild(blackSprite, this->getLocalZOrder() + 1);  // 添加到父场景，确保其位于玩家之上
     CCLOG("Finished setting up Black animation");
 }
+//B动作
+void Player::playBDeathAnimation() {//死亡
+    CCLOG("Starting Death animation");
+    this->stopAllActions();
 
+    // Set the player's velocity to zero
+    this->getPhysicsBody()->setVelocity(Vec2::ZERO);
+    velocity = Vec2::ZERO;
+    // Disable gravity for the player
+    this->getPhysicsBody()->setGravityEnable(false);
+    // Set the player's Y position to 100    
+    this->setPositionY(300);//动画看得清
+    //this->setPositionX(500);//动画看得清
+
+    // 设置缩放因子为0.80
+    this->setScale(0.80);
+
+    Vector<SpriteFrame*> idleFrames;
+    auto cache = SpriteFrameCache::getInstance();
+
+    for (int i = 0; i <= 23; i++) {
+        std::string frameName = StringUtils::format("Bdeath_00-%d.png", i);
+        auto frame = cache->getSpriteFrameByName(frameName);
+        if (frame) {
+            idleFrames.pushBack(frame);
+        }
+    }
+
+    auto animation = Animation::createWithSpriteFrames(idleFrames, 0.05f);
+    auto animate = Animate::create(animation);
+
+    // 在Death动画结束后调用playBlackAnimation
+    auto callBlackAnimation = CallFunc::create([this]() {
+        this->setScale(0.80);
+        this->playBlackAnimation();
+        });
+
+    auto sequence = Sequence::create(animate, callBlackAnimation, nullptr);
+    this->runAction(sequence);
+    CCLOG("Finished setting up Death animation");
+}
+
+void Player::playBDropAnimation() {//坠落
+    // 停止所有正在运行的动画（确保不会与其他动画冲突）
+    this->stopAllActions();
+    Vector<SpriteFrame*> idleFrames;
+    auto cache = SpriteFrameCache::getInstance();
+
+    for (int i = 0; i <= 9; i++) {
+        std::string frameName = StringUtils::format("Bdrop_00-%d.png", i);
+        auto frame = cache->getSpriteFrameByName(frameName);
+        if (frame) {
+            idleFrames.pushBack(frame);
+        }
+    }
+    auto animation = Animation::createWithSpriteFrames(idleFrames, 0.07f);
+    auto animate = Animate::create(animation);
+    this->runAction(animate);
+
+}
+
+void Player::playBHoldWallAnimation() {//爬墙
+    this->stopAllActions();
+    //CCLOG("Starting HoldWall animation");
+    Vector<SpriteFrame*> idleFrames;
+    auto cache = SpriteFrameCache::getInstance();
+
+    for (int i = 0; i <= 6; i++) {
+        std::string frameName = StringUtils::format("Bholdwall_00-%d.png", i);
+        auto frame = cache->getSpriteFrameByName(frameName);
+        if (frame) {
+            idleFrames.pushBack(frame);
+        }
+    }
+
+    auto animation = Animation::createWithSpriteFrames(idleFrames, 0.1f);
+    auto animate = Animate::create(animation);
+    // 使用 RepeatForever 动作使动画无限循环播放
+    auto repeatForever = RepeatForever::create(animate);
+
+    this->runAction(repeatForever); // 使用 repeatForever 运行动画
+    // CCLOG("Finished setting up HoldWall animation");
+
+}
+
+void Player::playBHoldWallUpAnimation() {
+    this->stopAllActions();
+    //CCLOG("Starting HoldWall animation");
+    Vector<SpriteFrame*> idleFrames;
+    auto cache = SpriteFrameCache::getInstance();
+
+    for (int i = 0; i <= 19; i++) {
+        std::string frameName = StringUtils::format("Bholdwallup_00-%d.png", i);
+        auto frame = cache->getSpriteFrameByName(frameName);
+        if (frame) {
+            idleFrames.pushBack(frame);
+        }
+    }
+
+    auto animation = Animation::createWithSpriteFrames(idleFrames, 0.1f);
+    auto animate = Animate::create(animation);
+    // 使用 RepeatForever 动作使动画无限循环播放
+    auto repeatForever = RepeatForever::create(animate);
+
+    this->runAction(repeatForever); // 使用 repeatForever 运行动画
+    // CCLOG("Finished setting up HoldWall animation");
+
+
+
+
+}//爬墙向上
+
+void Player::playBHoldWallDownAnimation() {
+
+    this->stopAllActions();
+    //CCLOG("Starting HoldWall animation");
+    Vector<SpriteFrame*> idleFrames;
+    auto cache = SpriteFrameCache::getInstance();
+
+    for (int i = 0; i <= 4; i++) {
+        std::string frameName = StringUtils::format("Bholdwalldown_00-%d.png", i);
+        auto frame = cache->getSpriteFrameByName(frameName);
+        if (frame) {
+            idleFrames.pushBack(frame);
+        }
+    }
+
+    auto animation = Animation::createWithSpriteFrames(idleFrames, 0.1f);
+    auto animate = Animate::create(animation);
+    // 使用 RepeatForever 动作使动画无限循环播放
+    auto repeatForever = RepeatForever::create(animate);
+
+    this->runAction(repeatForever); // 使用 repeatForever 运行动画
+    // CCLOG("Finished setting up HoldWall animation");
+
+
+
+
+
+}//爬墙向下
+
+void Player::playBJumpUpAnimation() {//跳跃
+    // 停止所有正在运行的动画（确保不会与其他动画冲突）
+    CCLOG("Starting JumpUp animation");
+    this->stopAllActions();
+    Vector<SpriteFrame*> idleFrames;
+    auto cache = SpriteFrameCache::getInstance();
+
+    for (int i = 0; i <= 3; i++) {
+        std::string frameName = StringUtils::format("Bjumpup_00-%d.png", i);
+        auto frame = cache->getSpriteFrameByName(frameName);
+        if (frame) {
+            idleFrames.pushBack(frame);
+        }
+    }
+
+    for (int i = 0; i <= 1; i++) {
+        std::string frameName = StringUtils::format("BTop_00-%d.png", i);
+        auto frame = cache->getSpriteFrameByName(frameName);
+        if (frame) {
+            idleFrames.pushBack(frame);
+        }
+    }
+
+    auto animation = Animation::createWithSpriteFrames(idleFrames, 0.1f);
+    auto animate = Animate::create(animation);
+    this->runAction(animate);
+    CCLOG("Finished setting up JumpUp animation");
+
+}
+
+void Player::playBJumpMoveAnimation() {//跳跃移动
+    // 停止所有正在运行的动画（确保不会与其他动画冲突）
+    this->stopAllActions();
+    Vector<SpriteFrame*> idleFrames;
+    auto cache = SpriteFrameCache::getInstance();
+
+    for (int i = 0; i <= 3; i++) {
+        std::string frameName = StringUtils::format("Bjumpmove_00-%d.png", i);
+        auto frame = cache->getSpriteFrameByName(frameName);
+        if (frame) {
+            idleFrames.pushBack(frame);
+        }
+    }
+
+    auto animation = Animation::createWithSpriteFrames(idleFrames, 0.1f);
+    auto animate = Animate::create(animation);
+    this->runAction(animate);
+
+}
+
+void Player::playBHoldWallJumpAnimation() {//爬墙跳跃
+    // 停止所有正在运行的动画（确保不会与其他动画冲突）
+    CCLOG("Starting HoldWallJump animation");
+    this->stopAllActions();
+    Vector<SpriteFrame*> idleFrames;
+    auto cache = SpriteFrameCache::getInstance();
+
+    for (int i = 0; i <= 3; i++) {
+        std::string frameName = StringUtils::format("Bjumpmove_00-%d.png", i);
+        auto frame = cache->getSpriteFrameByName(frameName);
+        if (frame) {
+            idleFrames.pushBack(frame);
+        }
+    }
+
+    for (int i = 0; i <= 1; i++) {
+        std::string frameName = StringUtils::format("BTop_00-%d.png", i);
+        auto frame = cache->getSpriteFrameByName(frameName);
+        if (frame) {
+            idleFrames.pushBack(frame);
+        }
+    }
+
+    auto animation = Animation::createWithSpriteFrames(idleFrames, 0.1f);
+    auto animate = Animate::create(animation);
+    this->runAction(animate);
+    CCLOG("Finished setting up HoldWallJump animation");
+
+}

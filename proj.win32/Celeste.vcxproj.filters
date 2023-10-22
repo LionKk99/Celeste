@@ -51,6 +51,12 @@
     <ClInclude Include="D:\Celeste\Resources\Dot\WhiteDot.bmp">
       <Filter>Resources\Dot</Filter>
     </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\eff\black.plist">
+      <Filter>Resources\eff</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\eff\black.png">
+      <Filter>Resources\eff</Filter>
+    </ClInclude>
     <ClInclude Include="D:\Celeste\Resources\eff\dashdowneff_00.plist">
       <Filter>Resources\eff</Filter>
     </ClInclude>
@@ -579,10 +585,10 @@
     <ClInclude Include="D:\Celeste\Resources\music\landing.wav">
       <Filter>Resources\music</Filter>
     </ClInclude>
-    <ClInclude Include="D:\Celeste\Resources\music\mus_lvl0_intro_loop.wav">
+    <ClInclude Include="D:\Celeste\Resources\music\mainmenu_background_loop.wav">
       <Filter>Resources\music</Filter>
     </ClInclude>
-    <ClInclude Include="D:\Celeste\Resources\music\mus_menu_levelselect_moon_loop.wav">
+    <ClInclude Include="D:\Celeste\Resources\music\mus_lvl0_intro_loop.wav">
       <Filter>Resources\music</Filter>
     </ClInclude>
     <ClInclude Include="D:\Celeste\Resources\music\revive.wav">

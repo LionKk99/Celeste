@@ -3,6 +3,8 @@
 
 #include "cocos2d.h"
 #include "ui/CocosGUI.h"  // 为了使用UI组件
+#include "AudioEngine.h"
+#include "audio/include/AudioEngine.h"
 
 class MainMenuScene : public cocos2d::Scene
 {
@@ -11,8 +13,15 @@ public:
     CREATE_FUNC(MainMenuScene);
 
     void updateBackground(float dt); // 更新背景的方法
+    void onEnter();
+    void onExit();
+    Scene* createScene();
 
 private:
+
+    int _backgroundMusicId;
+    cocos2d::AudioEngine::AudioState _backgroundMusicState;
+
     cocos2d::Sprite* titleSprite;//标题
     cocos2d::Sprite* mountainSprite;//雪山:表示选中状态
     cocos2d::Sprite* bg1;  // 背景1
