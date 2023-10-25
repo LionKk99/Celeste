@@ -558,70 +558,133 @@
     <ClInclude Include="D:\Celeste\Resources\movement\up\up1.png">
       <Filter>Resources\movement\up</Filter>
     </ClInclude>
-    <ClInclude Include="D:\Celeste\Resources\music\NotSafe.wav">
+    <ClInclude Include="D:\Celeste\Resources\music\NotSafe.mp3">
       <Filter>Resources\music</Filter>
     </ClInclude>
-    <ClInclude Include="D:\Celeste\Resources\music\dash.wav">
+    <ClInclude Include="D:\Celeste\Resources\music\dash.mp3">
       <Filter>Resources\music</Filter>
     </ClInclude>
-    <ClInclude Include="D:\Celeste\Resources\music\death.wav">
+    <ClInclude Include="D:\Celeste\Resources\music\death.mp3">
       <Filter>Resources\music</Filter>
     </ClInclude>
-    <ClInclude Include="D:\Celeste\Resources\music\game_01_fallingblock_ice_impact_03.wav">
+    <ClInclude Include="D:\Celeste\Resources\music\game_01_fallingblock_ice_impact_03.mp3">
       <Filter>Resources\music</Filter>
     </ClInclude>
-    <ClInclude Include="D:\Celeste\Resources\music\game_01_fallingblock_ice_shake_01.wav">
+    <ClInclude Include="D:\Celeste\Resources\music\game_01_fallingblock_ice_shake_01.mp3">
       <Filter>Resources\music</Filter>
     </ClInclude>
-    <ClInclude Include="D:\Celeste\Resources\music\game_gen_spring.wav">
+    <ClInclude Include="D:\Celeste\Resources\music\game_gen_spring.mp3">
       <Filter>Resources\music</Filter>
     </ClInclude>
     <ClInclude Include="D:\Celeste\Resources\music\gameplayBGM.mp3">
       <Filter>Resources\music</Filter>
     </ClInclude>
-    <ClInclude Include="D:\Celeste\Resources\music\jump.wav">
+    <ClInclude Include="D:\Celeste\Resources\music\jump.mp3">
       <Filter>Resources\music</Filter>
     </ClInclude>
-    <ClInclude Include="D:\Celeste\Resources\music\landing.wav">
+    <ClInclude Include="D:\Celeste\Resources\music\landing.mp3">
       <Filter>Resources\music</Filter>
     </ClInclude>
-    <ClInclude Include="D:\Celeste\Resources\music\mainmenu_background_loop.wav">
+    <ClInclude Include="D:\Celeste\Resources\music\mainmenu_background_loop.mp3">
       <Filter>Resources\music</Filter>
     </ClInclude>
-    <ClInclude Include="D:\Celeste\Resources\music\mus_lvl0_intro_loop.wav">
+    <ClInclude Include="D:\Celeste\Resources\music\mus_lvl0_intro_loop.mp3">
       <Filter>Resources\music</Filter>
     </ClInclude>
-    <ClInclude Include="D:\Celeste\Resources\music\revive.wav">
+    <ClInclude Include="D:\Celeste\Resources\music\revive.mp3">
       <Filter>Resources\music</Filter>
     </ClInclude>
-    <ClInclude Include="D:\Celeste\Resources\music\savesucceed.wav">
+    <ClInclude Include="D:\Celeste\Resources\music\savesucceed.mp3">
       <Filter>Resources\music</Filter>
     </ClInclude>
-    <ClInclude Include="D:\Celeste\Resources\music\ui_game_hotspot_note_in.wav">
+    <ClInclude Include="D:\Celeste\Resources\music\ui_game_hotspot_note_in.mp3">
       <Filter>Resources\music</Filter>
     </ClInclude>
-    <ClInclude Include="D:\Celeste\Resources\music\ui_game_hotspot_note_out.wav">
+    <ClInclude Include="D:\Celeste\Resources\music\ui_game_hotspot_note_out.mp3">
       <Filter>Resources\music</Filter>
     </ClInclude>
-    <ClInclude Include="D:\Celeste\Resources\music\ui_main_button_back.wav">
+    <ClInclude Include="D:\Celeste\Resources\music\ui_main_button_back.mp3">
       <Filter>Resources\music</Filter>
     </ClInclude>
-    <ClInclude Include="D:\Celeste\Resources\music\ui_main_button_climb.wav">
+    <ClInclude Include="D:\Celeste\Resources\music\ui_main_button_climb.mp3">
       <Filter>Resources\music</Filter>
     </ClInclude>
-    <ClInclude Include="D:\Celeste\Resources\music\ui_main_roll_down.wav">
+    <ClInclude Include="D:\Celeste\Resources\music\ui_main_roll_down.mp3">
       <Filter>Resources\music</Filter>
     </ClInclude>
-    <ClInclude Include="D:\Celeste\Resources\music\ui_main_roll_up.wav">
+    <ClInclude Include="D:\Celeste\Resources\music\ui_main_roll_up.mp3">
       <Filter>Resources\music</Filter>
     </ClInclude>
-    <ClInclude Include="D:\Celeste\Resources\music\ui_main_title_firstinput.wav">
+    <ClInclude Include="D:\Celeste\Resources\music\ui_main_title_firstinput.mp3">
       <Filter>Resources\music</Filter>
     </ClInclude>
-    <ClInclude Include="D:\Celeste\Resources\music\walk.wav">
+    <ClInclude Include="D:\Celeste\Resources\music\walk.mp3">
       <Filter>Resources\music</Filter>
     </ClInclude>
-    <ClInclude Include="D:\Celeste\Resources\music\wow_so_secret.wav">
+    <ClInclude Include="D:\Celeste\Resources\music\wav\NotSafe.wav">
+      <Filter>Resources\music\wav</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\music\wav\dash.wav">
+      <Filter>Resources\music\wav</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\music\wav\death.wav">
+      <Filter>Resources\music\wav</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\music\wav\game_01_fallingblock_ice_impact_03.wav">
+      <Filter>Resources\music\wav</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\music\wav\game_01_fallingblock_ice_shake_01.wav">
+      <Filter>Resources\music\wav</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\music\wav\game_gen_spring.wav">
+      <Filter>Resources\music\wav</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\music\wav\jump.wav">
+      <Filter>Resources\music\wav</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\music\wav\landing.wav">
+      <Filter>Resources\music\wav</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\music\wav\mainmenu_background_loop.wav">
+      <Filter>Resources\music\wav</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\music\wav\mus_lvl0_intro_loop.wav">
+      <Filter>Resources\music\wav</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\music\wav\revive.wav">
+      <Filter>Resources\music\wav</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\music\wav\savesucceed.wav">
+      <Filter>Resources\music\wav</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\music\wav\ui_game_hotspot_note_in.wav">
+      <Filter>Resources\music\wav</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\music\wav\ui_game_hotspot_note_out.wav">
+      <Filter>Resources\music\wav</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\music\wav\ui_main_button_back.wav">
+      <Filter>Resources\music\wav</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\music\wav\ui_main_button_climb.wav">
+      <Filter>Resources\music\wav</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\music\wav\ui_main_roll_down.wav">
+      <Filter>Resources\music\wav</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\music\wav\ui_main_roll_up.wav">
+      <Filter>Resources\music\wav</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\music\wav\ui_main_title_firstinput.wav">
+      <Filter>Resources\music\wav</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\music\wav\walk.wav">
+      <Filter>Resources\music\wav</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\music\wav\wow_so_secret.wav">
+      <Filter>Resources\music\wav</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\music\wow_so_secret.mp3">
       <Filter>Resources\music</Filter>
     </ClInclude>
     <ClInclude Include="D:\Celeste\Resources\pauseMenu\Pause_BG.bmp">
@@ -777,6 +840,9 @@
     </Filter>
     <Filter Include="Resources\music">
       <UniqueIdentifier>{0F018B74-B46A-33FD-8D7E-3C0FE43BC9D1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources\music\wav">
+      <UniqueIdentifier>{325BBB6F-008E-3AC9-870C-FC587E2BC6A6}</UniqueIdentifier>
     </Filter>
     <Filter Include="Resources\pauseMenu">
       <UniqueIdentifier>{E1C423EA-253A-394A-ACF7-38D46D622C48}</UniqueIdentifier>

@@ -21,6 +21,8 @@ private:
 
     int _backgroundMusicId;
     cocos2d::AudioEngine::AudioState _backgroundMusicState;
+    int _firstinputMusicId;
+    cocos2d::AudioEngine::AudioState _firstinputMusicState;
 
     cocos2d::Sprite* titleSprite;//标题
     cocos2d::Sprite* mountainSprite;//雪山:表示选中状态
