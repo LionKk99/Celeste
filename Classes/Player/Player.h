@@ -2,6 +2,8 @@
 #define __PLAYER_H__
 
 #include "cocos2d.h"
+#include "AudioEngine.h"
+#include "audio/include/AudioEngine.h"
 
 enum class PlayerState {
     IDLE,             // 站立
@@ -21,7 +23,7 @@ enum class PlayerState {
     HOLDWALLJUMP,    // 爬墙跳跃  
     DASH,             // 冲刺
     DYING,            // 死亡
-    EXHAUSTED         // 疲劳——此状态下会从墙壁上滑落
+    
 };
 
 enum class PlayerKey {
@@ -87,6 +89,21 @@ public:
     //检测角色是否在地面的函数在场景中实现
     void setOnGround(bool value);//设置状态 
     //bool wallCheck();//检测前方是否有墙壁
+
+    //音频
+    int _dashMusicId;
+    cocos2d::AudioEngine::AudioState _dashMusicState;
+    int _walkMusicId;
+    cocos2d::AudioEngine::AudioState _walkMusicState;
+    int _jumpMusicId;
+    cocos2d::AudioEngine::AudioState _jumpMusicState;
+    int _deathMusicId;
+    cocos2d::AudioEngine::AudioState _deathMusicState;
+    int _landingMusicId;
+    cocos2d::AudioEngine::AudioState _landingMusicState;
+    int _reviveMusicId;
+    cocos2d::AudioEngine::AudioState _reviveMusicState;
+    
 
     // 动画播放
     void playIdleAnimation_1(); // 播放站立动画1

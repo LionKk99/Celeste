@@ -167,6 +167,11 @@ void Player::changeState(PlayerState newState) {
     if (currentState == newState) return;
     previousState = currentState;
     currentState = newState;
+    //音频控制
+    if (previousState== PlayerState::MOVING_RIGHT|| previousState == PlayerState::MOVING_LEFT) {
+        cocos2d::AudioEngine::stop(_walkMusicId);
+    }
+    //状态控制
     switch (currentState) {
     case PlayerState::CROUCH:
         playCrouchAnimation();    
@@ -816,7 +821,7 @@ void Player::onKeyReleased(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Eve
     }
 }
 
-
+//音频和动画结合
 
 void Player::playIdleAnimation_1() {//站立1    
     // 停止所有正在运行的动画（确保不会与其他动画冲突）
@@ -864,6 +869,10 @@ void Player::playIdleAnimation_2() {//站立2
 
 void Player::playMoveAnimation() {//移动 
     // 停止所有正在运行的动画（确保不会与其他动画冲突）
+    //音频
+    _walkMusicId = cocos2d::AudioEngine::play2d("music/walk.mp3", true);//声音很奇怪
+    cocos2d::AudioEngine::setVolume(_walkMusicId, 0.5f);  // 设置音量
+    //动画
     this->stopAllActions();
     Vector<SpriteFrame*> idleFrames;
     auto cache = SpriteFrameCache::getInstance();
@@ -991,7 +1000,16 @@ void Player::playLookUpAnimation() {//向上看
 }
 
 void Player::playJumpUpAnimation() {//跳跃
+    
+     // 检查音乐的状态
+    _jumpMusicState = cocos2d::AudioEngine::getState(_jumpMusicId);
+
+    // 如果音乐没有播放或者播放已经完成，那么开始播放音乐(mp3格式)
+    if (_jumpMusicState != cocos2d::AudioEngine::AudioState::PLAYING) {
+        _jumpMusicId = cocos2d::AudioEngine::play2d("music/jump.mp3", false);
+    }
     // 停止所有正在运行的动画（确保不会与其他动画冲突）
+
     CCLOG("Starting JumpUp animation");
     this->stopAllActions();
     Vector<SpriteFrame*> idleFrames;
@@ -1084,6 +1102,13 @@ void Player::playPushWallAnimation() {//推墙
 }
 
 void Player::playLandingAnimation() {//过渡动画 落地
+
+    _landingMusicState = cocos2d::AudioEngine::getState(_landingMusicId);
+
+    // 如果音乐没有播放或者播放已经完成，那么开始播放音乐(mp3格式)
+    if (_landingMusicState != cocos2d::AudioEngine::AudioState::PLAYING) {
+        _landingMusicId = cocos2d::AudioEngine::play2d("music/landing.mp3", false);
+    }
 
     // 停止所有正在运行的动画（确保不会与其他动画冲突）
     this->stopAllActions();
@@ -1239,6 +1264,19 @@ void Player::playHoldWallJumpAnimation() {//爬墙跳跃
 }
 
 void Player::playDashAnimation() {
+
+    //音频
+    
+    // 检查音乐的状态
+    _dashMusicState = cocos2d::AudioEngine::getState(_dashMusicId);
+
+    // 如果音乐没有播放或者播放已经完成，那么开始播放音乐(mp3格式)
+    if (_dashMusicState != cocos2d::AudioEngine::AudioState::PLAYING) {
+        _dashMusicId = cocos2d::AudioEngine::play2d("music/dash.mp3", false);
+    }
+    
+    //动画
+
     isDashing = true;
     this->stopAllActions();
 
@@ -1402,6 +1440,15 @@ cocos2d::Vec2 Player::getDashDirection() {
 }
 
 void Player::playDashUpAndDownAnimation() {
+
+    // 检查音乐的状态
+    _dashMusicState = cocos2d::AudioEngine::getState(_dashMusicId);
+
+    // 如果音乐没有播放或者播放已经完成，那么开始播放音乐(mp3格式)
+    if (_dashMusicState != cocos2d::AudioEngine::AudioState::PLAYING) {
+        _dashMusicId = cocos2d::AudioEngine::play2d("music/dash.mp3", false);
+    }
+
     isDashing = true;
     this->stopAllActions();
 
@@ -1463,6 +1510,15 @@ void Player::playDashUpAndDownAnimation() {
 }
 
 void Player::playRespawnAnimation() {//复活动画
+
+    // 检查音乐的状态
+    _reviveMusicState = cocos2d::AudioEngine::getState(_reviveMusicId);
+
+    // 如果音乐没有播放或者播放已经完成，那么开始播放音乐(mp3格式)
+    if (_reviveMusicState != cocos2d::AudioEngine::AudioState::PLAYING) {
+        _reviveMusicId = cocos2d::AudioEngine::play2d("music/revive.mp3", false);
+    }
+
     CCLOG("Starting Respawn animation");
     velocity = Vec2::ZERO;
     this->getPhysicsBody()->setVelocity(Vec2::ZERO);
@@ -1505,6 +1561,13 @@ void Player::playRespawnAnimation() {//复活动画
 
 
 void Player::playDeathAnimation() {//死亡
+    // 检查音乐的状态
+    _deathMusicState = cocos2d::AudioEngine::getState(_deathMusicId);
+
+    // 如果音乐没有播放或者播放已经完成，那么开始播放音乐(mp3格式)
+    if (_deathMusicState != cocos2d::AudioEngine::AudioState::PLAYING) {
+        _deathMusicId = cocos2d::AudioEngine::play2d("music/death.mp3", false);
+    }
     CCLOG("Starting Death animation");
     this->stopAllActions();
     
@@ -1582,6 +1645,14 @@ void Player::playBlackAnimation() {
 }
 //B动作
 void Player::playBDeathAnimation() {//死亡
+
+    _deathMusicState = cocos2d::AudioEngine::getState(_deathMusicId);
+
+    // 如果音乐没有播放或者播放已经完成，那么开始播放音乐(mp3格式)
+    if (_deathMusicState != cocos2d::AudioEngine::AudioState::PLAYING) {
+        _deathMusicId = cocos2d::AudioEngine::play2d("music/death.mp3", false);
+    }
+
     CCLOG("Starting Death animation");
     this->stopAllActions();
 
@@ -1722,6 +1793,14 @@ void Player::playBHoldWallDownAnimation() {
 }//爬墙向下
 
 void Player::playBJumpUpAnimation() {//跳跃
+    
+     // 检查音乐的状态
+    _jumpMusicState = cocos2d::AudioEngine::getState(_jumpMusicId);
+
+    // 如果音乐没有播放或者播放已经完成，那么开始播放音乐(mp3格式)
+    if (_jumpMusicState != cocos2d::AudioEngine::AudioState::PLAYING) {
+        _jumpMusicId = cocos2d::AudioEngine::play2d("music/jump.mp3", false);
+    }
     // 停止所有正在运行的动画（确保不会与其他动画冲突）
     CCLOG("Starting JumpUp animation");
     this->stopAllActions();
