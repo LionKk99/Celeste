@@ -25,7 +25,7 @@
 #include "AppDelegate.h"
 #include "MainMenuScene.h"
 #include "Scene/Level1Scene.h"
-
+#include "Scene/Level3Scene.h"
 
 
 // #define USE_AUDIO_ENGINE 1
@@ -163,12 +163,26 @@ bool AppDelegate::applicationDidFinishLaunching() {
     SpriteFrameCache::getInstance()->addSpriteFramesWithFile("movement/slidingwall/Bslidingwall.plist", "movement/slidingwall/Bslidingwall.png");//滑落加载
 
     SpriteFrameCache::getInstance()->addSpriteFramesWithFile("eff/black.plist", "eff/black.png");//黑幕加载
+
+    SpriteFrameCache::getInstance()->addSpriteFramesWithFile("eff/floorlandingash_00.plist", "eff/floorlandingash_00.png");//落地烟雾加载
+    SpriteFrameCache::getInstance()->addSpriteFramesWithFile("eff/floorjumpash_00.plist", "eff/floorjumpash_00.png");//跳跃烟雾加载
+    SpriteFrameCache::getInstance()->addSpriteFramesWithFile("eff/walljumpash_00.plist", "eff/walljumpash_00.png");//   
+    SpriteFrameCache::getInstance()->addSpriteFramesWithFile("eff/slidingwallash_00.plist", "eff/slidingwallash_00.png");//
+
+    SpriteFrameCache::getInstance()->addSpriteFramesWithFile("eff/dashupeff_00.plist", "eff/dashupeff_00.png");//
+    SpriteFrameCache::getInstance()->addSpriteFramesWithFile("eff/dashmoveupeff_00.plist", "eff/dashmoveupeff_00.png");//
+    SpriteFrameCache::getInstance()->addSpriteFramesWithFile("eff/dashmoveeff_00.plist", "eff/dashmoveeff_00.png");//
+    SpriteFrameCache::getInstance()->addSpriteFramesWithFile("eff/dashmovedowneff_00.plist", "eff/dashmovedowneff_00.png");//
+    SpriteFrameCache::getInstance()->addSpriteFramesWithFile("eff/dashdowneff_00.plist", "eff/dashdowneff_00.png");//
+
+    SpriteFrameCache::getInstance()->addSpriteFramesWithFile("movement/jumptable/jumpTable.plist", "movement/jumptable/jumpTable.png");//
+
    //测试plist和png加载
-  /*
+  
     Vector<SpriteFrame*> idleFrames;
     auto cache = SpriteFrameCache::getInstance();
-    for (int i = 0; i <= 23; i++) {
-        std::string frameName = StringUtils::format("death_00-%d.png", i);
+    for (int i = 0; i <= 22; i++) {
+        std::string frameName = StringUtils::format("JumpTable_00-%d.png", i);
         auto frame = cache->getSpriteFrameByName(frameName);
         if (frame) {
             idleFrames.pushBack(frame);
@@ -177,7 +191,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
         else {
             CCLOG("Error: Cannot find frame: %s", frameName.c_str());
         }
-    }
+    }/*
 */
       
     
@@ -186,14 +200,16 @@ bool AppDelegate::applicationDidFinishLaunching() {
     
 
     // create a scene. it's an autorelease object//生成主界面场景
-    auto scene = MainMenuScene::create();
-    director->runWithScene(scene);
+    //auto scene = MainMenuScene::create();
+    //director->runWithScene(scene);
 
     //测试第一关
-   //auto scene = Level1Scene::createScene();
-   //Director::getInstance()->replaceScene(scene);
+   auto scene = Level1Scene::createScene();
+   Director::getInstance()->replaceScene(scene);
 
-    
+   //测试第三关
+   //auto scene = Level3Scene::createScene();
+   //Director::getInstance()->replaceScene(scene);
 
     // create a scene. it's an autorelease object
     //auto scene = HelloWorld::createScene();

@@ -1,10 +1,12 @@
 #ifndef __PLAYER_H__
 #define __PLAYER_H__
-
+#pragma once
 #include "cocos2d.h"
 #include "AudioEngine.h"
 #include "audio/include/AudioEngine.h"
-
+#include "Trap/Spikeweed.h"
+#include <vector>
+#include <array>
 enum class PlayerState {
     IDLE,             // 站立
     MOVING_LEFT,      // 左移
@@ -58,7 +60,18 @@ public:
     bool canDash=0;//也作为角色是否blue的判断
     bool canClimb=0;//作为角色能否爬墙的判断
     
-
+    //判断当前在哪个关卡
+    static int currentLevel;         
+    std::vector<cocos2d::Vec2> respawnPoints = {
+        cocos2d::Vec2(1280/2, 720/2),
+        cocos2d::Vec2(1280 / 2, 720 / 2),
+        cocos2d::Vec2(1280 / 2, 720 / 2)
+        // 更多初始化
+    };
+    //与陷阱互动
+    bool checkForSpikeweedCollision();
+    bool checkForJumpTableInteraction();
+    bool checkForBrickInteraction();
     // 动作状态   
     PlayerState currentState;
     PlayerState previousState;
@@ -138,7 +151,19 @@ public:
     void playLandingAnimation();//落地动画
     //转场动画
     void playBlackAnimation();//黑幕过渡
-    //
+    //特效
+    void playFloorLandingAshAnimation();//落地烟雾 
+    void playFloorJumpAshAnimation();//跳跃烟雾 
+    void playFloorWallJumpAshAnimation();//墙壁跳跃烟雾 
+    void playFloorSlidingWallAshAnimation();//滑墙烟雾 
+
+    void playDashUpEffAnimation();//
+    void playDashMoveUpEffAshAnimation();//
+    void playDashMoveEffAnimation();//
+    void playDashMoveDownEffAnimation();//
+    void playDashDownEffAnimation();//
+
+
     int facingDirection=1;//面向方向（向右为1，向左为-1）
 
     bool isAlive=1;
@@ -162,5 +187,7 @@ private:
     void onKeyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event);
     void onKeyReleased(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event);
 };
+
+
 
 #endif // __PLAYER_H__

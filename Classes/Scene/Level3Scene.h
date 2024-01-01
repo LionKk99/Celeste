@@ -1,10 +1,7 @@
-
-#ifndef __LEVEL_1_SCENE_H__
-#define __LEVEL_1_SCENE_H__
-
+#pragma once
 #include "LevelBase.h"
-
-class Level1Scene : public LevelBase {
+#include "Player/Player.h"
+class Level3Scene : public LevelBase {
 public:
     static cocos2d::Scene* createScene();
 
@@ -15,10 +12,12 @@ public:
     virtual void startGame() override;
     virtual void endGame() override;
     virtual void pauseGame() override;
-    CREATE_FUNC(Level1Scene);
+    CREATE_FUNC(Level3Scene);
 
+    void update(float dt);
     virtual void onEnter() override;
     virtual void onExit() override;
+
+    Player* m_player;
 };
 
-#endif // __LEVEL_1_SCENE_H__

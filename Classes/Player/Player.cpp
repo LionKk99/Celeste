@@ -1,6 +1,10 @@
 #include "Player.h"
+#include"Trap/jumpTable.h"
+#include"Trap/brick.h"
 USING_NS_CC;
 const float Player::DASH_DURATION = 0.5f;//冲刺总时间，包括后摇
+ 
+int Player::currentLevel = 1;//初始化全局变量currentLevel为1
 Player::Player()
     : keyStates{
         {PlayerKey::LEFT, false},
@@ -13,10 +17,14 @@ Player::Player()
         {PlayerKey::CLIMB, false}
     }
 {
+    
     auto listener = EventListenerKeyboard::create();
     listener->onKeyPressed = CC_CALLBACK_2(Player::onKeyPressed, this);
     listener->onKeyReleased = CC_CALLBACK_2(Player::onKeyReleased, this);
     _eventDispatcher->addEventListenerWithSceneGraphPriority(listener, this);
+    //初始化重生点位置
+   
+    
 }
 
 Player* Player::create(const std::string& filename) {
@@ -145,7 +153,7 @@ bool Player::isOnSolidGround() {//优化后判定
         cocos2d::Vec2 endPoint = startPoint - cocos2d::Vec2(0, rayLength); // 从startPoint向下延长1像素
 
         auto func = [&onSolidGround](PhysicsWorld& world, const PhysicsRayCastInfo& info, void* data) -> bool {
-            if (info.shape->getBody()->getNode()->getName() == "ground") {
+            if (info.shape->getBody()->getNode()->getName() == "ground"|| info.shape->getBody()->getNode()->getName() == "brick") {
                 onSolidGround = true;
                 return false; // 停止射线检测
             }
@@ -419,6 +427,118 @@ cocos2d::Vec2 Player::adjustMovePosition(const cocos2d::Vec2& desiredPosition) {
     return adjustedPosition;
 }
 
+
+bool Player::checkForSpikeweedCollision() {
+    float rayLength = 40.0f;  // The same ray length as in adjustMovePosition
+    std::vector<cocos2d::Vec2> directions = {
+        cocos2d::Vec2(-1, 0),  // Left
+        cocos2d::Vec2(1, 0),   // Right
+        cocos2d::Vec2(0, -1)   // Bottom
+    };
+
+    cocos2d::Vec2 centerPoint = this->getPosition();
+    cocos2d::Size playerSize = this->getContentSize();
+    cocos2d::Vec2 bottomCenterPoint = centerPoint - cocos2d::Vec2(0, playerSize.height * 0.5f) + cocos2d::Vec2(0, 49.0f);
+    cocos2d::Vec2 topCenterPoint = centerPoint + cocos2d::Vec2(0, playerSize.height * 0.5f) - cocos2d::Vec2(0, 49.0f);
+    std::vector<cocos2d::Vec2> startPoints = { bottomCenterPoint, centerPoint, topCenterPoint };
+
+    for (const auto& dir : directions) {
+        for (const auto& startPoint : startPoints) {
+            if (dir.x != 0 && startPoint == centerPoint) continue; // Skip vertical rays for the center point
+
+            cocos2d::Vec2 endPoint = startPoint + dir * rayLength;
+            bool collisionDetected = false;
+
+            auto rayCallback = [this, &collisionDetected](PhysicsWorld& world, const PhysicsRayCastInfo& info, void* data) -> bool {
+                if (info.shape->getBody()->getNode()->getName() == "Spikeweed") {
+                    collisionDetected = true;
+                    return false;  // Stop detecting further as we found Spikeweed
+                }
+                return true;
+                };
+
+            Director::getInstance()->getRunningScene()->getPhysicsWorld()->rayCast(rayCallback, startPoint, endPoint, nullptr);
+
+            if (collisionDetected) {
+                this->changeState(PlayerState::DYING);  // Change state to DYING if Spikeweed is detected
+                return true;  // Return true if collision with Spikeweed is detected
+            }
+        }
+    }
+    return false;  // Return false if no Spikeweed is detected
+}
+
+bool Player::checkForJumpTableInteraction() {
+    float rayLength = 40.0f; // 假设的射线长度，可以根据需要进行调整
+
+    // 只在向下方向检测
+    cocos2d::Vec2 direction = cocos2d::Vec2(0, -1); // Down
+
+    // 获取角色的中心点和底部中心点
+    cocos2d::Vec2 centerPoint = this->getPosition();
+    cocos2d::Size playerSize = this->getContentSize();
+    cocos2d::Vec2 bottomCenterPoint = centerPoint - cocos2d::Vec2(0, playerSize.height * 0.5f);
+
+    // 射线的结束点
+    cocos2d::Vec2 endPoint = bottomCenterPoint + direction * rayLength;
+    bool collisionDetected = false;
+
+    auto rayCallback = [this, &collisionDetected](PhysicsWorld& world, const PhysicsRayCastInfo& info, void* data) -> bool {
+        if (info.shape->getBody()->getNode()->getName() == "JumpTable") {
+            collisionDetected = true;
+            // 获取 JumpTable 对象并调用它的播放动画方法
+            auto jumpTable = dynamic_cast<JumpTable*>(info.shape->getBody()->getNode());
+            if (jumpTable) {
+                if(!jumpTable->_canBeActivated){ return false; }
+                jumpTable->playAnimation(); // 调用 JumpTable 的 playAnimation 方法
+                jumpTable->deactivateTemporarily();//设置时间间隔
+                CCLOG("弹簧动画播放");
+             }
+            return false;  // 停止进一步检测
+        }
+        return true; // 继续检测
+        };
+
+    Director::getInstance()->getRunningScene()->getPhysicsWorld()->rayCast(rayCallback, bottomCenterPoint, endPoint, nullptr);
+
+    return collisionDetected; // 返回是否检测到 JumpTable
+}
+
+bool Player::checkForBrickInteraction() {
+    float rayLength = 20.0f; // 假设的射线长度，可以根据需要进行调整
+
+    // 只在向下方向检测
+    cocos2d::Vec2 direction = cocos2d::Vec2(0, -1); // Down
+
+    // 获取角色的中心点和底部中心点
+    cocos2d::Vec2 centerPoint = this->getPosition();
+    cocos2d::Size playerSize = this->getContentSize();
+    cocos2d::Vec2 bottomCenterPoint = centerPoint - cocos2d::Vec2(0, playerSize.height * 0.5f);
+
+    // 射线的结束点
+    cocos2d::Vec2 endPoint = bottomCenterPoint + direction * rayLength;
+    bool collisionDetected = false;
+
+    auto rayCallback = [this, &collisionDetected](PhysicsWorld& world, const PhysicsRayCastInfo& info, void* data) -> bool {
+        if (info.shape->getBody()->getNode()->getName() == "brick") {
+            collisionDetected = true;
+            // 获取 brick 对象并调用它的播放动画方法
+            auto brick = dynamic_cast<Brick*>(info.shape->getBody()->getNode());
+            if (brick) {
+                if (!brick->_isNormal) { return false; }
+                brick->toggleVisibility();                
+                CCLOG("砖块悬空");
+            }
+            return false;  // 停止进一步检测
+        }
+        return true; // 继续检测
+        };
+
+    Director::getInstance()->getRunningScene()->getPhysicsWorld()->rayCast(rayCallback, bottomCenterPoint, endPoint, nullptr);
+
+    return collisionDetected; // 返回是否检测到 JumpTable
+}
+
 //备用三射线
 /*
 cocos2d::Vec2 Player::adjustMovePosition(const cocos2d::Vec2& desiredPosition) {
@@ -501,7 +621,8 @@ cocos2d::Vec2 Player::adjustMovePosition(const cocos2d::Vec2& desiredPosition) {
 
 void Player::update(float dt) {
     if (!isAlive) { return; }//角色死亡直接返回
-    float deathThreshold = 120; // 你想要的死亡阈值
+    if (isAlive) { if (checkForSpikeweedCollision()) {} }
+    float deathThreshold = 75; // 你想要的死亡阈值
     if (this->getPositionY() < deathThreshold) {//检查角色高度
         // 进入死亡状态
         isAlive = 0;
@@ -552,7 +673,8 @@ void Player::update(float dt) {
     if (onGround) {
         canDash = 1;
     }
-    
+
+   
     /* 如果直接设置速度的话要用到下面代码
     // 如果玩家在地面上，设置垂直速度为0
     if (onGround && !keyStates[PlayerKey::JUMP]) {
@@ -610,7 +732,15 @@ void Player::update(float dt) {
         changeState(PlayerState::DROP);
         return;
     }
-
+    //弹簧
+    
+    if (checkForJumpTableInteraction()) {
+        this->getPhysicsBody()->setGravityEnable(true);
+        //velocity.y = 0;
+        this->getPhysicsBody()->applyImpulse(Vec2(0, 100));//使用冲量
+    }
+    //砖块
+    checkForBrickInteraction();
     //爬墙跳跃
     if ((currentState == PlayerState::HOLDWALL || currentState == PlayerState::HOLDWALLUP || currentState == PlayerState::HOLDWALLDOWN) && keyStates[PlayerKey::JUMP]) {
         this->getPhysicsBody()->setGravityEnable(true);
@@ -641,7 +771,7 @@ void Player::update(float dt) {
     {
         this->getPhysicsBody()->setGravityEnable(false);
         velocity.y = -CLINMB_MAXSPEED;
-        changeState(PlayerState::HOLDWALL);
+        changeState(PlayerState::HOLDWALLDOWN);
         CCLOG("Player state changed to HOLDWALLDOWN");
         return;
     }
@@ -871,7 +1001,7 @@ void Player::playMoveAnimation() {//移动
     // 停止所有正在运行的动画（确保不会与其他动画冲突）
     //音频
     _walkMusicId = cocos2d::AudioEngine::play2d("music/walk.mp3", true);//声音很奇怪
-    cocos2d::AudioEngine::setVolume(_walkMusicId, 0.5f);  // 设置音量
+    cocos2d::AudioEngine::setVolume(_walkMusicId, 1.0f);  // 设置音量
     //动画
     this->stopAllActions();
     Vector<SpriteFrame*> idleFrames;
@@ -1030,7 +1160,7 @@ void Player::playJumpUpAnimation() {//跳跃
             idleFrames.pushBack(frame);
         }
     }
-
+    playFloorJumpAshAnimation();
     auto animation = Animation::createWithSpriteFrames(idleFrames, 0.1f);
     auto animate = Animate::create(animation);
     this->runAction(animate);
@@ -1132,6 +1262,8 @@ void Player::playLandingAnimation() {//过渡动画 落地
     }
     auto animation = Animation::createWithSpriteFrames(idleFrames, 0.1f);
     auto animate = Animate::create(animation);
+
+    playFloorLandingAshAnimation();
 
     // 定义lambda作为回调
     auto callback = [this]() {
@@ -1255,7 +1387,7 @@ void Player::playHoldWallJumpAnimation() {//爬墙跳跃
             idleFrames.pushBack(frame);
         }
     }
-
+    playFloorWallJumpAshAnimation();
     auto animation = Animation::createWithSpriteFrames(idleFrames, 0.1f);
     auto animate = Animate::create(animation);
     this->runAction(animate);
@@ -1509,25 +1641,25 @@ void Player::playDashUpAndDownAnimation() {
     this->runAction(shadowSequence);
 }
 
-void Player::playRespawnAnimation() {//复活动画
-
+void Player::playRespawnAnimation() {//复活动画   
+  
     // 检查音乐的状态
     _reviveMusicState = cocos2d::AudioEngine::getState(_reviveMusicId);
-
+    
     // 如果音乐没有播放或者播放已经完成，那么开始播放音乐(mp3格式)
     if (_reviveMusicState != cocos2d::AudioEngine::AudioState::PLAYING) {
         _reviveMusicId = cocos2d::AudioEngine::play2d("music/revive.mp3", false);
     }
 
     CCLOG("Starting Respawn animation");
-    velocity = Vec2::ZERO;
-    this->getPhysicsBody()->setVelocity(Vec2::ZERO);
-    // 设置角色的位置
-    cocos2d::Vec2 respawnPosition = Vec2(1280/2,720/2); // 重生点位置 这里需改为关卡的重生点
-    this->setPosition(respawnPosition);
-
-    // 设置缩放因子为0.80
-    this->setScale(0.80);
+    
+    // 创建一个新的Sprite对象用于播放重生动画
+    auto respawnSprite = Sprite::create();    
+    respawnSprite->setScale(0.80);
+    respawnSprite->setVisible(true);
+    respawnSprite->setPosition(respawnPoints[currentLevel]);
+    this->getParent()->addChild(respawnSprite);
+  
 
     this->stopAllActions();
     Vector<SpriteFrame*> idleFrames;
@@ -1544,23 +1676,41 @@ void Player::playRespawnAnimation() {//复活动画
     auto animation = Animation::createWithSpriteFrames(idleFrames, 0.05f);
     auto animate = Animate::create(animation);
 
-    // 创建一个CallFunc动作，在动画结束后设置isAlive为1
-    auto setAliveTrue = CallFunc::create([this]() {
-        this->setScale(0.8); // 或者其他原始缩放值
-        this->isAlive = 1;
-        this->getPhysicsBody()->setGravityEnable(true);//恢复重力
-        CCLOG("isAlive set to true");
+    auto setPlayerAlive = CallFunc::create([this, respawnSprite]() {        
+        this->setVisible(true); // 角色重新可见
+        this->getPhysicsBody()->setEnabled(true); // 重新启用物理体
+        this->isAlive = true; // 设置角色状态为活着
+        respawnSprite->removeFromParent();
+        //最后放玩家
+        // 设置缩放因子为0.80
+        this->setScale(0.80);
+        velocity = Vec2::ZERO;
+        this->getPhysicsBody()->setVelocity(Vec2::ZERO);
+        // 设置玩家为可见    
+        this->getPhysicsBody()->setGravityEnable(true);
+        // 开启碰撞
+        this->getPhysicsBody()->setEnabled(true);
+        // 设置角色的位置
+        cocos2d::Vec2 respawnPosition = respawnPoints[currentLevel]; // 重生点位置 这里需改为关卡的重生点
+        this->setPosition(respawnPosition);
         });
 
-    // 使用Sequence动作将动画和CallFunc动作连接起来
-    auto sequence = Sequence::create(animate, setAliveTrue, nullptr);
-    this->runAction(sequence);
+    auto sequence = Sequence::create(animate, setPlayerAlive, nullptr);
+    respawnSprite->runAction(sequence);
 
     CCLOG("Finished setting up Respawn animation");
+
+    
 }
 
-
+/*
 void Player::playDeathAnimation() {//死亡
+    
+    //取消碰撞体积
+    this->getPhysicsBody()->setEnabled(false);
+    // 设置角色的位置
+    cocos2d::Vec2 respawnPosition = respawnPoints[currentLevel]; // 重生点位置 这里需改为关卡的重生点
+    this->setPosition(respawnPosition);
     // 检查音乐的状态
     _deathMusicState = cocos2d::AudioEngine::getState(_deathMusicId);
 
@@ -1568,8 +1718,8 @@ void Player::playDeathAnimation() {//死亡
     if (_deathMusicState != cocos2d::AudioEngine::AudioState::PLAYING) {
         _deathMusicId = cocos2d::AudioEngine::play2d("music/death.mp3", false);
     }
-    CCLOG("Starting Death animation");
-    this->stopAllActions();
+   
+    
     
     // Set the player's velocity to zero
     this->getPhysicsBody()->setVelocity(Vec2::ZERO);
@@ -1577,7 +1727,7 @@ void Player::playDeathAnimation() {//死亡
     // Disable gravity for the player
     this->getPhysicsBody()->setGravityEnable(false);
     // Set the player's Y position to 100    
-    this->setPositionY(300);//动画看得清
+    if (this->getPositionY() < 100) {this->setPositionY(getPositionY()+100);}//动画看得清
     //this->setPositionX(500);//动画看得清
 
     // 设置缩放因子为0.80
@@ -1585,7 +1735,8 @@ void Player::playDeathAnimation() {//死亡
 
     Vector<SpriteFrame*> idleFrames;
     auto cache = SpriteFrameCache::getInstance();
-
+    this->stopAllActions();
+    CCLOG("Starting Death animation");
     for (int i = 0; i <= 23; i++) {
         std::string frameName = StringUtils::format("death_00-%d.png", i);
         auto frame = cache->getSpriteFrameByName(frameName);
@@ -1606,6 +1757,58 @@ void Player::playDeathAnimation() {//死亡
     auto sequence = Sequence::create(animate, callBlackAnimation, nullptr);
     this->runAction(sequence);
     CCLOG("Finished setting up Death animation");
+}
+*/
+void Player::playDeathAnimation() {
+    // 获取player当前的位置
+    cocos2d::Vec2 currentPosition = this->getPosition();
+    // 设置玩家为不可见
+    this->setVisible(false);
+    // 禁用物理体以防止碰撞
+    this->getPhysicsBody()->setEnabled(false);
+    //
+    velocity = Vec2::ZERO;
+    this->getPhysicsBody()->setVelocity(Vec2::ZERO);
+    this->getPhysicsBody()->setGravityEnable(false);
+    // 设置角色的位置
+    cocos2d::Vec2 respawnPosition = respawnPoints[currentLevel]; // 重生点位置 这里需改为关卡的重生点
+    this->setPosition(respawnPosition);
+    // 创建一个新的Sprite对象用于播放死亡动画
+    auto deathSprite = Sprite::create();
+    deathSprite->setPosition(currentPosition);
+    deathSprite->setScale(0.80);
+    this->getParent()->addChild(deathSprite);
+
+    // 加载死亡动画的所有帧
+    Vector<SpriteFrame*> deathFrames;
+    auto frameCache = SpriteFrameCache::getInstance();
+    for (int i = 0; i <= 23; ++i) {
+        auto frameName = StringUtils::format("death_00-%d.png", i);
+        auto frame = frameCache->getSpriteFrameByName(frameName);
+        if (frame) {
+            deathFrames.pushBack(frame);
+        }
+    }
+
+    // 创建动画并播放
+    auto animation = Animation::createWithSpriteFrames(deathFrames, 0.05f);
+    auto animate = Animate::create(animation);
+
+    // 在动画播放完成后移除Sprite,打开黑幕
+    auto callBlackAnimation = CallFunc::create([this, deathSprite]() {
+        this->playBlackAnimation();
+        deathSprite->removeFromParent();
+        });
+
+    // 播放死亡音乐
+    _deathMusicState = cocos2d::AudioEngine::getState(_deathMusicId);
+    if (_deathMusicState != cocos2d::AudioEngine::AudioState::PLAYING) {
+        _deathMusicId = cocos2d::AudioEngine::play2d("music/death.mp3", false);
+    }
+
+    // 执行动画和移除自身的序列动作
+    auto sequence = Sequence::create(animate, callBlackAnimation, nullptr);
+    deathSprite->runAction(sequence);
 }
 
 void Player::playBlackAnimation() {
@@ -1644,6 +1847,7 @@ void Player::playBlackAnimation() {
     CCLOG("Finished setting up Black animation");
 }
 //B动作
+/*
 void Player::playBDeathAnimation() {//死亡
 
     _deathMusicState = cocos2d::AudioEngine::getState(_deathMusicId);
@@ -1691,6 +1895,58 @@ void Player::playBDeathAnimation() {//死亡
     auto sequence = Sequence::create(animate, callBlackAnimation, nullptr);
     this->runAction(sequence);
     CCLOG("Finished setting up Death animation");
+}
+*/
+void Player::playBDeathAnimation() {
+    // 获取player当前的位置
+    cocos2d::Vec2 currentPosition = this->getPosition();
+    // 设置玩家为不可见
+    this->setVisible(false);
+    // 禁用物理体以防止碰撞
+    this->getPhysicsBody()->setEnabled(false);
+    //
+    velocity = Vec2::ZERO;
+    this->getPhysicsBody()->setVelocity(Vec2::ZERO);
+    this->getPhysicsBody()->setGravityEnable(false);
+    // 设置角色的位置
+    cocos2d::Vec2 respawnPosition = respawnPoints[currentLevel]; // 重生点位置 这里需改为关卡的重生点
+    this->setPosition(respawnPosition);
+    // 创建一个新的Sprite对象用于播放死亡动画
+    auto deathSprite = Sprite::create();
+    deathSprite->setPosition(currentPosition);
+    deathSprite->setScale(0.80);
+    this->getParent()->addChild(deathSprite);
+
+    // 加载B版本死亡动画的所有帧
+    Vector<SpriteFrame*> deathFrames;
+    auto frameCache = SpriteFrameCache::getInstance();
+    for (int i = 0; i <= 23; ++i) {
+        auto frameName = StringUtils::format("Bdeath_00-%d.png", i);
+        auto frame = frameCache->getSpriteFrameByName(frameName);
+        if (frame) {
+            deathFrames.pushBack(frame);
+        }
+    }
+
+    // 创建动画并播放
+    auto animation = Animation::createWithSpriteFrames(deathFrames, 0.05f);
+    auto animate = Animate::create(animation);
+
+    // 播放死亡音乐
+    _deathMusicState = cocos2d::AudioEngine::getState(_deathMusicId);
+    if (_deathMusicState != cocos2d::AudioEngine::AudioState::PLAYING) {
+        _deathMusicId = cocos2d::AudioEngine::play2d("music/death.mp3", false);
+    }
+
+    // 在动画播放完成后移除Sprite,打开黑幕
+    auto callBlackAnimation = CallFunc::create([this, deathSprite]() {
+        this->playBlackAnimation();
+        deathSprite->removeFromParent();
+        });
+
+    // 执行动画和移除自身的序列动作
+    auto sequence = Sequence::create(animate, callBlackAnimation, nullptr);
+    deathSprite->runAction(sequence);
 }
 
 void Player::playBDropAnimation() {//坠落
@@ -1822,6 +2078,7 @@ void Player::playBJumpUpAnimation() {//跳跃
             idleFrames.pushBack(frame);
         }
     }
+    playFloorJumpAshAnimation();
 
     auto animation = Animation::createWithSpriteFrames(idleFrames, 0.1f);
     auto animate = Animate::create(animation);
@@ -1872,10 +2129,125 @@ void Player::playBHoldWallJumpAnimation() {//爬墙跳跃
             idleFrames.pushBack(frame);
         }
     }
-
+    playFloorWallJumpAshAnimation();
     auto animation = Animation::createWithSpriteFrames(idleFrames, 0.1f);
     auto animate = Animate::create(animation);
     this->runAction(animate);
     CCLOG("Finished setting up HoldWallJump animation");
 
+}
+
+//特效
+void Player::playFloorLandingAshAnimation() {
+    CCLOG("Starting FloorLandingAsh animation");
+
+    // 1. 创建烟尘动画的帧
+    Vector<SpriteFrame*> ashFrames;
+    auto cache = SpriteFrameCache::getInstance();
+
+    for (int i = 0; i <= 13; i++) {
+        std::string frameName = StringUtils::format("floorlandingash_00-%d.png", i);
+        auto frame = cache->getSpriteFrameByName(frameName);
+        if (frame) {
+            ashFrames.pushBack(frame);
+        }
+    }
+
+    // 2. 创建动画和动作
+    auto animation = Animation::createWithSpriteFrames(ashFrames, 0.05f);
+    auto animate = Animate::create(animation);
+
+    // 3. 创建一个新的精灵来播放烟尘动画
+    auto ashSprite = Sprite::createWithSpriteFrame(ashFrames.front());
+
+    // 4. 设置精灵的位置在玩家的脚下
+    ashSprite->setPosition(this->getPosition() + Vec2(0, -this->getContentSize().height * 0.02f));
+
+    // 5. 添加到当前的父节点并播放动画
+    this->getParent()->addChild(ashSprite, this->getLocalZOrder() - 1);  // 保证烟尘在玩家下面
+    ashSprite->runAction(Sequence::create(
+        animate,
+        CallFunc::create([ashSprite]() {
+            ashSprite->removeFromParentAndCleanup(true);
+            }),
+        nullptr
+    ));
+
+    CCLOG("Finished setting up FloorLandingAsh animation");
+}
+
+void Player::playFloorJumpAshAnimation() {
+    CCLOG("Starting FloorJumpAsh animation");
+
+    // 1. 创建烟尘动画的帧
+    Vector<SpriteFrame*> ashFrames;
+    auto cache = SpriteFrameCache::getInstance();
+
+    for (int i = 0; i <= 9; i++) {
+        std::string frameName = StringUtils::format("floorjumpash_00-%d.png", i);
+        auto frame = cache->getSpriteFrameByName(frameName);
+        if (frame) {
+            ashFrames.pushBack(frame);
+        }
+    }
+
+    // 2. 创建动画和动作
+    auto animation = Animation::createWithSpriteFrames(ashFrames, 0.05f);
+    auto animate = Animate::create(animation);
+
+    // 3. 创建一个新的精灵来播放烟尘动画
+    auto ashSprite = Sprite::createWithSpriteFrame(ashFrames.front());
+
+    // 4. 设置精灵的位置在玩家的脚下
+    ashSprite->setPosition(this->getPosition() + Vec2(0, 20));
+
+    // 5. 添加到当前的父节点并播放动画
+    this->getParent()->addChild(ashSprite, this->getLocalZOrder() - 1);  // 保证烟尘在玩家下面
+    ashSprite->runAction(Sequence::create(
+        animate,
+        CallFunc::create([ashSprite]() {
+            ashSprite->removeFromParentAndCleanup(true);
+            }),
+        nullptr
+    ));
+
+    CCLOG("Finished setting up FloorJumpAsh animation");
+}
+
+void Player::playFloorWallJumpAshAnimation() {
+    CCLOG("Starting FloorWallJumpAsh animation");
+
+    // 1. 创建烟尘动画的帧
+    Vector<SpriteFrame*> ashFrames;
+    auto cache = SpriteFrameCache::getInstance();
+
+    for (int i = 0; i <= 9; i++) {
+        std::string frameName = StringUtils::format("walljumpash_00-%d.png", i);
+        auto frame = cache->getSpriteFrameByName(frameName);
+        if (frame) {
+            ashFrames.pushBack(frame);
+        }
+    }
+
+    // 2. 创建动画和动作
+    auto animation = Animation::createWithSpriteFrames(ashFrames, 0.05f);
+    auto animate = Animate::create(animation);
+
+    // 3. 创建一个新的精灵来播放烟尘动画
+    auto ashSprite = Sprite::createWithSpriteFrame(ashFrames.front());
+
+    // 4. 设置精灵的位置在玩家的面前
+    ashSprite->setPosition(this->getPosition() + facingDirection * Vec2(40, 0));
+
+    // 5. 添加到当前的父节点并播放动画
+    this->getParent()->addChild(ashSprite, this->getLocalZOrder() - 1);  // 保证烟尘在玩家下面
+    ashSprite->runAction(Sequence::create(
+        animate,
+        CallFunc::create([ashSprite]() {
+            ashSprite->removeFromParentAndCleanup(true);
+            }),
+        nullptr
+    ));
+
+    CCLOG("Finished setting up FloorWallJumpAsh animation");
 }

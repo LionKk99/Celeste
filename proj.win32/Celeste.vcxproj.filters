@@ -13,6 +13,27 @@
     <ClCompile Include="D:\Celeste\Classes\Scene\Level1Scene.cpp">
       <Filter>Source Files\Classes\Scene</Filter>
     </ClCompile>
+    <ClCompile Include="D:\Celeste\Classes\Scene\Level3Scene.cpp">
+      <Filter>Source Files\Classes\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Celeste\Classes\Scene\LevelBase.cpp">
+      <Filter>Source Files\Classes\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Celeste\Classes\Trap\Spikeweed.cpp">
+      <Filter>Source Files\Classes\Trap</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Celeste\Classes\Trap\Trap.cpp">
+      <Filter>Source Files\Classes\Trap</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Celeste\Classes\Trap\brick.cpp">
+      <Filter>Source Files\Classes\Trap</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Celeste\Classes\Trap\ice.cpp">
+      <Filter>Source Files\Classes\Trap</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Celeste\Classes\Trap\jumpTable.cpp">
+      <Filter>Source Files\Classes\Trap</Filter>
+    </ClCompile>
     <ClCompile Include="D:\Celeste\proj.win32\main.cpp">
       <Filter>Source Files\proj.win32</Filter>
     </ClCompile>
@@ -32,6 +53,27 @@
     </ClInclude>
     <ClInclude Include="D:\Celeste\Classes\Scene\Level1Scene.h">
       <Filter>Source Files\Classes\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Classes\Scene\Level3Scene.h">
+      <Filter>Source Files\Classes\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Classes\Scene\LevelBase.h">
+      <Filter>Source Files\Classes\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Classes\Trap\Spikeweed.h">
+      <Filter>Source Files\Classes\Trap</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Classes\Trap\Trap.h">
+      <Filter>Source Files\Classes\Trap</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Classes\Trap\brick.h">
+      <Filter>Source Files\Classes\Trap</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Classes\Trap\ice.h">
+      <Filter>Source Files\Classes\Trap</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Classes\Trap\jumpTable.h">
+      <Filter>Source Files\Classes\Trap</Filter>
     </ClInclude>
     <ClInclude Include="D:\Celeste\proj.win32\main.h">
       <Filter>Source Files\proj.win32</Filter>
@@ -174,6 +216,9 @@
     <ClInclude Include="D:\Celeste\Resources\level\level\L0\level0_B.bmp">
       <Filter>Resources\level\level\L0</Filter>
     </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\level\level\L0\level0_B.png">
+      <Filter>Resources\level\level\L0</Filter>
+    </ClInclude>
     <ClInclude Include="D:\Celeste\Resources\level\level\L0\level0_F.bmp">
       <Filter>Resources\level\level\L0</Filter>
     </ClInclude>
@@ -181,6 +226,9 @@
       <Filter>Resources\level\level\L1</Filter>
     </ClInclude>
     <ClInclude Include="D:\Celeste\Resources\level\level\L1\level1_B.bmp">
+      <Filter>Resources\level\level\L1</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\level\level\L1\level1_B.png">
       <Filter>Resources\level\level\L1</Filter>
     </ClInclude>
     <ClInclude Include="D:\Celeste\Resources\level\level\L1\level1_F.bmp">
@@ -192,10 +240,16 @@
     <ClInclude Include="D:\Celeste\Resources\level\level\L2\level2_B.bmp">
       <Filter>Resources\level\level\L2</Filter>
     </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\level\level\L2\level2_B.png">
+      <Filter>Resources\level\level\L2</Filter>
+    </ClInclude>
     <ClInclude Include="D:\Celeste\Resources\level\level\L2\level2_F.bmp">
       <Filter>Resources\level\level\L2</Filter>
     </ClInclude>
     <ClInclude Include="D:\Celeste\Resources\level\level\L3\level3.bmp">
+      <Filter>Resources\level\level\L3</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\level\level\L3\level3.png">
       <Filter>Resources\level\level\L3</Filter>
     </ClInclude>
     <ClInclude Include="D:\Celeste\Resources\level\level\L3\level3_B.bmp">
@@ -219,13 +273,25 @@
     <ClInclude Include="D:\Celeste\Resources\level\xumu\L1\xumu1_LG3.bmp">
       <Filter>Resources\level\xumu\L1</Filter>
     </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\level\xumu\L1\xumu1_LG3.png">
+      <Filter>Resources\level\xumu\L1</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\level\xumu\L1\xumu1_LG4.png">
+      <Filter>Resources\level\xumu\L1</Filter>
+    </ClInclude>
     <ClInclude Include="D:\Celeste\Resources\level\xumu\L2\xumu2_LG1.bmp">
       <Filter>Resources\level\xumu\L2</Filter>
     </ClInclude>
     <ClInclude Include="D:\Celeste\Resources\level\xumu\L2\xumu2_LG3.bmp">
       <Filter>Resources\level\xumu\L2</Filter>
     </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\level\xumu\L2\xumu2_LG3.png">
+      <Filter>Resources\level\xumu\L2</Filter>
+    </ClInclude>
     <ClInclude Include="D:\Celeste\Resources\level\xumu\xumu_BG.bmp">
+      <Filter>Resources\level\xumu</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\level\xumu\xumu_BG.png">
       <Filter>Resources\level\xumu</Filter>
     </ClInclude>
     <ClInclude Include="D:\Celeste\Resources\level\xumu\xumu_QJ1.bmp">
@@ -621,69 +687,6 @@
     <ClInclude Include="D:\Celeste\Resources\music\walk.mp3">
       <Filter>Resources\music</Filter>
     </ClInclude>
-    <ClInclude Include="D:\Celeste\Resources\music\wav\NotSafe.wav">
-      <Filter>Resources\music\wav</Filter>
-    </ClInclude>
-    <ClInclude Include="D:\Celeste\Resources\music\wav\dash.wav">
-      <Filter>Resources\music\wav</Filter>
-    </ClInclude>
-    <ClInclude Include="D:\Celeste\Resources\music\wav\death.wav">
-      <Filter>Resources\music\wav</Filter>
-    </ClInclude>
-    <ClInclude Include="D:\Celeste\Resources\music\wav\game_01_fallingblock_ice_impact_03.wav">
-      <Filter>Resources\music\wav</Filter>
-    </ClInclude>
-    <ClInclude Include="D:\Celeste\Resources\music\wav\game_01_fallingblock_ice_shake_01.wav">
-      <Filter>Resources\music\wav</Filter>
-    </ClInclude>
-    <ClInclude Include="D:\Celeste\Resources\music\wav\game_gen_spring.wav">
-      <Filter>Resources\music\wav</Filter>
-    </ClInclude>
-    <ClInclude Include="D:\Celeste\Resources\music\wav\jump.wav">
-      <Filter>Resources\music\wav</Filter>
-    </ClInclude>
-    <ClInclude Include="D:\Celeste\Resources\music\wav\landing.wav">
-      <Filter>Resources\music\wav</Filter>
-    </ClInclude>
-    <ClInclude Include="D:\Celeste\Resources\music\wav\mainmenu_background_loop.wav">
-      <Filter>Resources\music\wav</Filter>
-    </ClInclude>
-    <ClInclude Include="D:\Celeste\Resources\music\wav\mus_lvl0_intro_loop.wav">
-      <Filter>Resources\music\wav</Filter>
-    </ClInclude>
-    <ClInclude Include="D:\Celeste\Resources\music\wav\revive.wav">
-      <Filter>Resources\music\wav</Filter>
-    </ClInclude>
-    <ClInclude Include="D:\Celeste\Resources\music\wav\savesucceed.wav">
-      <Filter>Resources\music\wav</Filter>
-    </ClInclude>
-    <ClInclude Include="D:\Celeste\Resources\music\wav\ui_game_hotspot_note_in.wav">
-      <Filter>Resources\music\wav</Filter>
-    </ClInclude>
-    <ClInclude Include="D:\Celeste\Resources\music\wav\ui_game_hotspot_note_out.wav">
-      <Filter>Resources\music\wav</Filter>
-    </ClInclude>
-    <ClInclude Include="D:\Celeste\Resources\music\wav\ui_main_button_back.wav">
-      <Filter>Resources\music\wav</Filter>
-    </ClInclude>
-    <ClInclude Include="D:\Celeste\Resources\music\wav\ui_main_button_climb.wav">
-      <Filter>Resources\music\wav</Filter>
-    </ClInclude>
-    <ClInclude Include="D:\Celeste\Resources\music\wav\ui_main_roll_down.wav">
-      <Filter>Resources\music\wav</Filter>
-    </ClInclude>
-    <ClInclude Include="D:\Celeste\Resources\music\wav\ui_main_roll_up.wav">
-      <Filter>Resources\music\wav</Filter>
-    </ClInclude>
-    <ClInclude Include="D:\Celeste\Resources\music\wav\ui_main_title_firstinput.wav">
-      <Filter>Resources\music\wav</Filter>
-    </ClInclude>
-    <ClInclude Include="D:\Celeste\Resources\music\wav\walk.wav">
-      <Filter>Resources\music\wav</Filter>
-    </ClInclude>
-    <ClInclude Include="D:\Celeste\Resources\music\wav\wow_so_secret.wav">
-      <Filter>Resources\music\wav</Filter>
-    </ClInclude>
     <ClInclude Include="D:\Celeste\Resources\music\wow_so_secret.mp3">
       <Filter>Resources\music</Filter>
     </ClInclude>
@@ -720,7 +723,13 @@
     <ClInclude Include="D:\Celeste\Resources\trap\SnowBlock.bmp">
       <Filter>Resources\trap</Filter>
     </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\trap\SnowBlock.png">
+      <Filter>Resources\trap</Filter>
+    </ClInclude>
     <ClInclude Include="D:\Celeste\Resources\trap\notsafe_00.bmp">
+      <Filter>Resources\trap</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\trap\notsafe_00.png">
       <Filter>Resources\trap</Filter>
     </ClInclude>
     <ClInclude Include="D:\Celeste\Resources\trap\notsafe_01.bmp">
@@ -841,9 +850,6 @@
     <Filter Include="Resources\music">
       <UniqueIdentifier>{0F018B74-B46A-33FD-8D7E-3C0FE43BC9D1}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Resources\music\wav">
-      <UniqueIdentifier>{325BBB6F-008E-3AC9-870C-FC587E2BC6A6}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Resources\pauseMenu">
       <UniqueIdentifier>{E1C423EA-253A-394A-ACF7-38D46D622C48}</UniqueIdentifier>
     </Filter>
@@ -864,6 +870,9 @@
     </Filter>
     <Filter Include="Source Files\Classes\Scene">
       <UniqueIdentifier>{C4633672-E704-3FE7-A544-ED2BFE0E2532}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Classes\Trap">
+      <UniqueIdentifier>{7F395BF9-BC74-3CA4-8888-D8163C1D63D8}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files\proj.win32">
       <UniqueIdentifier>{7A910B40-8330-3D10-9A2B-7A8153F8FD14}</UniqueIdentifier>
