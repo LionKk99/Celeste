@@ -25,7 +25,10 @@
 #include "AppDelegate.h"
 #include "MainMenuScene.h"
 #include "Scene/Level1Scene.h"
+#include "Scene/Level2Scene.h"
 #include "Scene/Level3Scene.h"
+#include "Scene/Level4Scene.h"
+#include <fstream>
 
 
 // #define USE_AUDIO_ENGINE 1
@@ -176,9 +179,20 @@ bool AppDelegate::applicationDidFinishLaunching() {
     SpriteFrameCache::getInstance()->addSpriteFramesWithFile("eff/dashdowneff_00.plist", "eff/dashdowneff_00.png");//
 
     SpriteFrameCache::getInstance()->addSpriteFramesWithFile("movement/jumptable/jumpTable.plist", "movement/jumptable/jumpTable.png");//
-
+    /*
+    //清空存档文件
+    std::ofstream outFile1("Save.txt", std::ios::trunc);
+    outFile1.close();
+    //
+    std::ofstream outFile2("Save.txt", std::ios::app);
+    if (outFile2.is_open()) {
+        // 将数字写入文件并添加换行符
+        outFile2 << 1;
+        // 关闭文件流
+        outFile2.close();
+    }*/
    //测试plist和png加载
-  
+  /*
     Vector<SpriteFrame*> idleFrames;
     auto cache = SpriteFrameCache::getInstance();
     for (int i = 0; i <= 22; i++) {
@@ -191,7 +205,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
         else {
             CCLOG("Error: Cannot find frame: %s", frameName.c_str());
         }
-    }/*
+    }
 */
       
     
@@ -200,15 +214,20 @@ bool AppDelegate::applicationDidFinishLaunching() {
     
 
     // create a scene. it's an autorelease object//生成主界面场景
-    //auto scene = MainMenuScene::create();
-    //director->runWithScene(scene);
+    auto scene = MainMenuScene::create();
+    director->runWithScene(scene);
 
     //测试第一关
-   auto scene = Level1Scene::createScene();
-   Director::getInstance()->replaceScene(scene);
-
+   //auto scene = Level1Scene::createScene();
+   // Director::getInstance()->replaceScene(scene);
+   //测试第二关
+   //auto scene = Level2Scene::createScene();
+   //Director::getInstance()->replaceScene(scene);
    //测试第三关
    //auto scene = Level3Scene::createScene();
+   //Director::getInstance()->replaceScene(scene);
+     //测试第四关
+   //auto scene = Level4Scene::createScene();
    //Director::getInstance()->replaceScene(scene);
 
     // create a scene. it's an autorelease object

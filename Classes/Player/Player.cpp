@@ -27,7 +27,8 @@ Player::Player()
     
 }
 
-Player* Player::create(const std::string& filename) {
+Player* Player::create(int level,const std::string& filename) {
+    currentLevel = level;
     Player* player = new (std::nothrow) Player();
     if (player && player->init(filename)) {
         player->autorelease();
@@ -429,7 +430,7 @@ cocos2d::Vec2 Player::adjustMovePosition(const cocos2d::Vec2& desiredPosition) {
 
 
 bool Player::checkForSpikeweedCollision() {
-    float rayLength = 40.0f;  // The same ray length as in adjustMovePosition
+    float rayLength = 30.0f;  // The same ray length as in adjustMovePosition
     std::vector<cocos2d::Vec2> directions = {
         cocos2d::Vec2(-1, 0),  // Left
         cocos2d::Vec2(1, 0),   // Right
@@ -636,7 +637,9 @@ void Player::update(float dt) {
         }
         return;  // 如果玩家正在冲刺，跳过所有其他的状态更新
     }
-   
+    if (wallJumpCooldown > 0) {
+        wallJumpCooldown -= dt;
+    }
     
    // CCLOG("canDash:%d",canDash);
     if ( previousState == PlayerState::DASH) {
@@ -734,13 +737,15 @@ void Player::update(float dt) {
     }
     //弹簧
     
-    if (checkForJumpTableInteraction()) {
+    if (checkForJumpTableInteraction()) {       
         this->getPhysicsBody()->setGravityEnable(true);
         //velocity.y = 0;
         this->getPhysicsBody()->applyImpulse(Vec2(0, 100));//使用冲量
     }
+
     //砖块
     checkForBrickInteraction();
+
     //爬墙跳跃
     if ((currentState == PlayerState::HOLDWALL || currentState == PlayerState::HOLDWALLUP || currentState == PlayerState::HOLDWALLDOWN) && keyStates[PlayerKey::JUMP]) {
         this->getPhysicsBody()->setGravityEnable(true);
@@ -748,7 +753,11 @@ void Player::update(float dt) {
         this->getPhysicsBody()->applyImpulse(Vec2(-30, 90) * facingDirection);//使用冲量
         changeState(PlayerState::HOLDWALLJUMP);
         CCLOG("Player state changed to HOLDWALLJUMP");
+        if (wallJumpCooldown <= 0) {            
+            wallJumpCooldown = 1.0;  // 再次设置冷却时间
+        }
         return;
+        
     }
 
     //爬墙

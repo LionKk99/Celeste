@@ -15,10 +15,19 @@ public:
     virtual void startGame() override;
     virtual void endGame() override;
     virtual void pauseGame() override;
+
     CREATE_FUNC(Level1Scene);
 
     virtual void onEnter() override;
     virtual void onExit() override;
+
+    void update(float dt);
+
+    bool checkForLevelTransition();
+
+    void initKeyboardListener();
+
+    void onKeyPressedL1(cocos2d::EventKeyboard::KeyCode, cocos2d::Event*);
 };
 
 #endif // __LEVEL_1_SCENE_H__

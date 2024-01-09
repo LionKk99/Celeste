@@ -1,6 +1,12 @@
 #include "MainMenuScene.h"
-#include "/Celeste/Classes/Scene/Level1Scene.h"
-
+#include "Scene/Level1Scene.h"
+#include "Scene/Level2Scene.h"
+#include "Scene/Level3Scene.h"
+#include "Scene/Level4Scene.h"
+#include "Staff.h"
+#include "PauseMenu.h"
+#include "Setting.h"
+#include <iostream>
 USING_NS_CC;
 //获取正确的边界框
 Rect getGlobalBoundingBox(cocos2d::ui::Widget* widget) {
@@ -9,9 +15,11 @@ Rect getGlobalBoundingBox(cocos2d::ui::Widget* widget) {
         widget->getWorldPosition().y - s.height * widget->getAnchorPoint().y,
         s.width, s.height);
 }
+
+//int level = read_from_file();
 // 初始化方法
 bool MainMenuScene::init()
-{
+{    
     float scaleFactor = 0.9f; // 这里是缩放因子，可以根据需要调整
     // 1. 首先，调用父类的初始化方法
     if (!Scene::init())
@@ -22,6 +30,7 @@ bool MainMenuScene::init()
     // 2. 设置设计分辨率
     Director::getInstance()->getOpenGLView()->setDesignResolutionSize(1280, 720, ResolutionPolicy::NO_BORDER);     
         
+    initKeyboardListener();
 
     // 3. 加载并设置背景图片
     
@@ -85,10 +94,14 @@ bool MainMenuScene::init()
     this->addChild(newGame);
     newGame->addTouchEventListener([](Ref* sender, cocos2d::ui::Widget::TouchEventType type) {
         if (type == cocos2d::ui::Widget::TouchEventType::ENDED) {
-            // 切换到 Level1Scene，不使用渐变过渡
-            auto scene = Level1Scene::createScene();
-            Director::getInstance()->replaceScene(scene);
-            //Director::getInstance()->replaceScene(TransitionFade::create(1.0, scene)); // 使用一个渐隐渐现的过渡动画，持续1秒(未知错误)
+            //清空存档文件
+            std::ofstream outFile1("Save.txt", std::ios::trunc);
+            outFile1.close();
+            //
+            write_to_file(1);
+            // 切换到 Level1Scene
+            auto scene = Level1Scene::createScene(); // 假设你在Level1Scene中有一个静态的 createScene 方法来创建这个场景
+            Director::getInstance()->replaceScene(scene);// 使用一个渐隐渐现的过渡动画，持续1秒
         }
         });   
 
@@ -100,6 +113,44 @@ bool MainMenuScene::init()
     continueButton->setPosition(Vec2(1000, 400)); 
     continueButton->setAnchorPoint(Vec2(0, 0.5));   
     this->addChild(continueButton);
+    continueButton->addTouchEventListener([](Ref* sender, cocos2d::ui::Widget::TouchEventType type) {
+        if (type == cocos2d::ui::Widget::TouchEventType::ENDED) {
+            //CCLOG("Level: %s !!!", level);
+            int level = read_from_file();
+            switch (level)
+            {
+            case(1):
+            {
+                auto scene = Level1Scene::createScene();
+                Director::getInstance()->replaceScene(scene);
+                break;
+            }
+            case(2):
+            {
+                auto scene = Level2Scene::createScene();
+                Director::getInstance()->replaceScene(scene);
+                break;
+            }
+            case(3):
+            {
+                auto scene = Level3Scene::createScene();
+                Director::getInstance()->replaceScene(scene);
+                break;
+            }
+            case(4):
+            {
+                auto scene = Level4Scene::createScene();
+                Director::getInstance()->replaceScene(scene);
+                break;
+            }
+            default: {
+                CCLOG("save file error!! ");
+            }
+
+            }
+        }
+        });
+        
     //
     setting = cocos2d::ui::Button::create();
     setting->setTitleText("Setting");
@@ -108,6 +159,13 @@ bool MainMenuScene::init()
     setting->setPosition(Vec2(1000, 330));
     setting->setAnchorPoint(Vec2(0, 0.5));
     this->addChild(setting);
+    setting->addTouchEventListener([](Ref* sender, cocos2d::ui::Widget::TouchEventType type) {
+        if (type == cocos2d::ui::Widget::TouchEventType::ENDED) {
+            auto scene = Setting::create();
+            Director::getInstance()->replaceScene(TransitionFade::create(1.0, scene));
+        }
+        });
+
     //
     staff = cocos2d::ui::Button::create();
     staff->setTitleText("Staff");
@@ -116,6 +174,13 @@ bool MainMenuScene::init()
     staff->setPosition(Vec2(1000, 260));
     staff->setAnchorPoint(Vec2(0, 0.5));
     this->addChild(staff);
+    staff->addTouchEventListener([](Ref* sender, cocos2d::ui::Widget::TouchEventType type) {
+        if (type == cocos2d::ui::Widget::TouchEventType::ENDED) {
+            // 切换到 Level1Scene
+            auto scene = Credits::create(); // 假设你在Level1Scene中有一个静态的 createScene 方法来创建这个场景
+            Director::getInstance()->replaceScene(TransitionFade::create(1.0, scene)); // 使用一个渐隐渐现的过渡动画，持续1秒
+        }
+        });
     //
     quit = cocos2d::ui::Button::create();
     quit->setTitleText("Quit");
@@ -124,6 +189,7 @@ bool MainMenuScene::init()
     quit->setPosition(Vec2(1000, 190));
     quit->setAnchorPoint(Vec2(0, 0.5));
     this->addChild(quit);
+
 
     //添加退出时显示的界面
     auto visibleSize = Director::getInstance()->getVisibleSize();
@@ -238,17 +304,80 @@ void MainMenuScene::updateBackground(float dt)
     }
 }
 
-Scene* MainMenuScene::createScene() {
-    return MainMenuScene::create();
+void MainMenuScene::initKeyboardListener()
+{
+    EventListenerKeyboard* listenerkeyPad = EventListenerKeyboard::create();
+    listenerkeyPad->onKeyReleased = CC_CALLBACK_2(MainMenuScene::onKeyPressed, this);
+    _eventDispatcher->addEventListenerWithSceneGraphPriority(listenerkeyPad, this);
+}
+
+void MainMenuScene::onKeyPressed(EventKeyboard::KeyCode keycode, Event* event) {
+    if (keycode == EventKeyboard::KeyCode::KEY_ESCAPE) {
+        // ESC 键按下，切换到另一个场景
+        auto pauseLayer = PauseMenu::create();
+        Director::getInstance()->getRunningScene()->pause();
+        Director::getInstance()->pushScene(pauseLayer);
+    }
+}
+/*
+char getLastCharacter(const std::string& filename) {
+    std::ifstream file(filename, std::ios::ate); // Open file at the end
+
+    if (file.is_open()) {
+        auto size = file.tellg(); // Get file size
+        if (size > 0) {
+            file.seekg(-1, std::ios_base::end); // Move one char before the EOF
+            char lastChar;
+            file >> lastChar; // Read the last character
+            file.close();
+            return lastChar;
+        }
+        else {
+            std::cerr << "File is empty." << std::endl;
+            file.close();
+            return '\0'; // Return a default value
+        }
+    }
+    else {
+        std::cerr << "Unable to open the file: " << filename << std::endl;
+        return '\0'; // Return a default value
+    }
+}
+*/
+
+
+int read_from_file() {
+    std::ifstream file("save.txt");
+    int number;
+    if (file.is_open()) {
+        file >> number;
+        file.close();
+        return number;
+    }
+    else {
+        std::cerr << "无法打开文件进行读取" << std::endl;
+        return -1;  // 返回一个错误的值
+    }
+}
+
+void write_to_file(int number) {
+    std::ofstream file("save.txt");
+    if (file.is_open()) {
+        file << number;
+        file.close();
+    }
+    else {
+        std::cerr << "无法打开文件进行写入" << std::endl;
+    }
 }
 
 void MainMenuScene::onEnter() {
     cocos2d::Scene::onEnter();  // 确保调用基类的onEnter
 
-     _firstinputMusicId = cocos2d::AudioEngine::play2d("music/ui_main_title_firstinput.mp3", false);
-    
+    _firstinputMusicId = cocos2d::AudioEngine::play2d("music/ui_main_title_firstinput.mp3", false);
+
     // 检查音乐的状态
-    _backgroundMusicState = cocos2d::AudioEngine::getState(_backgroundMusicId);    
+    _backgroundMusicState = cocos2d::AudioEngine::getState(_backgroundMusicId);
 
     // 如果音乐没有播放或者播放已经完成，那么开始播放音乐(mp3格式)
     if (_backgroundMusicState != cocos2d::AudioEngine::AudioState::PLAYING) {

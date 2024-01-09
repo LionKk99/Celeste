@@ -7,17 +7,32 @@
     <ClCompile Include="D:\Celeste\Classes\MainMenuScene.cpp">
       <Filter>Source Files\Classes</Filter>
     </ClCompile>
+    <ClCompile Include="D:\Celeste\Classes\PauseMenu.cpp">
+      <Filter>Source Files\Classes</Filter>
+    </ClCompile>
     <ClCompile Include="D:\Celeste\Classes\Player\Player.cpp">
       <Filter>Source Files\Classes\Player</Filter>
     </ClCompile>
     <ClCompile Include="D:\Celeste\Classes\Scene\Level1Scene.cpp">
       <Filter>Source Files\Classes\Scene</Filter>
     </ClCompile>
+    <ClCompile Include="D:\Celeste\Classes\Scene\Level2Scene.cpp">
+      <Filter>Source Files\Classes\Scene</Filter>
+    </ClCompile>
     <ClCompile Include="D:\Celeste\Classes\Scene\Level3Scene.cpp">
+      <Filter>Source Files\Classes\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Celeste\Classes\Scene\Level4Scene.cpp">
       <Filter>Source Files\Classes\Scene</Filter>
     </ClCompile>
     <ClCompile Include="D:\Celeste\Classes\Scene\LevelBase.cpp">
       <Filter>Source Files\Classes\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Celeste\Classes\Setting.cpp">
+      <Filter>Source Files\Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Celeste\Classes\Staff.cpp">
+      <Filter>Source Files\Classes</Filter>
     </ClCompile>
     <ClCompile Include="D:\Celeste\Classes\Trap\Spikeweed.cpp">
       <Filter>Source Files\Classes\Trap</Filter>
@@ -48,17 +63,32 @@
     <ClInclude Include="D:\Celeste\Classes\MainMenuScene.h">
       <Filter>Source Files\Classes</Filter>
     </ClInclude>
+    <ClInclude Include="D:\Celeste\Classes\PauseMenu.h">
+      <Filter>Source Files\Classes</Filter>
+    </ClInclude>
     <ClInclude Include="D:\Celeste\Classes\Player\Player.h">
       <Filter>Source Files\Classes\Player</Filter>
     </ClInclude>
     <ClInclude Include="D:\Celeste\Classes\Scene\Level1Scene.h">
       <Filter>Source Files\Classes\Scene</Filter>
     </ClInclude>
+    <ClInclude Include="D:\Celeste\Classes\Scene\Level2Scene.h">
+      <Filter>Source Files\Classes\Scene</Filter>
+    </ClInclude>
     <ClInclude Include="D:\Celeste\Classes\Scene\Level3Scene.h">
+      <Filter>Source Files\Classes\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Classes\Scene\Level4Scene.h">
       <Filter>Source Files\Classes\Scene</Filter>
     </ClInclude>
     <ClInclude Include="D:\Celeste\Classes\Scene\LevelBase.h">
       <Filter>Source Files\Classes\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Classes\Setting.h">
+      <Filter>Source Files\Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Classes\Staff.h">
+      <Filter>Source Files\Classes</Filter>
     </ClInclude>
     <ClInclude Include="D:\Celeste\Classes\Trap\Spikeweed.h">
       <Filter>Source Files\Classes\Trap</Filter>
@@ -207,6 +237,21 @@
     <ClInclude Include="D:\Celeste\Resources\level\endLevel\End_BG.bmp">
       <Filter>Resources\level\endLevel</Filter>
     </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\level\endLevel\final1.data.png">
+      <Filter>Resources\level\endLevel</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\level\endLevel\final2.data.png">
+      <Filter>Resources\level\endLevel</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\level\endLevel\final3.data.png">
+      <Filter>Resources\level\endLevel</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\level\endLevel\final4.data.png">
+      <Filter>Resources\level\endLevel</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\level\endLevel\final5.data.png">
+      <Filter>Resources\level\endLevel</Filter>
+    </ClInclude>
     <ClInclude Include="D:\Celeste\Resources\level\endLevel\text.bmp">
       <Filter>Resources\level\endLevel</Filter>
     </ClInclude>
@@ -270,13 +315,16 @@
     <ClInclude Include="D:\Celeste\Resources\level\xumu\L1\xumu1_LG1.bmp">
       <Filter>Resources\level\xumu\L1</Filter>
     </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\level\xumu\L1\xumu1_LG2.png">
+      <Filter>Resources\level\xumu\L1</Filter>
+    </ClInclude>
     <ClInclude Include="D:\Celeste\Resources\level\xumu\L1\xumu1_LG3.bmp">
       <Filter>Resources\level\xumu\L1</Filter>
     </ClInclude>
-    <ClInclude Include="D:\Celeste\Resources\level\xumu\L1\xumu1_LG3.png">
+    <ClInclude Include="D:\Celeste\Resources\level\xumu\L1\xumu1_LG4.png">
       <Filter>Resources\level\xumu\L1</Filter>
     </ClInclude>
-    <ClInclude Include="D:\Celeste\Resources\level\xumu\L1\xumu1_LG4.png">
+    <ClInclude Include="D:\Celeste\Resources\level\xumu\L1\xumu1_LG5.png">
       <Filter>Resources\level\xumu\L1</Filter>
     </ClInclude>
     <ClInclude Include="D:\Celeste\Resources\level\xumu\L2\xumu2_LG1.bmp">
@@ -303,6 +351,27 @@
     <ClInclude Include="D:\Celeste\Resources\mainMenu\Start_BG.png">
       <Filter>Resources\mainMenu</Filter>
     </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\mainMenu\key\k.png">
+      <Filter>Resources\mainMenu\key</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\mainMenu\key\shift.png">
+      <Filter>Resources\mainMenu\key</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\mainMenu\key\space.png">
+      <Filter>Resources\mainMenu\key</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\mainMenu\key\←.png">
+      <Filter>Resources\mainMenu\key</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\mainMenu\key\↑.png">
+      <Filter>Resources\mainMenu\key</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\mainMenu\key\→.png">
+      <Filter>Resources\mainMenu\key</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\mainMenu\key\↓.png">
+      <Filter>Resources\mainMenu\key</Filter>
+    </ClInclude>
     <ClInclude Include="D:\Celeste\Resources\mainMenu\mountain_00.png">
       <Filter>Resources\mainMenu</Filter>
     </ClInclude>
@@ -310,6 +379,9 @@
       <Filter>Resources\mainMenu</Filter>
     </ClInclude>
     <ClInclude Include="D:\Celeste\Resources\mainMenu\quitWindow_01.png">
+      <Filter>Resources\mainMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\mainMenu\setting.png">
       <Filter>Resources\mainMenu</Filter>
     </ClInclude>
     <ClInclude Include="D:\Celeste\Resources\mainMenu\sky_02.png">
@@ -720,6 +792,24 @@
     <ClInclude Include="D:\Celeste\Resources\res\.gitkeep">
       <Filter>Resources\res</Filter>
     </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\staff\Staff1.png">
+      <Filter>Resources\staff</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\staff\Staff2.png">
+      <Filter>Resources\staff</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\staff\Staff3.png">
+      <Filter>Resources\staff</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\staff\Thank1.jpg">
+      <Filter>Resources\staff</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\staff\Thank2.jpg">
+      <Filter>Resources\staff</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\staff\quitWindow_00.png">
+      <Filter>Resources\staff</Filter>
+    </ClInclude>
     <ClInclude Include="D:\Celeste\Resources\trap\SnowBlock.bmp">
       <Filter>Resources\trap</Filter>
     </ClInclude>
@@ -796,6 +886,9 @@
     <Filter Include="Resources\mainMenu">
       <UniqueIdentifier>{26A9031C-A630-317E-92C3-D8DB71AA67AD}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Resources\mainMenu\key">
+      <UniqueIdentifier>{5B1A8ECE-3BA2-35A9-845D-316371BC12AE}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Resources\movement">
       <UniqueIdentifier>{E05A5A51-B6F8-3910-940A-1EA86FF487CA}</UniqueIdentifier>
     </Filter>
@@ -855,6 +948,9 @@
     </Filter>
     <Filter Include="Resources\res">
       <UniqueIdentifier>{A9A6D77A-4C86-38BE-80E4-ECF30078BB23}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources\staff">
+      <UniqueIdentifier>{5EF377EE-1005-39AF-97BD-E7420BDFE804}</UniqueIdentifier>
     </Filter>
     <Filter Include="Resources\trap">
       <UniqueIdentifier>{6C492769-954C-34AF-8D2F-E4B66BC42651}</UniqueIdentifier>

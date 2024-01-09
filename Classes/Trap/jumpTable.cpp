@@ -31,6 +31,13 @@ void JumpTable::initPhysicsBody() {
 }
 void JumpTable::playAnimation() {//动画
     // 停止所有正在运行的动画（确保不会与其他动画冲突）
+     // 检查音乐的状态
+    _jumpTableMusicState = cocos2d::AudioEngine::getState(_jumpTableMusicId);
+
+    // 如果音乐没有播放或者播放已经完成，那么开始播放音乐(mp3格式)
+    if (_jumpTableMusicState != cocos2d::AudioEngine::AudioState::PLAYING) {
+        _jumpTableMusicId = cocos2d::AudioEngine::play2d("music/game_gen_spring.mp3", false);
+    }
     this->stopAllActions();
     Vector<SpriteFrame*> idleFrames;
     auto cache = SpriteFrameCache::getInstance();
@@ -88,7 +95,7 @@ void JumpTable::deactivateTemporarily() {
 
     // 调度延迟执行的任务
     this->runAction(Sequence::create(
-        DelayTime::create(2.0f), // 等待2秒
+        DelayTime::create(1.6f), // 等待2秒
         CallFunc::create(reactivationFunc), // 然后调用reactivationFunc
         nullptr // 序列结束
     ));

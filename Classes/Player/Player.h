@@ -45,7 +45,7 @@ public:
     Player();//构造函数
 
     void update(float delta); // 每帧的更新方法
-    static Player* create(const std::string& filename);
+    static Player* create(int level,const std::string& filename);
     virtual bool init(const std::string& filename); // 直接传递filename给init
 
     // 基础属性
@@ -61,11 +61,15 @@ public:
     bool canClimb=0;//作为角色能否爬墙的判断
     
     //判断当前在哪个关卡
-    static int currentLevel;         
+    static int currentLevel;   
+
     std::vector<cocos2d::Vec2> respawnPoints = {
-        cocos2d::Vec2(1280/2, 720/2),
-        cocos2d::Vec2(1280 / 2, 720 / 2),
-        cocos2d::Vec2(1280 / 2, 720 / 2)
+        cocos2d::Vec2(1280/2, 720/2),//无意义
+        cocos2d::Vec2(1280 / 2, 720 / 2),//1
+        cocos2d::Vec2(0, 260),//2
+        cocos2d::Vec2(70, 300),//3
+        cocos2d::Vec2(100, 300)//4
+
         // 更多初始化
     };
     //与陷阱互动
@@ -82,6 +86,9 @@ public:
 
     bool isJumping = false; // 用于跟踪玩家是否正在跳跃
 
+    //爬墙跳跃间隔
+    float wallJumpCooldown = 0;
+    
     // 冲刺
     float dashDistance = 220;
     bool isDashing;
@@ -117,6 +124,7 @@ public:
     int _reviveMusicId;
     cocos2d::AudioEngine::AudioState _reviveMusicState;
     
+   
 
     // 动画播放
     void playIdleAnimation_1(); // 播放站立动画1

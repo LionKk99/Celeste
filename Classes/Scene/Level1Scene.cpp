@@ -6,7 +6,9 @@ using namespace cocos2d;
 #include "Trap/Spikeweed.h"
 #include"Trap/jumpTable.h"
 #include"Trap/brick.h"
-
+#include"Trap/ice.h"
+#include"Level2Scene.h"
+#include "PauseMenu.h"
 
 USING_NS_CC;
 
@@ -28,6 +30,7 @@ void Level1Scene::endGame(){};
 void Level1Scene::pauseGame(){};
 //
 bool Level1Scene::init() {
+    this->scheduleUpdate();
     if (!LevelBase::init()) {
         return false;
     }
@@ -35,6 +38,7 @@ bool Level1Scene::init() {
     if (!Layer::init()) {
         return false;
     }
+    initKeyboardListener();
     
     // 获取场景的大小
     Size visibleSize = Director::getInstance()->getVisibleSize();
@@ -73,7 +77,7 @@ bool Level1Scene::init() {
 
 
     // 创建Player对象
-    auto player = Player::create("movement/idle/Idle_00/Idle_00-0.png"); // 这只是一个示例，您可能需要为其提供一个初始的精灵图片路径
+    auto player = Player::create(1,"movement/idle/Idle_00/Idle_00-0.png"); // 这只是一个示例，您可能需要为其提供一个初始的精灵图片路径
     player->setPosition(respawnPoint); // 设置位置到屏幕中心
     this->addChild(player); // 将玩家添加到场景中
     player->getPhysicsBody()->getFirstShape()->setFriction(0.5f);
@@ -83,16 +87,16 @@ bool Level1Scene::init() {
     this->addChild(spikeweed);
 
     //创建jumpTable
-  
+  /*
     // 获取第一帧的SpriteFrame
     auto frame = SpriteFrameCache::getInstance()->getSpriteFrameByName("JumpTable_00-0.png");
 
     // 检查是否成功获取到
     if (frame) {
         // 设置JumpTable的纹理为获取到的帧
-        /*
-        不能自己设置分割的物理体积的位置
-        */
+        
+        //不能自己设置分割的物理体积的位置
+        
         auto jumpTableSprite = JumpTable::create(Vec2(700, 140)); // 假设你有这样一个方法来创建JumpTable实例
         jumpTableSprite->setSpriteFrame(frame); // 使用第一帧作为纹理            
         auto physicsBody = PhysicsBody::createBox(Size(100,10));// 设置物理形状
@@ -106,7 +110,7 @@ bool Level1Scene::init() {
     else {
         // 如果没有找到帧，可能需要输出错误或采取其他行动
         CCLOG("Error: Cannot find the first frame of JumpTable in SpriteFrameCache");
-    }
+    }*/
     //创建brick
     auto brick = Brick::create(Vec2(100, 200));
     this->addChild(brick); // 将brick添加到场景
@@ -146,6 +150,9 @@ bool Level1Scene::init() {
 
     cocos2d::Director::getInstance()->getEventDispatcher()->addEventListenerWithSceneGraphPriority(contactListener, this);
     */
+    //创建ice
+    auto ice = Ice::create(Vec2(700, 400)); // 假设位置
+    this->addChild(ice); // 添加到场景或其他父节点中
 
     // 加载这一关的特定内容，例如背景、障碍物等
     loadLevel();
@@ -245,3 +252,50 @@ void Level1Scene::onExit() {
     cocos2d::Layer::onExit();
 }
 
+void Level1Scene::update(float dt) {
+    if (checkForLevelTransition()) {
+        // 切换到 Level2Scene，不使用渐变过渡
+        auto scene = Level2Scene::createScene();
+        Director::getInstance()->replaceScene(scene);
+    }
+}
+bool Level1Scene::checkForLevelTransition() {
+    // 设置射线的起始点和终点
+    Vec2 rayStart = Vec2(1280, 300);
+    Vec2 rayEnd = Vec2(1150, 300); // 这里需要你设置好转换点
+    bool playerDetected = false;  // 用于记录是否检测到player
+    /*（debug）
+    // 假设你有一个成员变量 drawNode 指向一个 DrawNode 实例
+    auto drawNode = DrawNode::create();
+    this->addChild(drawNode);
+    
+    // 绘制射线
+    drawNode->clear(); // 清除之前的绘制内容
+    drawNode->drawLine(rayStart, rayEnd, Color4F::BLUE); //蓝色表示射线
+*/
+    auto rayCallback = [&playerDetected](PhysicsWorld& world, const PhysicsRayCastInfo& info, void* data)->bool {
+        auto node = info.shape->getBody()->getNode();
+        if (node && node->getName() == "player") {
+            // 如果射线检测到Player
+            playerDetected = true;  // 记录检测到player
+            return false; // 停止射线检测
+        }
+        return true; // 继续射线检测
+        };
+
+    Director::getInstance()->getRunningScene()->getPhysicsWorld()->rayCast(rayCallback, rayStart, rayEnd, nullptr);
+    return playerDetected;  // 返回是否检测到player
+}
+void Level1Scene::initKeyboardListener() {
+    EventListenerKeyboard* listenerkeyPad = EventListenerKeyboard::create();
+    listenerkeyPad->onKeyReleased = CC_CALLBACK_2(Level1Scene::onKeyPressedL1, this);
+    _eventDispatcher->addEventListenerWithSceneGraphPriority(listenerkeyPad, this);
+}
+void Level1Scene::onKeyPressedL1(cocos2d::EventKeyboard::KeyCode keycode, cocos2d::Event* event) {
+    if (keycode == EventKeyboard::KeyCode::KEY_ESCAPE) {
+        //ESC键
+        auto pauseLayer = PauseMenu::create();
+        Director::getInstance()->getRunningScene()->pause();
+        Director::getInstance()->pushScene(pauseLayer);
+    }
+}

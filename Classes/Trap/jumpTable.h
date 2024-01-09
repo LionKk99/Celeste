@@ -1,6 +1,7 @@
 // JumpTable.h
 #include "cocos2d.h"
 #include "Trap.h"
+#include "AudioEngine.h"
 
 class JumpTable : public Trap {
 public:
@@ -15,4 +16,6 @@ public:
     void initDefaultTexture();
     void initPhysicsBody(); // ÒÆ³ýsize²ÎÊý
     bool _canBeActivated=1;
+    int _jumpTableMusicId;
+    cocos2d::AudioEngine::AudioState _jumpTableMusicState;
 };

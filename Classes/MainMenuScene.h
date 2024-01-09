@@ -16,6 +16,8 @@ public:
     void onEnter();
     void onExit();
     Scene* createScene();
+    void initKeyboardListener();
+    void onKeyPressed(cocos2d::EventKeyboard::KeyCode keycode, cocos2d::Event* event);
 
 private:
 
@@ -37,5 +39,6 @@ private:
     cocos2d::ui::Button* exitButton;//退出按钮
     cocos2d::ui::Button* returnButton;//返回主菜单按钮
 };
-
+void write_to_file(int number);
+int read_from_file();
 #endif // __MAIN_MENU_SCENE_H__

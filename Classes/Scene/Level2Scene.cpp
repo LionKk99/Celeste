@@ -1,27 +1,27 @@
 #include "cocos2d.h"
 using namespace cocos2d;
-#include "Level3Scene.h"
-#include "Level4Scene.h"
+#include "Level2Scene.h"
 #include "Player/Player.h"
-#include "Trap/Spikeweed.h"
+#include"Trap/ice.h"
+#include "Level3Scene.h"
 #include "PauseMenu.h"
 
-cocos2d::Scene* Level3Scene::createScene() {
+cocos2d::Scene* Level2Scene::createScene() {
     auto scene = Scene::createWithPhysics();  // 创建一个带有物理世界的场景
     scene->getPhysicsWorld()->setDebugDrawMask(PhysicsWorld::DEBUGDRAW_ALL);
 
     scene->getPhysicsWorld()->setGravity(Vec2(0, -1200));//重力设置
     scene->getPhysicsWorld()->setSubsteps(60);  // 增加迭代次数
 
-    auto layer = Level3Scene::create();
+    auto layer = Level2Scene::create();
     scene->addChild(layer);
 
     return scene;
 }
 
 
-bool Level3Scene::init() {
-    CCLOG("Starting Level3Scene::init");  // 添加这一行
+bool Level2Scene::init() {
+    CCLOG("Starting Level2Scene::init");  // 添加这一行
     if (!Layer::init()) {
         return false;
     }
@@ -30,39 +30,51 @@ bool Level3Scene::init() {
     Size visibleSize = Director::getInstance()->getVisibleSize();
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
 
+    // 创建背景层
+    auto background = Sprite::create("level/xumu/L1/xumu1_LG5.png");  // 更远的背景
+    background->setAnchorPoint(Vec2(0.5, 0.5));
+    background->setScale(0.8);
+    background->setPosition(Vec2(visibleSize.width / 2, visibleSize.height / 2));
+    this->addChild(background, -3);
+
+    auto midground = Sprite::create("level/xumu/L1/xumu1_LG4.png");  // 中间层背景
+    midground->setAnchorPoint(Vec2(0.5, 0.5));
+    midground->setScale(0.8);
+    midground->setPosition(Vec2(visibleSize.width / 2, visibleSize.height / 2));
+    this->addChild(midground, -2);
+
+    //创建ice
+    auto ice = Ice::create(Vec2(880, 498)); // 假设位置
+    this->addChild(ice); // 添加到场景或其他父节点中
+
    
-
-
-
     // 创建玩家
-    auto player = Player::create(3, "movement/idle/Idle_00/Idle_00-0.png");
-    player->setPosition(Vec2(70, 300));
-    this->addChild(player, 1);
+    auto player = Player::create(2,"movement/idle/Idle_00/Idle_00-0.png");
+    player->setPosition(Vec2(0, 260));
+    this->addChild(player, 3);
     player->getPhysicsBody()->getFirstShape()->setFriction(0.5f);
     loadLevel();
     // 设置更新方法，用于卷轴效果
-    CCLOG("Finished Level3Scene::init");
+    CCLOG("Finished Level2Scene::init");
     return true;
 }
 
-void Level3Scene::loadLevel() {
-    CCLOG("Starting Level3Scene::loadLevel");  // 添加这一行
+void Level2Scene::loadLevel() {
+    CCLOG("Starting Level2Scene::loadLevel");  // 添加这一行
 
     // 创建卷轴背景
-    // 
-    auto background = Sprite::create("level/level/L0/level0_B.png");
+    auto background = Sprite::create("level/xumu/L1/xumu1_LG2.png");
     background->setAnchorPoint(Vec2(0.5, 0.5));
     background->setScale(0.8, 0.8);
     background->setPosition(Vec2(Director::getInstance()->getVisibleSize().width / 2, Director::getInstance()->getVisibleSize().height / 2));
-    this->addChild(background, 0);  // 设置在更高层级以覆盖其他背景
-
-     // 设置在更高层级以覆盖其他背景
+    this->addChild(background, -1);  // 设置在更高层级以覆盖其他背景
 
     // 添加平台
     auto platform = Sprite::create(); // 这里创建的是一个透明的平台，没有纹理
     platform->setName("ground");
     platform->setAnchorPoint(Vec2(0.5, 0.5));
     platform->setPosition(Vec2(Director::getInstance()->getVisibleSize().width / 2, platform->getContentSize().height / 2));
+
     //添加边界
        // 定义边界的顶点
     Vec2 edgeVertices[] = {
@@ -77,44 +89,41 @@ void Level3Scene::loadLevel() {
 
     // 创建一个空节点用于附加边界物理体
     auto edgeNode = Node::create();
-    edgeNode->setPosition(Vec2(1280 / 2, 0)); // 设置位置
+    edgeNode->setPosition(Vec2(1280/2,0 )); // 设置位置
     edgeNode->setPhysicsBody(edgeBody); // 将边界物理体附加到节点
 
     // 将边界节点添加到场景
     this->addChild(edgeNode);
-    
-
-    //创建spikeweed陷阱
-    auto spikeweed1 = Spikeweed::create(Vec2(235, 50), Size(160, 10));
-    this->addChild(spikeweed1);
-
-    //创建spikeweed陷阱
-    auto spikeweed2 = Spikeweed::create(Vec2(500, 120), Size(160, 10));
-    this->addChild(spikeweed2);
-    
-    //创建spikeweed陷阱
-    auto spikeweed3 = Spikeweed::create(Vec2(767, 200), Size(130, 10));
-    this->addChild(spikeweed3);
-
-    //创建spikeweed陷阱
-    auto spikeweed4 = Spikeweed::create(Vec2(880, 86), Size(90, 10));
-    this->addChild(spikeweed4);
-
-    //创建spikeweed陷阱
-    auto spikeweed5 = Spikeweed::create(Vec2(1080, 365), Size(10, 60));
-    this->addChild(spikeweed5);
-
-
     //// 创建物理体
     auto physicsBody = PhysicsBody::create();
 
-    // 定义多边形顶点并创建多边形形状
-    // ...[Add all the polygon definitions here similar to the original code]...
+    //// 定义多边形顶点
+    //Vec2 rectangle1[] = {
+
+    //Vec2(-640, 175),
+    //Vec2(-640, 30),
+    //Vec2(-220, 30),
+    //Vec2(-220, 175),
+    //};
+    //auto shape1 = PhysicsShapePolygon::create(rectangle1, 4);
+    //shape1->setRestitution(0.0f);  // 设置反弹系数为0
+    //physicsBody->addShape(shape1);
+
+    //Vec2 rectangle2[] = {
+    //Vec2(-60, 175),
+    //Vec2(-60, 240),
+    //Vec2(-220, 240),
+    //Vec2(-220, 175),
+    //};
+    //auto shape2 = PhysicsShapePolygon::create(rectangle2, 4);
+    //shape2->setRestitution(0.0f);  // 设置反弹系数为0
+    //physicsBody->addShape(shape2);
     Vec2 polygonPoints1[] = {
-Vec2(-622, 143),
-Vec2(-480, 143),
-Vec2(-480, 8),
-Vec2(-622, 8)
+Vec2(-500.000, 177),
+Vec2(-370, 117),
+Vec2(-370, 0), 
+Vec2(-648, 0),
+Vec2(-646, 180)
     };
 
     // 创建多边形形状
@@ -123,12 +132,11 @@ Vec2(-622, 8)
     physicsBody->addShape(polygonShape1); // 将形状添加到物理体
 
     Vec2 polygonPoints2[] = {
-Vec2(-634, 428),
-Vec2(-575, 428),
-Vec2(-575, 639),
-Vec2(-634, 639)
-
-
+ Vec2(-480, 180),
+ Vec2(-320, 116),
+ Vec2(-320, 116), 
+ Vec2(-320, 238), 
+ Vec2(-480, 238)
     };
 
     // 创建多边形形状
@@ -137,35 +145,34 @@ Vec2(-634, 639)
     physicsBody->addShape(polygonShape2); // 将形状添加到物理体
 
     Vec2 polygonPoints3[] = {
-Vec2(-323, 209),
-Vec2(-222, 209),
-Vec2(-222, 15),
-Vec2(-323, 15)
-    };
+Vec2(-160, 500), 
+Vec2(-60, 500),
+Vec2(-60, 430),
+Vec2(-160, 430) };
     // 创建多边形形状
     auto polygonShape3 = PhysicsShapePolygon::create(polygonPoints3, sizeof(polygonPoints3) / sizeof(polygonPoints3[0])); // 使用顶点数组创建形状
     polygonShape3->setRestitution(0.0f); // 设置反弹系数为0
     physicsBody->addShape(polygonShape3);
 
+    
     Vec2 polygonPoints4[] = {
-    Vec2(-510, 488),
-Vec2(-359, 488),
-Vec2(-359, 639),
-Vec2(-510, 639)
+Vec2(-155, 142), 
+Vec2(-155, 0),
 
+Vec2(40,142),
+Vec2(40, 0)
     };
 
     // 创建多边形形状
-    auto polygonShape4 = PhysicsShapePolygon::create(polygonPoints4, sizeof(polygonPoints4) / sizeof(polygonPoints4[0]));
+    auto polygonShape4 = PhysicsShapePolygon::create(polygonPoints4, sizeof(polygonPoints4) / sizeof(polygonPoints4[0])); // 使用顶点数组创建形状
     polygonShape4->setRestitution(0.0f); // 设置反弹系数为0
-    physicsBody->addShape(polygonShape4); // 将形状添加到物理体
+    physicsBody->addShape(polygonShape4);
 
     Vec2 polygonPoints5[] = {
-Vec2(-608, 151),
-Vec2(-635, 151),
-Vec2(-635, 425),
-Vec2(-608, 425)
-    };
+Vec2(0, 140),
+Vec2(0, 240), 
+Vec2(-60, 140),
+Vec2(-60, 240) };
 
     // 创建多边形形状
     auto polygonShape5 = PhysicsShapePolygon::create(polygonPoints5, sizeof(polygonPoints5) / sizeof(polygonPoints5[0])); // 使用顶点数组创建形状
@@ -173,23 +180,20 @@ Vec2(-608, 425)
     physicsBody->addShape(polygonShape5);
 
     Vec2 polygonPoints6[] = {
-Vec2(60, 400),
-Vec2(60, 50),
-Vec2(-60, 400),
-Vec2(-60, 50)
- };
+Vec2(40, 140),
+Vec2(40, 170),
+Vec2(0, 140),
+Vec2(0, 170) };
 
     // 创建多边形形状
     auto polygonShape6 = PhysicsShapePolygon::create(polygonPoints6, sizeof(polygonPoints6) / sizeof(polygonPoints5[0])); // 使用顶点数组创建形状
     polygonShape6->setRestitution(0.0f); // 设置反弹系数为0
     physicsBody->addShape(polygonShape6);
-
     Vec2 polygonPoints7[] = {
-Vec2(-230, 650),
-Vec2(-125, 650),
-Vec2(-125, 530),
-Vec2(-230, 530)
-    };
+Vec2(140, 170),
+Vec2(140, 200),
+Vec2(350, 200),
+Vec2(350,170) };
 
     // 创建多边形形状
     auto polygonShape7 = PhysicsShapePolygon::create(polygonPoints7, sizeof(polygonPoints7) / sizeof(polygonPoints7[0])); // 使用顶点数组创建形状
@@ -197,116 +201,49 @@ Vec2(-230, 530)
     physicsBody->addShape(polygonShape7);
 
     Vec2 polygonPoints8[] = {
-Vec2(-136, 621),
-Vec2(-68, 621),
-Vec2(-68, 696),
-Vec2(-136, 696)
-    };
+Vec2(160, 160),
+Vec2(160, 0),
+Vec2(330, 160),
+Vec2(330,0) };
 
     // 创建多边形形状
     auto polygonShape8 = PhysicsShapePolygon::create(polygonPoints8, sizeof(polygonPoints8) / sizeof(polygonPoints8[0])); // 使用顶点数组创建形状
     polygonShape8->setRestitution(0.0f); // 设置反弹系数为0
     physicsBody->addShape(polygonShape8);
 
+
     Vec2 polygonPoints9[] = {
-Vec2(-64, 650),
-Vec2(27, 650),
-Vec2(27, 706),
-Vec2(-64,706)
-
-
-    };
+Vec2(800, 145),
+Vec2(800, 0),
+Vec2(500, 145),
+Vec2(500,0) };
 
     // 创建多边形形状
     auto polygonShape9 = PhysicsShapePolygon::create(polygonPoints9, sizeof(polygonPoints9) / sizeof(polygonPoints9[0])); // 使用顶点数组创建形状
     polygonShape9->setRestitution(0.0f); // 设置反弹系数为0
     physicsBody->addShape(polygonShape9);
 
-
     Vec2 polygonPoints10[] = {
-Vec2(38, 589),
-Vec2(65, 589),
-Vec2(65, 696),
-Vec2(38, 696)
-    };
+Vec2(800, 240),
+Vec2(800, 0),
+Vec2(610, 240),
+Vec2(610,0) };
 
     // 创建多边形形状
     auto polygonShape10 = PhysicsShapePolygon::create(polygonPoints10, sizeof(polygonPoints10) / sizeof(polygonPoints10[0])); // 使用顶点数组创建形状
     polygonShape10->setRestitution(0.0f); // 设置反弹系数为0
     physicsBody->addShape(polygonShape10);
 
-
     Vec2 polygonPoints11[] = {
-   Vec2(352, 401),
-Vec2(624, 401),
-Vec2(624, 497),
-Vec2(352, 497)
-
-    };
+Vec2(130, 720),
+Vec2(130, 560),
+Vec2(350, 720),
+Vec2(350,560) };
 
     // 创建多边形形状
-    auto polygonShape11 = PhysicsShapePolygon::create(polygonPoints11, sizeof(polygonPoints11) / sizeof(polygonPoints11[0]));
-    polygonShape11->setRestitution(0.0f);
+    auto polygonShape11 = PhysicsShapePolygon::create(polygonPoints11, sizeof(polygonPoints11) / sizeof(polygonPoints11[0])); // 使用顶点数组创建形状
+    polygonShape11->setRestitution(0.0f); // 设置反弹系数为0
     physicsBody->addShape(polygonShape11);
-
-
-    Vec2 polygonPoints12[] = {
-   Vec2(515, 214),
-Vec2(628, 214),
-Vec2(628, 732),
-Vec2(515, 732)
-
-    };
-
-    // 创建多边形形状
-    auto polygonShape12 = PhysicsShapePolygon::create(polygonPoints12, sizeof(polygonPoints12) / sizeof(polygonPoints12[0]));
-    polygonShape12->setRestitution(0.0f);
-    physicsBody->addShape(polygonShape12);
-
-
-    Vec2 polygonPoints13[] = {
-  Vec2(479, 487),
-Vec2(629, 487),
-Vec2(629, 655),
-Vec2(479, 655)
-
-    };
-
-    // 创建多边形形状
-    auto polygonShape13 = PhysicsShapePolygon::create(polygonPoints13, sizeof(polygonPoints13) / sizeof(polygonPoints13[0]));
-    polygonShape13->setRestitution(0.0f);
-    physicsBody->addShape(polygonShape13);
-
-
-    Vec2 polygonPoints14[] = {
-    Vec2(68, 688),
-Vec2(345, 688),
-Vec2(345, 715),
-Vec2(68, 715)
-
-    };
-
-    // 创建多边形形状
-    auto polygonShape14 = PhysicsShapePolygon::create(polygonPoints14, sizeof(polygonPoints14) / sizeof(polygonPoints14[0]));
-    polygonShape14->setRestitution(0.0f);
-    physicsBody->addShape(polygonShape14);
-
-    Vec2 polygonPoints15[] = {
-   Vec2(445, 562),
-Vec2(479, 562),
-Vec2(479, 596),
-Vec2(445, 596)
-
-    };
-
-    // 创建多边形形状
-    auto polygonShape15 = PhysicsShapePolygon::create(polygonPoints15, sizeof(polygonPoints15) / sizeof(polygonPoints15[0]));
-    polygonShape15->setRestitution(0.0f);
-    physicsBody->addShape(polygonShape15);
-
-
-
-
 
 
     physicsBody->setCategoryBitmask(0x01);
@@ -317,16 +254,22 @@ Vec2(445, 596)
     platform->setPhysicsBody(physicsBody);
     platform->getPhysicsBody()->getFirstShape()->setFriction(0.5f);//摩擦系数
     this->addChild(platform);
-    CCLOG("Finished Level3Scene::loadLevel");  // 添加这一行
+    CCLOG("Finished Level2Scene::loadLevel");  // 添加这一行
+    //// 创建多边形形状
 }
-void Level3Scene::onEnter() {
+//
+void Level2Scene::startGame() {};
+void Level2Scene::endGame() {};
+void Level2Scene::pauseGame() {};
+//
+void Level2Scene::onEnter() {
     cocos2d::Layer::onEnter();
 
     // Play background music
     _backgroundMusicID = cocos2d::AudioEngine::play2d("music/mus_lvl0_intro_loop.mp3", true, 1.0f);  // Remember to replace the path with your actual music file path
 }
 
-void Level3Scene::onExit() {
+void Level2Scene::onExit() {
     // Stop background music
     if (cocos2d::AudioEngine::getState(_backgroundMusicID) == cocos2d::AudioEngine::AudioState::PLAYING) {
         cocos2d::AudioEngine::stop(_backgroundMusicID);
@@ -334,21 +277,15 @@ void Level3Scene::onExit() {
 
     cocos2d::Layer::onExit();
 }
-//
-void Level3Scene::startGame() {};
-void Level3Scene::endGame() {};
-void Level3Scene::pauseGame() {};
-//
-bool Level3Scene::checkForLevelTransition() {
+bool Level2Scene::checkForLevelTransition() {
     // 设置射线的起始点和终点
-    Vec2 rayStart = Vec2(1080, 730);
-    Vec2 rayEnd = Vec2(1080, 680); // 这里需要你设置好转换点
+    Vec2 rayStart = Vec2(1200, 280);
+    Vec2 rayEnd = Vec2(1280, 280); // 这里需要你设置好转换点
     bool playerDetected = false;  // 用于记录是否检测到player
     /*(debug)
     // 假设你有一个成员变量 drawNode 指向一个 DrawNode 实例
     auto drawNode = DrawNode::create();
     this->addChild(drawNode);
-
     // 绘制射线
     drawNode->clear(); // 清除之前的绘制内容
     drawNode->drawLine(rayStart, rayEnd, Color4F::BLUE); //蓝色表示射线
@@ -367,19 +304,19 @@ bool Level3Scene::checkForLevelTransition() {
     return playerDetected;  // 返回是否检测到player
 }
 
-void Level3Scene::update(float dt) {
+void Level2Scene::update(float dt) {
     if (checkForLevelTransition()) {
         // 切换到 Level3Scene，不使用渐变过渡
-        auto scene = Level4Scene::createScene();
+        auto scene = Level3Scene::createScene();
         Director::getInstance()->replaceScene(scene);
     }
 }
-void Level3Scene::initKeyboardListener() {
+void Level2Scene::initKeyboardListener() {
     EventListenerKeyboard* listenerkeyPad = EventListenerKeyboard::create();
-    listenerkeyPad->onKeyReleased = CC_CALLBACK_2(Level3Scene::onKeyPressedL3, this);
+    listenerkeyPad->onKeyReleased = CC_CALLBACK_2(Level2Scene::onKeyPressedL2, this);
     _eventDispatcher->addEventListenerWithSceneGraphPriority(listenerkeyPad, this);
 }
-void Level3Scene::onKeyPressedL3(cocos2d::EventKeyboard::KeyCode keycode, cocos2d::Event* event) {
+void Level2Scene::onKeyPressedL2(cocos2d::EventKeyboard::KeyCode keycode, cocos2d::Event* event) {
     if (keycode == EventKeyboard::KeyCode::KEY_ESCAPE) {
         //ESC键
         auto pauseLayer = PauseMenu::create();
