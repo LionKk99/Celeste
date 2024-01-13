@@ -506,7 +506,7 @@ bool Player::checkForJumpTableInteraction() {
 }
 
 bool Player::checkForBrickInteraction() {
-    float rayLength = 20.0f; // 假设的射线长度，可以根据需要进行调整
+    float rayLength = 15.0f; // 假设的射线长度，可以根据需要进行调整
 
     // 只在向下方向检测
     cocos2d::Vec2 direction = cocos2d::Vec2(0, -1); // Down
@@ -528,7 +528,7 @@ bool Player::checkForBrickInteraction() {
             if (brick) {
                 if (!brick->_isNormal) { return false; }
                 brick->toggleVisibility();                
-                CCLOG("砖块悬空");
+                CCLOG("brick can not toach");
             }
             return false;  // 停止进一步检测
         }
@@ -623,7 +623,7 @@ cocos2d::Vec2 Player::adjustMovePosition(const cocos2d::Vec2& desiredPosition) {
 void Player::update(float dt) {
     if (!isAlive) { return; }//角色死亡直接返回
     if (isAlive) { if (checkForSpikeweedCollision()) {} }
-    float deathThreshold = 75; // 你想要的死亡阈值
+    float deathThreshold = 60; // 你想要的死亡阈值
     if (this->getPositionY() < deathThreshold) {//检查角色高度
         // 进入死亡状态
         isAlive = 0;

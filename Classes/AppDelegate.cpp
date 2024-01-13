@@ -28,6 +28,10 @@
 #include "Scene/Level2Scene.h"
 #include "Scene/Level3Scene.h"
 #include "Scene/Level4Scene.h"
+#include "Scene/Level5Scene.h"
+#include "Scene/Level6Scene.h"
+#include "Scene/Level7Scene.h"
+#include "Scene/EndLayer.h"
 #include <fstream>
 
 
@@ -213,23 +217,44 @@ bool AppDelegate::applicationDidFinishLaunching() {
     
     
 
-    // create a scene. it's an autorelease object//生成主界面场景
-    auto scene = MainMenuScene::create();
-    director->runWithScene(scene);
+    //生成主界面场景
+    //auto scene = MainMenuScene::create();
+    //director->runWithScene(scene);
 
     //测试第一关
    //auto scene = Level1Scene::createScene();
-   // Director::getInstance()->replaceScene(scene);
+   //Director::getInstance()->replaceScene(scene);
    //测试第二关
-   //auto scene = Level2Scene::createScene();
-   //Director::getInstance()->replaceScene(scene);
+   auto scene = Level2Scene::createScene();
+   Director::getInstance()->replaceScene(scene);
    //测试第三关
-   //auto scene = Level3Scene::createScene();
+  // auto scene = Level3Scene::createScene();
    //Director::getInstance()->replaceScene(scene);
-     //测试第四关
+   //测试第四关
    //auto scene = Level4Scene::createScene();
    //Director::getInstance()->replaceScene(scene);
+   //测试第五关
+   //auto scene = Level5Scene::createScene();
+   //Director::getInstance()->replaceScene(scene);
+   //测试第六关
+   //auto scene = Level6Scene::createScene();
+   //Director::getInstance()->replaceScene(scene);
+   //测试第七关
+   //auto scene = Level7Scene::createScene();
+   //Director::getInstance()->replaceScene(scene);
+   //测试结束动画
+   /*
+   //创建新的 Scene
+    auto scene = Scene::create();
 
+    // 创建 EndLayer 并添加到 Scene
+    auto endLayer = EndLayer::create();
+    scene->addChild(endLayer);
+
+    // 切换到新创建的 Scene
+    Director::getInstance()->replaceScene(scene);*/
+
+   
     // create a scene. it's an autorelease object
     //auto scene = HelloWorld::createScene();
     // run

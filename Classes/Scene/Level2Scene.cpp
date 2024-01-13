@@ -119,11 +119,11 @@ void Level2Scene::loadLevel() {
     //shape2->setRestitution(0.0f);  // 设置反弹系数为0
     //physicsBody->addShape(shape2);
     Vec2 polygonPoints1[] = {
-Vec2(-500.000, 177),
-Vec2(-370, 117),
-Vec2(-370, 0), 
+Vec2(-480, 177),
+Vec2(-350, 117),
+Vec2(-350, 0), 
 Vec2(-648, 0),
-Vec2(-646, 180)
+Vec2(-646, 177)
     };
 
     // 创建多边形形状
@@ -132,10 +132,11 @@ Vec2(-646, 180)
     physicsBody->addShape(polygonShape1); // 将形状添加到物理体
 
     Vec2 polygonPoints2[] = {
- Vec2(-480, 180),
+ Vec2(-480, 170),
+ Vec2(-350, 116),
  Vec2(-320, 116),
  Vec2(-320, 116), 
- Vec2(-320, 238), 
+ Vec2(-320, 238),  
  Vec2(-480, 238)
     };
 
@@ -190,10 +191,10 @@ Vec2(0, 170) };
     polygonShape6->setRestitution(0.0f); // 设置反弹系数为0
     physicsBody->addShape(polygonShape6);
     Vec2 polygonPoints7[] = {
-Vec2(140, 170),
-Vec2(140, 200),
-Vec2(350, 200),
-Vec2(350,170) };
+Vec2(130, 170),
+Vec2(130, 205),
+Vec2(355, 205),
+Vec2(355,170) };
 
     // 创建多边形形状
     auto polygonShape7 = PhysicsShapePolygon::create(polygonPoints7, sizeof(polygonPoints7) / sizeof(polygonPoints7[0])); // 使用顶点数组创建形状
@@ -201,9 +202,9 @@ Vec2(350,170) };
     physicsBody->addShape(polygonShape7);
 
     Vec2 polygonPoints8[] = {
-Vec2(160, 160),
+Vec2(160, 170),
 Vec2(160, 0),
-Vec2(330, 160),
+Vec2(330, 170),
 Vec2(330,0) };
 
     // 创建多边形形状
@@ -279,7 +280,7 @@ void Level2Scene::onExit() {
 }
 bool Level2Scene::checkForLevelTransition() {
     // 设置射线的起始点和终点
-    Vec2 rayStart = Vec2(1200, 280);
+    Vec2 rayStart = Vec2(1260, 280);
     Vec2 rayEnd = Vec2(1280, 280); // 这里需要你设置好转换点
     bool playerDetected = false;  // 用于记录是否检测到player
     /*(debug)

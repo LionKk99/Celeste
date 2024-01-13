@@ -3,6 +3,9 @@
 #include "Scene/Level2Scene.h"
 #include "Scene/Level3Scene.h"
 #include "Scene/Level4Scene.h"
+#include "Scene/Level5Scene.h"
+#include "Scene/Level6Scene.h"
+#include "Scene/Level7Scene.h"
 #include "Staff.h"
 #include "PauseMenu.h"
 #include "Setting.h"
@@ -143,8 +146,28 @@ bool MainMenuScene::init()
                 Director::getInstance()->replaceScene(scene);
                 break;
             }
+            case(5):
+            {
+                auto scene = Level5Scene::createScene();
+                Director::getInstance()->replaceScene(scene);
+                break;
+            }
+            case(6):
+            {
+                auto scene = Level6Scene::createScene();
+                Director::getInstance()->replaceScene(scene);
+                break;
+            }
+            case(7):
+            {
+                auto scene = Level7Scene::createScene();
+                Director::getInstance()->replaceScene(scene);
+                break;
+            }
             default: {
                 CCLOG("save file error!! ");
+                auto scene = Level1Scene::createScene();
+                Director::getInstance()->replaceScene(scene);                
             }
 
             }

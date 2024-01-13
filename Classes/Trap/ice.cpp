@@ -75,7 +75,7 @@ void Ice::activate() {
         });
 
     // 设置2秒后更改名字为ground
-    auto delayForChangeName = DelayTime::create(0.628f);
+    auto delayForChangeName = DelayTime::create(0.6189f);
     auto changeNameToGround = CallFunc::create([this]() {
         this->setName("ground");
         auto physicsBody = this->getPhysicsBody();

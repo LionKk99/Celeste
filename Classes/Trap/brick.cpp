@@ -40,8 +40,8 @@ bool Brick::init() {
 
 void Brick::toggleVisibility() {
     if (_isNormal) {
-        // 如果当前是正常状态，则在0.5秒后隐藏碰撞体积和纹理
-        auto delay = DelayTime::create(0.8f);
+        // 如果当前是正常状态，则在2秒后隐藏碰撞体积和纹理
+        auto delay = DelayTime::create(2.0f);
         auto hideBrick = CallFunc::create([this]() {
             this->setVisible(false);
             if (this->getPhysicsBody()) {

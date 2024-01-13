@@ -8,7 +8,7 @@
 
 class Level4Scene : public LevelBase {
 public:
-    // 创建一个场景并返回
+    // 创建一个场景并返回0
     static cocos2d::Scene* createScene();
 
     virtual bool init() override;
@@ -24,6 +24,10 @@ public:
 
     virtual void onEnter() override;
     virtual void onExit() override;
+
+    void update(float dt);
+
+    bool checkForLevelTransition();
 
     void initKeyboardListener();
 

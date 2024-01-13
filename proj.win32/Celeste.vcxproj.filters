@@ -13,6 +13,9 @@
     <ClCompile Include="D:\Celeste\Classes\Player\Player.cpp">
       <Filter>Source Files\Classes\Player</Filter>
     </ClCompile>
+    <ClCompile Include="D:\Celeste\Classes\Scene\EndLayer.cpp">
+      <Filter>Source Files\Classes\Scene</Filter>
+    </ClCompile>
     <ClCompile Include="D:\Celeste\Classes\Scene\Level1Scene.cpp">
       <Filter>Source Files\Classes\Scene</Filter>
     </ClCompile>
@@ -23,6 +26,15 @@
       <Filter>Source Files\Classes\Scene</Filter>
     </ClCompile>
     <ClCompile Include="D:\Celeste\Classes\Scene\Level4Scene.cpp">
+      <Filter>Source Files\Classes\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Celeste\Classes\Scene\Level5Scene.cpp">
+      <Filter>Source Files\Classes\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Celeste\Classes\Scene\Level6Scene.cpp">
+      <Filter>Source Files\Classes\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Celeste\Classes\Scene\Level7Scene.cpp">
       <Filter>Source Files\Classes\Scene</Filter>
     </ClCompile>
     <ClCompile Include="D:\Celeste\Classes\Scene\LevelBase.cpp">
@@ -69,6 +81,9 @@
     <ClInclude Include="D:\Celeste\Classes\Player\Player.h">
       <Filter>Source Files\Classes\Player</Filter>
     </ClInclude>
+    <ClInclude Include="D:\Celeste\Classes\Scene\EndLayer.h">
+      <Filter>Source Files\Classes\Scene</Filter>
+    </ClInclude>
     <ClInclude Include="D:\Celeste\Classes\Scene\Level1Scene.h">
       <Filter>Source Files\Classes\Scene</Filter>
     </ClInclude>
@@ -79,6 +94,15 @@
       <Filter>Source Files\Classes\Scene</Filter>
     </ClInclude>
     <ClInclude Include="D:\Celeste\Classes\Scene\Level4Scene.h">
+      <Filter>Source Files\Classes\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Classes\Scene\Level5Scene.h">
+      <Filter>Source Files\Classes\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Classes\Scene\Level6Scene.h">
+      <Filter>Source Files\Classes\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Classes\Scene\Level7Scene.h">
       <Filter>Source Files\Classes\Scene</Filter>
     </ClInclude>
     <ClInclude Include="D:\Celeste\Classes\Scene\LevelBase.h">
@@ -122,6 +146,45 @@
     </ClInclude>
     <ClInclude Include="D:\Celeste\Resources\Dot\WhiteDot.bmp">
       <Filter>Resources\Dot</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\Setting\down.png">
+      <Filter>Resources\Setting</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\Setting\k.png">
+      <Filter>Resources\Setting</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\Setting\left.png">
+      <Filter>Resources\Setting</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\Setting\right.png">
+      <Filter>Resources\Setting</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\Setting\shift.png">
+      <Filter>Resources\Setting</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\Setting\space.png">
+      <Filter>Resources\Setting</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\Setting\up.png">
+      <Filter>Resources\Setting</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\Staff\Staff1.png">
+      <Filter>Resources\Staff</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\Staff\Staff2.png">
+      <Filter>Resources\Staff</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\Staff\Staff3.png">
+      <Filter>Resources\Staff</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\Staff\Thank1.jpg">
+      <Filter>Resources\Staff</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\Staff\Thank2.jpg">
+      <Filter>Resources\Staff</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\Staff\quitWindow_00.png">
+      <Filter>Resources\Staff</Filter>
     </ClInclude>
     <ClInclude Include="D:\Celeste\Resources\eff\black.plist">
       <Filter>Resources\eff</Filter>
@@ -226,6 +289,9 @@
       <Filter>Resources\level\endLevel</Filter>
     </ClInclude>
     <ClInclude Include="D:\Celeste\Resources\level\endLevel\EndLevel_B.bmp">
+      <Filter>Resources\level\endLevel</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Celeste\Resources\level\endLevel\EndLevel_B.png">
       <Filter>Resources\level\endLevel</Filter>
     </ClInclude>
     <ClInclude Include="D:\Celeste\Resources\level\endLevel\EndLevel_F.bmp">
@@ -350,27 +416,6 @@
     </ClInclude>
     <ClInclude Include="D:\Celeste\Resources\mainMenu\Start_BG.png">
       <Filter>Resources\mainMenu</Filter>
-    </ClInclude>
-    <ClInclude Include="D:\Celeste\Resources\mainMenu\key\k.png">
-      <Filter>Resources\mainMenu\key</Filter>
-    </ClInclude>
-    <ClInclude Include="D:\Celeste\Resources\mainMenu\key\shift.png">
-      <Filter>Resources\mainMenu\key</Filter>
-    </ClInclude>
-    <ClInclude Include="D:\Celeste\Resources\mainMenu\key\space.png">
-      <Filter>Resources\mainMenu\key</Filter>
-    </ClInclude>
-    <ClInclude Include="D:\Celeste\Resources\mainMenu\key\←.png">
-      <Filter>Resources\mainMenu\key</Filter>
-    </ClInclude>
-    <ClInclude Include="D:\Celeste\Resources\mainMenu\key\↑.png">
-      <Filter>Resources\mainMenu\key</Filter>
-    </ClInclude>
-    <ClInclude Include="D:\Celeste\Resources\mainMenu\key\→.png">
-      <Filter>Resources\mainMenu\key</Filter>
-    </ClInclude>
-    <ClInclude Include="D:\Celeste\Resources\mainMenu\key\↓.png">
-      <Filter>Resources\mainMenu\key</Filter>
     </ClInclude>
     <ClInclude Include="D:\Celeste\Resources\mainMenu\mountain_00.png">
       <Filter>Resources\mainMenu</Filter>
@@ -792,24 +837,6 @@
     <ClInclude Include="D:\Celeste\Resources\res\.gitkeep">
       <Filter>Resources\res</Filter>
     </ClInclude>
-    <ClInclude Include="D:\Celeste\Resources\staff\Staff1.png">
-      <Filter>Resources\staff</Filter>
-    </ClInclude>
-    <ClInclude Include="D:\Celeste\Resources\staff\Staff2.png">
-      <Filter>Resources\staff</Filter>
-    </ClInclude>
-    <ClInclude Include="D:\Celeste\Resources\staff\Staff3.png">
-      <Filter>Resources\staff</Filter>
-    </ClInclude>
-    <ClInclude Include="D:\Celeste\Resources\staff\Thank1.jpg">
-      <Filter>Resources\staff</Filter>
-    </ClInclude>
-    <ClInclude Include="D:\Celeste\Resources\staff\Thank2.jpg">
-      <Filter>Resources\staff</Filter>
-    </ClInclude>
-    <ClInclude Include="D:\Celeste\Resources\staff\quitWindow_00.png">
-      <Filter>Resources\staff</Filter>
-    </ClInclude>
     <ClInclude Include="D:\Celeste\Resources\trap\SnowBlock.bmp">
       <Filter>Resources\trap</Filter>
     </ClInclude>
@@ -840,6 +867,12 @@
     </Filter>
     <Filter Include="Resources\Dot">
       <UniqueIdentifier>{F7F427EB-81B8-39E0-958B-6FD756CA9EB5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources\Setting">
+      <UniqueIdentifier>{53AB1CD3-00C8-302F-85CA-69D1862E5856}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources\Staff">
+      <UniqueIdentifier>{68265A2D-C31F-3621-9175-77562AC07F1C}</UniqueIdentifier>
     </Filter>
     <Filter Include="Resources\eff">
       <UniqueIdentifier>{8A51F9A1-F0BD-3020-A407-8488307FD8DD}</UniqueIdentifier>
@@ -885,9 +918,6 @@
     </Filter>
     <Filter Include="Resources\mainMenu">
       <UniqueIdentifier>{26A9031C-A630-317E-92C3-D8DB71AA67AD}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Resources\mainMenu\key">
-      <UniqueIdentifier>{5B1A8ECE-3BA2-35A9-845D-316371BC12AE}</UniqueIdentifier>
     </Filter>
     <Filter Include="Resources\movement">
       <UniqueIdentifier>{E05A5A51-B6F8-3910-940A-1EA86FF487CA}</UniqueIdentifier>
@@ -948,9 +978,6 @@
     </Filter>
     <Filter Include="Resources\res">
       <UniqueIdentifier>{A9A6D77A-4C86-38BE-80E4-ECF30078BB23}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Resources\staff">
-      <UniqueIdentifier>{5EF377EE-1005-39AF-97BD-E7420BDFE804}</UniqueIdentifier>
     </Filter>
     <Filter Include="Resources\trap">
       <UniqueIdentifier>{6C492769-954C-34AF-8D2F-E4B66BC42651}</UniqueIdentifier>

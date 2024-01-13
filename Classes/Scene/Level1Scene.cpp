@@ -31,6 +31,7 @@ void Level1Scene::pauseGame(){};
 //
 bool Level1Scene::init() {
     this->scheduleUpdate();
+    initKeyboardListener();
     if (!LevelBase::init()) {
         return false;
     }
@@ -38,7 +39,7 @@ bool Level1Scene::init() {
     if (!Layer::init()) {
         return false;
     }
-    initKeyboardListener();
+    
     
     // 获取场景的大小
     Size visibleSize = Director::getInstance()->getVisibleSize();
@@ -81,13 +82,13 @@ bool Level1Scene::init() {
     player->setPosition(respawnPoint); // 设置位置到屏幕中心
     this->addChild(player); // 将玩家添加到场景中
     player->getPhysicsBody()->getFirstShape()->setFriction(0.5f);
-
+/*
     //创建spikeweed陷阱
     auto spikeweed = Spikeweed::create(Vec2(400, 120), Size(100, 10));
     this->addChild(spikeweed);
 
     //创建jumpTable
-  /*
+  
     // 获取第一帧的SpriteFrame
     auto frame = SpriteFrameCache::getInstance()->getSpriteFrameByName("JumpTable_00-0.png");
 
@@ -110,10 +111,15 @@ bool Level1Scene::init() {
     else {
         // 如果没有找到帧，可能需要输出错误或采取其他行动
         CCLOG("Error: Cannot find the first frame of JumpTable in SpriteFrameCache");
-    }*/
+    }
+
     //创建brick
     auto brick = Brick::create(Vec2(100, 200));
     this->addChild(brick); // 将brick添加到场景
+    //创建ice
+    auto ice = Ice::create(Vec2(700, 400)); // 假设位置
+    this->addChild(ice); // 添加到场景或其他父节点中
+  */
     /*
     //碰撞监听器   
     auto contactListener = cocos2d::EventListenerPhysicsContact::create();
@@ -150,9 +156,7 @@ bool Level1Scene::init() {
 
     cocos2d::Director::getInstance()->getEventDispatcher()->addEventListenerWithSceneGraphPriority(contactListener, this);
     */
-    //创建ice
-    auto ice = Ice::create(Vec2(700, 400)); // 假设位置
-    this->addChild(ice); // 添加到场景或其他父节点中
+    
 
     // 加载这一关的特定内容，例如背景、障碍物等
     loadLevel();
@@ -262,7 +266,7 @@ void Level1Scene::update(float dt) {
 bool Level1Scene::checkForLevelTransition() {
     // 设置射线的起始点和终点
     Vec2 rayStart = Vec2(1280, 300);
-    Vec2 rayEnd = Vec2(1150, 300); // 这里需要你设置好转换点
+    Vec2 rayEnd = Vec2(1200, 300); // 这里需要你设置好转换点
     bool playerDetected = false;  // 用于记录是否检测到player
     /*（debug）
     // 假设你有一个成员变量 drawNode 指向一个 DrawNode 实例

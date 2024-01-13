@@ -67,9 +67,11 @@ public:
         cocos2d::Vec2(1280/2, 720/2),//无意义
         cocos2d::Vec2(1280 / 2, 720 / 2),//1
         cocos2d::Vec2(0, 260),//2
-        cocos2d::Vec2(70, 300),//3
-        cocos2d::Vec2(100, 300)//4
-
+        cocos2d::Vec2(70, 200),//3
+        cocos2d::Vec2(100, 150),//4
+        cocos2d::Vec2(200, 100),//5
+        cocos2d::Vec2(200, 100),//6
+        cocos2d::Vec2(100, 150)//7
         // 更多初始化
     };
     //与陷阱互动

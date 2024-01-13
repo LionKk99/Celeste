@@ -45,6 +45,9 @@ bool PauseMenu::init()
         });
 
         // 示例初始化第二个按钮
+
+    const char* saveEffectFile = "music/savesucceed.mp3";
+
     auto saveGame = cocos2d::ui::Button::create();
     saveGame->setTitleText("Save Game");
     saveGame->setTitleFontName("fonts/arial.ttf");
@@ -53,8 +56,11 @@ bool PauseMenu::init()
     saveGame->setPosition(Vec2(450, 360));
     saveGame->setAnchorPoint(Vec2(0, 0.5));
     this->addChild(saveGame);
-    saveGame->addTouchEventListener([this](Ref* sender, cocos2d::ui::Widget::TouchEventType type) { // 注意这里的[this]
+    saveGame->addTouchEventListener([this, saveEffectFile](Ref* sender, cocos2d::ui::Widget::TouchEventType type) { // 注意这里的[this]
         if (type == cocos2d::ui::Widget::TouchEventType::ENDED) {
+            // 播放保存按钮的音效
+            cocos2d::AudioEngine::play2d(saveEffectFile);
+
             this->SaveFile(Player::currentLevel); // 使用this来调用SaveFile
             Director::getInstance()->pause();
             auto scene = PauseOverlay::create();

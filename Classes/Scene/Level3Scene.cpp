@@ -36,7 +36,7 @@ bool Level3Scene::init() {
 
     // 创建玩家
     auto player = Player::create(3, "movement/idle/Idle_00/Idle_00-0.png");
-    player->setPosition(Vec2(70, 300));
+    player->setPosition(Vec2(70, 200));
     this->addChild(player, 1);
     player->getPhysicsBody()->getFirstShape()->setFriction(0.5f);
     loadLevel();
@@ -177,7 +177,7 @@ Vec2(60, 400),
 Vec2(60, 50),
 Vec2(-60, 400),
 Vec2(-60, 50)
- };
+    };
 
     // 创建多边形形状
     auto polygonShape6 = PhysicsShapePolygon::create(polygonPoints6, sizeof(polygonPoints6) / sizeof(polygonPoints5[0])); // 使用顶点数组创建形状
@@ -304,6 +304,75 @@ Vec2(445, 596)
     polygonShape15->setRestitution(0.0f);
     physicsBody->addShape(polygonShape15);
 
+    Vec2 polygonPoints16[] = {
+       Vec2(540, 141),
+Vec2(618, 141),
+Vec2(618, 202),
+Vec2(540, 202)
+
+    };
+
+    // 创建多边形形状
+    auto polygonShape16 = PhysicsShapePolygon::create(polygonPoints16, sizeof(polygonPoints16) / sizeof(polygonPoints16[0]));
+    polygonShape16->setRestitution(0.0f);
+    physicsBody->addShape(polygonShape16);
+
+    //    // 多边形17的顶点
+    Vec2 polygonPoints17[] = {
+     Vec2(580, 110),
+Vec2(618, 110),
+Vec2(618, 142),
+Vec2(580, 142)
+
+
+    };
+
+    // 创建多边形形状
+    auto polygonShape17 = PhysicsShapePolygon::create(polygonPoints17, sizeof(polygonPoints17) / sizeof(polygonPoints17[0]));
+    polygonShape17->setRestitution(0.0f);
+    physicsBody->addShape(polygonShape17);
+    //
+    //    //// 多边形18的顶点
+    Vec2 polygonPoints18[] = {
+Vec2(608, 6),
+Vec2(630, 6),
+Vec2(630, 108),
+Vec2(608, 108)
+
+
+    };
+
+    // 创建多边形形状
+    auto polygonShape18 = PhysicsShapePolygon::create(polygonPoints18, sizeof(polygonPoints18) / sizeof(polygonPoints18[0]));
+    polygonShape18->setRestitution(0.0f);
+    physicsBody->addShape(polygonShape18);
+    //
+    //    //// 多边形19的顶点
+    Vec2 polygonPoints19[] = {
+Vec2(56, 5),
+Vec2(188, 5),
+Vec2(188, 198),
+Vec2(56, 198)
+
+
+
+    };
+
+    // 创建多边形形状
+    auto polygonShape19 = PhysicsShapePolygon::create(polygonPoints19, sizeof(polygonPoints19) / sizeof(polygonPoints19[0]));
+    polygonShape19->setRestitution(0.0f);
+    physicsBody->addShape(polygonShape19);
+
+    //    //// 多边形20的顶点
+    Vec2 polygonPoints20[] = {
+     Vec2(183, 4),
+Vec2(283, 4),
+Vec2(283, 78),
+Vec2(183, 78)
+
+
+    };
+
 
 
 
@@ -323,7 +392,7 @@ void Level3Scene::onEnter() {
     cocos2d::Layer::onEnter();
 
     // Play background music
-    _backgroundMusicID = cocos2d::AudioEngine::play2d("music/mus_lvl0_intro_loop.mp3", true, 1.0f);  // Remember to replace the path with your actual music file path
+    _backgroundMusicID = cocos2d::AudioEngine::play2d("music/gameplayBGM.mp3", true, 1.0f);  // Remember to replace the path with your actual music file path
 }
 
 void Level3Scene::onExit() {
@@ -342,7 +411,7 @@ void Level3Scene::pauseGame() {};
 bool Level3Scene::checkForLevelTransition() {
     // 设置射线的起始点和终点
     Vec2 rayStart = Vec2(1080, 730);
-    Vec2 rayEnd = Vec2(1080, 680); // 这里需要你设置好转换点
+    Vec2 rayEnd = Vec2(1080, 710); // 这里需要你设置好转换点
     bool playerDetected = false;  // 用于记录是否检测到player
     /*(debug)
     // 假设你有一个成员变量 drawNode 指向一个 DrawNode 实例
