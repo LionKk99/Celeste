@@ -28,15 +28,15 @@
 
 ## Detailed Design
 
-See doc/Design
+See [doc/Design](https://github.com/LionKk99/Celeste/blob/master/docs/Celeste%20final%20report.pdf)
 
 ## Setup
 
-See doc/Setup
+See [doc/Setup]()
 
 ## Game Play
 
-Execute the Gun-Mayhem.exe in dist
+Execute the Gun-Mayhem.exe in [dist](https://github.com/LionKk99/Celeste/tree/master/dlist)
 
 ## Developer
 
