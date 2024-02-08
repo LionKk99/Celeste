@@ -42,6 +42,6 @@ Execute the Gun-Mayhem.exe in dist
 
 |   Name    | School  | Major | Work |
 |  -------  | ----  | ----  | ----  |
-| <div style="width:60pt">霍君安 </div> | SCUT | <div style="width:60pt">Big Data </div> | Overall framework writing, Designing the main interface ,Player Class, Trap Class, Level Base Class, Special effect, Material organization, Animation management, Music & Sound, Debug |
+| <div style="width:100pt">霍君安 </div> | SCUT | <div style="width:100pt">Big Data </div> | Overall framework writing, Designing the main interface ,Player Class, Trap Class, Level Base Class, Special effect, Material organization, Animation management, Music & Sound, Debug |
 | 龚思嘉  | SCUT | Big Data | UI Design, Setting, Staff, Database, Debug |
 | 周宇哲  | SCUT | Big Data | Level Class, Level Base, Physical collision, Debug |
