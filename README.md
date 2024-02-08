@@ -38,6 +38,8 @@ See [doc/Setup](https://github.com/Randonee1/Advanced-Language-Programming/blob/
 
 Execute the Celeste.exe in [dist](https://github.com/LionKk99/Celeste/tree/master/dlist)
 
+Or, watch game demo in [bilibili](https://www.bilibili.com/video/BV1E94y1K7qH/)
+
 ## Developer
 
 |  Name  | School  | Major | Work |
