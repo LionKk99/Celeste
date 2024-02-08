@@ -32,7 +32,7 @@ See [doc/Design](https://github.com/LionKk99/Celeste/blob/master/docs/Celeste%20
 
 ## Setup
 
-See [doc/Setup](https://github.com/LionKk99/Celeste/blob/master/docs/Setup.md)
+See [doc/Setup](https://github.com/Randonee1/Advanced-Language-Programming/blob/main/docs/Setup.md)
 
 ## Game Play
 
