@@ -14,11 +14,11 @@
 
 ## General Design
 
-![image](https://github.com/LionKk99/Celeste/blob/master/README_image/UML1.png)
+![image](https://github.com/LionKk99/Celeste/blob/master/README_image/UML11.png)
 
-![image](https://github.com/LionKk99/Celeste/blob/master/README_image/UML2.png)
+![image](https://github.com/LionKk99/Celeste/blob/master/README_image/UML22.png)
 
-![image](https://github.com/LionKk99/Celeste/blob/master/README_image/UML3.png)
+![image](https://github.com/LionKk99/Celeste/blob/master/README_image/UML33.png)
 
 ## Function
 
