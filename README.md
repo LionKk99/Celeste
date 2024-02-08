@@ -1,53 +1,49 @@
 # Celeste
 
-## 9.13
+![image](https://github.com/LionKk99/Celeste/blob/master/README_image/mainMenu.png)
 
-#### 更新resource文件
+![image](https://github.com/LionKk99/Celeste/blob/master/README_image/level.png)
 
-dot——一些粒子
+## Runtime Environment
 
-level——关卡（包含序幕、正式关卡和结束关卡）
+|  Environment   | Version  |
+|  ----  | ----  |
+| Visual Studio  | Both VS2019 and VS2022 are available|
+| Cocos-2dx  | 4.0 |
+| Windows  | Windows 10, Windows 11 |
 
-mainMenu——主界面
+## General Design
 
-movement——动作合集（其中B开头的为角色dash后未落地的动作）
+![image](https://github.com/LionKk99/Celeste/blob/master/README_image/UML1.png)
 
-music——音乐
+![image](https://github.com/LionKk99/Celeste/blob/master/README_image/UML2.png)
 
-pauseMenu——暂停菜单
+![image](https://github.com/LionKk99/Celeste/blob/master/README_image/UML3.png)
 
-staff——工作人员及致谢（暂无素材）
+## Function
 
-trap——陷阱
+*	Game start interface, background music, and exit function
+*	Keyboard for character walking and jumping, mouse for adjust settings and enter levels
+*	Effects of skills and traps
+*	Pause and save function
+*	Movement display
 
-## 9.15
+## Detailed Design
 
-#### 完成主界面背景设置，初步完成UI按钮构造（部分对齐不好）
+See doc/Design
 
-![image](https://github.com/LionKk99/Celeste/blob/master/README_image/9.15_01.png?raw=true)
+## Setup
 
-## 9.16
+See doc/Setup
 
-#### 完善主界面UI，完成exit功能
+## Game Play
 
-![image](https://github.com/LionKk99/Celeste/blob/master/README_image/9.16_02.png?raw=true)
+Execute the Gun-Mayhem.exe in dist
 
-## 9.28
+## Developer
 
-#### 完成player类基础操作
-
-## 9.29
-
-#### 修复跳跃，下落判定
-
-## 9.30
-
-#### 修复角色穿模问题，增加关卡边界，完成爬墙判定
-
-## 10.01
-
-#### 完成爬墙操作，简易dash效果完成
-
-## 10.02
-
-#### 完善dash操作
+| Name   | School  | Major | Work |
+|  ----  | ----  | ----  | ----  |
+| 霍君安  | SCUT | Big Data | Overall framework writing, Designing the main interface ,Player Class, Trap Class, Level Base Class, Special effect, Material organization, Animation management, Music & Sound, Debug |
+| 龚思嘉  | SCUT | Big Data | UI Design, Setting, Staff, Database, Debug |
+| 周宇哲  | SCUT | Big Data | Level Class, Level Base, Physical collision, Debug |
